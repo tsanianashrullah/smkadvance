@@ -248,10 +248,6 @@ $this->params['breadcrumbs'][]= $this->title;
                 'clientOptions'=>[
                 'autoclose' => true,
                 'format' => 'yyyy-mm-dd',]
-
-
-
-
                 ])
             ],
             'agama',
@@ -263,9 +259,7 @@ $this->params['breadcrumbs'][]= $this->title;
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],    
     ]);
-  
 
     ?>
-
 
 </div>
