@@ -5,9 +5,6 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="siswa-form">
-<div class="panel panel-primary col-lg-6">
-      <div class="panel-heading" align='center'>Isi Data Siswa</div>
-        <div class="col-lg-6">
             <br>
 <?php $form = ActiveForm::begin(); ?>
 
@@ -27,9 +24,25 @@ use dosamigos\datepicker\DatePicker;
            'format' => 'yyyy-mm-dd',
            ]
         ]);?>
+<?= $form->field($model, 'agama')->dropdownList(['Islam' => 'Islam', 'Kristen'=> 'Kristen', 'Katolik' => 'Katolik','Protestan'=>'Protestan', 'Budha' => 'Budha', 'Hindu'=>'Hindu', 'Lain-lain'=>'Lain-lain'], ['prompt'=>'.:pilih Agama:.']) ?>
+<?= $form->field($model, 'anak_ke')->textInput(['maxlength' => 4, 'size' => 4]) ?>
+<?= $form->field($model, 'nama_ayah')->textInput(['maxlength' => 25, 'size' => 10]) ?>
+<?= $form->field($model, 'nama_ibu')->textInput(['maxlength' => 25, 'size' => 10]) ?>
+<?= $form->field($model, 'pekerjaan_ayah')->textInput(['maxlength' => 25, 'size' => 10]) ?>
+<?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlenght' => 50]) ?>     
+<?= $form->field($model, 'tahun_masuk')->widget(
+       DatePicker::className(), [
+        // inline too, not bad
+         'inline' => false, 
+         // modify template for custom rendering
+        'clientOptions' => [
+            'autoclose' => true, 
+           'format' => 'yyyy-mm-dd',
+           ]
+        ]);?>
+<?= $form->field($model, 'no_tlp')->textInput(['maxlength' => 13, 'size' => 10]) ?>   
 
 
-<?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlenght' => 50]) ?>        
 
 
     <div class="form-group">

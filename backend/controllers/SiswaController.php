@@ -9,7 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
-
+use dosamigos\tableexport\ButtonTableExport;
+use yii\db\ActiveRecord;
 
 class SiswaController extends Controller
 {
@@ -27,15 +28,26 @@ class SiswaController extends Controller
 			
 		];
 	}
+
 public function actionIndex()
 {
 	$searchModel = new SiswaSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	 $query = Siswa::find()->where(['nisn' => 1]);
+    $countQuery = clone $query;
+    $pages = new Pagination(['totalCount' => $countQuery->count()]);
+    $models = $query->offset($pages->offset)
+        ->limit($pages->limit)
+        ->all();
         return $this->render('index', [
            'dataProvider' => $dataProvider,
 			'searchModel' => $searchModel, 
+			'models' => $models,
+         'pages' => $pages,
+
 			          
         ]);
+       
 }
 public function actionView($id)
 {
@@ -53,7 +65,7 @@ public function actionCreate()
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->nisn]);
 	} else {
-		return $this->render('create',[
+		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
 	}
@@ -88,3 +100,4 @@ if (($model = Siswa::findOne($id)) !== null){
 
 
 }
+ 

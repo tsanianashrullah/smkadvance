@@ -3,13 +3,12 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use yii\widgets\LinkPager;
-use aayaresko\export\ExtendedExportMenu;
 use dosamigos\tableexport\ButtonTableExport;
-
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 $this->title = 'Daftar Siswa';
-$this->params['breadcrumbs'][]= $this->title;
+
 ?>
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="/site">Home</a></li>
@@ -29,8 +28,18 @@ $this->params['breadcrumbs'][]= $this->title;
 
 	<p>
 		
-		<?= Html::a('Create Siswa',['create'], ['class' => 'btn btn btn-success']) ?>
+		<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+
 	</p>
+	<?php
+			Modal::begin([
+					'header'=>'<h4>Siswa</h4>',
+					'id' => 'modal',
+					'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+				]);
+			echo "<div id='modalContent'></div>";
+			Modal::end();
+	?>
 
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
@@ -59,26 +68,34 @@ $this->params['breadcrumbs'][]= $this->title;
                 ])
 
             ],          
+            'agama',
+           
+            'alamat',
+            'tahun_masuk:ntext',
+            
+            
+
 
     
 
-    
-
-			'alamat:ntext',
 			[
 	'class' => 'yii\grid\ActionColumn',
 	'template' => '{view} {update} {delete} {link}',
 	'buttons' => [
 		'update' => function ($url,$model) {
 			return Html::a(
-				'<span class="glyphicon glyphicon-user"></span>', 
+				'<span class="glyphicon glyphicon-pencil"></span>', 
 				$url);
-		},
-		'link' => function ($url,$model,$key) {
-				return Html::a('Action', $url);
 		},
 	],
 ],
      ],
- ]); ?>
+ ]);?> 
+ <?foreach ($models as $model) {
+     display $model here
+}?>
+
+<?= LinkPager::widget([
+    'pagination' => $pages,
+]);?>
 </div>
