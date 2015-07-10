@@ -7,7 +7,7 @@ use dosamigos\tableexport\ButtonTableExportAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
 
-$this->title = $model->nip;
+$this->title = $model->nama_guru;
 $this->params['breadcrumbs'][] = ['label' => 'Guru', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

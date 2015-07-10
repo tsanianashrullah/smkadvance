@@ -7,6 +7,7 @@ use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
 /* @var $form yii\widgets\ActiveForm */
+$this->title = 'Tambah Data Guru';
 ?>
 
 <div class="guru-form" >
@@ -35,7 +36,15 @@ use dosamigos\datepicker\DatePicker;
         ]
 ]);?>
 
-    <?= $form->field($model, 'jk')->dropdownlist(['laki-laki' => 'laki-laki', 'perempuan'=> 'perempuan'], ['prompt'=>'.:pilih jenis kelamin:.']) ?>
+    <?= $form->field($model, 'jk')->dropdownlist(['Laki-Laki' => 'Laki-Laki', 'Perempuan'=> 'Perempuan'], ['prompt'=>'.:: Pilih Jenis Kelamin Anda ::.']) ?>
+
+    <?= $form->field($model, 'agama')->dropdownlist(['Islam' => 'Islam', 'Katholik'=> 'Katholik','Kristen'=>'Kristen','Budha'=>'Budha','Hindu'=>'Hindu','Lain-Lain'=>'Lain-Lain'], ['prompt'=>'.:: Pilih Agama ::.']) ?>
+
+    <?= $form->field($model, 'pend_akhir')->dropdownlist(['D3' => 'D3', 'S1'=> 'S1','S2'=>'S2','S3'=>'S3'], ['prompt'=>'.:: Pendidikan Terakhir ::.']) ?>
+
+    <?= $form->field($model, 'program_keahlian')->textInput(['maxlength' => 15, 'style' => 'width:250px;']) ?>
+
+    <?= $form->field($model, 'status')->dropdownlist(['Lajang' => 'Lajang', 'Menikah'=> 'Menikah','Cerai'=>'Cerai'], ['prompt'=>'.:: Pilih Status Anda ::.']) ?>
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 7]) ?>
 

@@ -68,7 +68,7 @@ public function actionUpdate($id)
 	$model = $this->findModel($id);
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'id' => $model->nisn]);
+			return $this->redirect(['view', 'id' => $model->nip]);
 	} else {
 		return $this->render('update',[
 				'model' => $model,

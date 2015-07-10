@@ -254,7 +254,9 @@ $this->params['breadcrumbs'][]= $this->title;
 
                 ])
             ],
-
+            'agama',
+            'pend_akhir',
+            'program_keahlian',
             'alamat:ntext',
 
         
