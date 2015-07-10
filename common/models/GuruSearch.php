@@ -18,7 +18,7 @@ class GuruSearch extends Guru
     public function rules()
     {
         return [
-            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat'], 'safe'],
+            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'safe'],
         ];
     }
 
@@ -62,6 +62,10 @@ class GuruSearch extends Guru
             ->andFilterWhere(['like', 'nama_guru', $this->nama_guru])
             ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
             ->andFilterWhere(['like', 'jk', $this->jk])
+            ->andFilterWhere(['like', 'agama', $this->agama])
+            ->andFilterWhere(['like', 'pend_akhir', $this->pend_akhir])
+            ->andFilterWhere(['like', 'program_keahlian', $this->program_keahlian])
+            ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'alamat', $this->alamat]);
 
         return $dataProvider;

@@ -248,22 +248,18 @@ $this->params['breadcrumbs'][]= $this->title;
                 'clientOptions'=>[
                 'autoclose' => true,
                 'format' => 'yyyy-mm-dd',]
-
-
-
-
                 ])
             ],
-
+            'agama',
+            'pend_akhir',
+            'program_keahlian',
             'alamat:ntext',
 
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],    
     ]);
-  
 
     ?>
-
 
 </div>

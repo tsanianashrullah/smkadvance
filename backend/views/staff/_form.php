@@ -31,6 +31,8 @@ use dosamigos\datepicker\DatePicker;
 
 <?= $form->field($model, 'bagian')->textInput(['maxlength' => 30]) ?>
 
+<?= $form->field($model, 'jk')->dropdownlist(['Laki-Laki' => 'Laki-Laki', 'Perempuan'=> 'Perempuan'], ['prompt'=>'.:: Pilih Jenis Kelamin Anda ::.']) ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Buat' : 'Perbarui', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>

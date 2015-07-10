@@ -7,7 +7,7 @@ use dosamigos\tableexport\ButtonTableExportAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
 
-$this->title = $model->nip;
+$this->title = $model->nama_guru;
 $this->params['breadcrumbs'][] = ['label' => 'Guru', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->nip], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->nip], [
+        <?= Html::a('Update', ['update', 'nip' => $model->nip], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'nip' => $model->nip], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

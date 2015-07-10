@@ -7,6 +7,7 @@ use common\models\Guru;
 use common\models\GuruSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
+use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use dosamigos\tableexport\ButtonTableExport;
 
@@ -27,22 +28,32 @@ class GuruController extends Controller
 		];
 	}
 public function actionIndex()
-{
-	$searchModel = new GuruSearch();
+{	$searchModel = new GuruSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-	return $this->render('index', [
-		'searchModel'=> $searchModel,
+	$query = Guru::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+        $guru = $query->orderBy('nama_guru')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', [
+        'guru' => $guru,
+        'pagination' => $pagination,
+        'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
-		]);
-
-
+        ]);
 
 }
-public function actionView($id)
+public function actionView($nip)
 {
 	return $this->render('view',[
-		'model' => $this->findModel($id),
+		'model' => $this->findModel($nip),
 		]);
 	 
 
@@ -63,12 +74,12 @@ public function actionCreate()
 				]);
 	}
 }
-public function actionUpdate($id)
+public function actionUpdate($nip)
 {
-	$model = $this->findModel($id);
+	$model = $this->findModel($nip);
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'id' => $model->nisn]);
+			return $this->redirect(['view', 'id' => $model->nip]);
 	} else {
 		return $this->render('update',[
 				'model' => $model,
@@ -81,9 +92,9 @@ public function actionDelete($id)
 	return $this->redirect(['index']);
 }
 
-protected function findModel($id)
+protected function findModel($nip)
 {
-if (($model = Guru::findOne($id)) !== null){
+if (($model = Guru::findOne($nip)) !== null){
 	return $model;
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');

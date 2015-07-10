@@ -15,7 +15,7 @@ class StaffSearch extends Staff
     public function rules()
     {
         return [
-            [['id', 'nama_staff', 'tempat_lahir', 'tgl_lahir', 'alamat','bagian'], 'safe'],
+            [['id', 'nama_staff', 'tempat_lahir', 'tgl_lahir', 'alamat','bagian','jk'], 'safe'],
         ];
     }
     public function scenarios()
@@ -42,7 +42,8 @@ class StaffSearch extends Staff
             ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
             ->andFilterWhere(['like', 'tgl_lahir', $this->tgl_lahir])
             ->andFilterWhere(['like', 'alamat', $this->alamat])
-            ->andFilterWhere(['like', 'bagian', $this->bagian]);
+            ->andFilterWhere(['like', 'bagian', $this->bagian])
+            ->andFilterWhere(['like', 'jk', $this->jk]);
 
         return $dataProvider;
     }

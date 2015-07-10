@@ -30,13 +30,18 @@ class Guru extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat'], 'required', 'message' => 'Data harus diisi'],
+            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'required', 'message' => 'Data harus diisi'],
+            [['nip'],'integer'],
             [['tgl_lahir'], 'safe'],
-            [['nip'], 'string'],
             [['nama_guru'], 'string', 'max' => 30],
             [['tempat_lahir'], 'string', 'max' => 25],
             [['jk'], 'string', 'max' => 15],
-            [['alamat'], 'string', 'max' => 50 ]
+            [['alamat'], 'string', 'max' => 50 ],
+            [['agama'],'string','max'=>20],
+            [['pend_akhir'],'string','max'=>5],
+            [['program_keahlian'],'string','max'=>15],
+            [['status'],'string','max'=>10]
+
         ];
     }
 
@@ -52,6 +57,10 @@ class Guru extends \yii\db\ActiveRecord
             'tgl_lahir' => 'Tanggal Lahir',
             'jk' => 'Jenis Kelamin',
             'alamat' => 'Alamat',
+            'agama'=>'Agama',
+            'pend_akhir'=>'Pendidikan Terakhir',
+            'program_keahlian'=>'Program Keahlian',
+            'status'=>'Status',
         ];
     }
 }
