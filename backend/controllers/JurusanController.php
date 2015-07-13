@@ -3,15 +3,15 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Guru;
-use common\models\GuruSearch;
+use common\models\Jurusan;
+use common\models\JurusanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use dosamigos\tableexport\ButtonTableExport;
 
-class GuruController extends Controller
+class JurusanController extends Controller
 {
 	public function behavior()
 	{
@@ -28,16 +28,16 @@ class GuruController extends Controller
 		];
 	}
 public function actionIndex()
-{	$searchModel = new GuruSearch();
+{	$searchModel = new JurusanSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-	$query = Guru::find();
+	$query = Jurusan::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 2,
             'totalCount' => $query->count(),
         ]);
-        $guru = $query->orderBy('nama_guru')
+        $guru = $query->orderBy('jurusan')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -50,10 +50,10 @@ public function actionIndex()
         ]);
 
 }
-public function actionView($nip)
+public function actionView($id)
 {
 	return $this->render('view',[
-		'model' => $this->findModel($nip),
+		'model' => $this->findModel($id),
 		]);
 	 
 
@@ -64,22 +64,22 @@ public function actionView($nip)
 
 public function actionCreate()
 {
-	$model = new Guru();
+	$model = new Jurusan();
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'nip' => $model->nip]);
+			return $this->redirect(['view', 'id' => $model->id]);
 	} else {
-		return $this->renderAjax('create',[
+		return $this->render('create',[
 				'model' => $model,
 				]);
 	}
 }
-public function actionUpdate($nip)
+public function actionUpdate($id)
 {
-	$model = $this->findModel($nip);
+	$model = $this->findModel($id);
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'id' => $model->nip]);
+			return $this->redirect(['view', 'id' => $model->id]);
 	} else {
 		return $this->render('update',[
 				'model' => $model,
@@ -92,9 +92,9 @@ public function actionDelete($id)
 	return $this->redirect(['index']);
 }
 
-protected function findModel($nip)
+protected function findModel($id)
 {
-if (($model = Guru::findOne($nip)) !== null){
+if (($model = Jurusan::findOne($id)) !== null){
 	return $model;
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
