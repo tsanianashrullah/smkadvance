@@ -43,7 +43,6 @@ $this->title = 'Daftar Siswa';
 
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
-
 		'filterModel' => $searchModel,
 		'summary'=>'',
 'showFooter'=>true,

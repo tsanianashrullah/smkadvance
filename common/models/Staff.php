@@ -34,7 +34,7 @@ class Staff extends \yii\db\ActiveRecord
 			'tgl_lahir' => 'Tanggal Lahir',
 			'alamat' => 'Alamat',
 			'bagian' => 'Bagian',
-			'jk' =>'',
+			'jk' =>'Jenis Kelamin',
 
 
 

@@ -4,6 +4,9 @@ use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
+use yii\data\ActiveDataProvider;
 
 
 
@@ -20,13 +23,21 @@ $this->params['breadcrumbs'][]= $this->title;
     
     <?php //ini awalan ?>
     
-       
+       <div class="pull-left">
+    <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
     
-<div class="btn-group">
-         <?= Html::a('Tambah Data Guru',['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+    
+        
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-  
+        <?php
+            Modal::begin([
+                    'header'=>'<h4>Staff</h4>',
+                    'id' => 'modal',
+                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                ]);
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+    ?>
 </div>
 <div class="pull-right"> 
 <div class="btn-group open">
@@ -231,6 +242,7 @@ $this->params['breadcrumbs'][]= $this->title;
 </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],

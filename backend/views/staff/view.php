@@ -10,18 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Pusat Data Staff', 'url'=>['index'
 $this->params['breadcrumbs'][] = $this->title;
 ?><div class="staff-view">
 	<h1><?= Html::encode($this->title) ?></h1>
-	<p>
-		<?= Html::a('Perbarui',['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-		<?= Html::a('Hapus',['delete', 'id' => $model->id], [
-					'class' => 'btn btn-danger',
-					'data' => [
-						'confrim' => 'Anda Yakin akan menghapus data ini ?',
-						'method' => 'post',
-					
-						],
-
-		]) ?>
-	</p>
+	
 
 	<?= DetailView::widget([
 		'model'=> $model,
@@ -33,6 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
 			'bagian',
 		],
 	]) ?>
+	<div class="pull-right">
+		<?= Html::a('Perbarui',['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a('Hapus',['delete', 'id' => $model->id], [
+					'class' => 'btn btn-danger',
+					'data' => [
+						'confrim' => 'Anda Yakin akan menghapus data ini ?',
+						'method' => 'post',
+					
+						],
+
+		]) ?>
+	</div>
 </div>
 
 
