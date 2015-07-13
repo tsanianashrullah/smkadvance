@@ -63,4 +63,8 @@ class Guru extends \yii\db\ActiveRecord
             'status'=>'Status',
         ];
     }
+    public function getJurusan()
+    {
+        return $this->hasMany(Jurusan::className(),['guru'=>'nip']);
+    }
 }

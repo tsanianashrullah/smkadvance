@@ -44,8 +44,12 @@ class Jurusan extends \yii\db\ActiveRecord
     {
         return [
         'jurusan'=>'Jurusan',
-        'id_guru'=>'ID Guru',
+        'id_guru'=>'Nama Guru',
         'keterangan'=>'Keterangan',
         ];
+    }
+    public function getGuru()
+    {
+        return $this->hasOne(Guru::className(),['guru'=>'nip']);
     }
 }

@@ -15,7 +15,18 @@ class GuruController extends Controller
 {
 	public function behavior()
 	{
-		return[		
+		return[
+		            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create','update','delete'],
+                'rules' => 
+                    [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    ],
+            ],
 			'verb'=> [
 				'class'=> VerbFiltes::className(),
 				'actions'=>[
