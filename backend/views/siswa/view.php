@@ -8,8 +8,7 @@ use yii\widgets\DetailView;
 $this->title = $model->nama_siswa;
 ?>
 <div class="siswa-view">
-	
-	<div class="pull-left">
+	<div class="pull-right">
 		<?= Html::a('Update',['update', 'id' => $model->nisn], ['class' => 'btn btn-primary']) ?>
 		<?= Html::a('Delete',['delete', 'id' => $model->nisn], [
 					'class' => 'btn btn-danger',
@@ -21,6 +20,7 @@ $this->title = $model->nama_siswa;
 
 		]) ?>
 	</div>
+	
 <div class="row">
   <div class="col-xs-12 .col-md-8">
 	<?= DetailView::widget([
@@ -40,7 +40,7 @@ $this->title = $model->nama_siswa;
 			'no_tlp:ntext',
 		],
 	]) ?>
-	</div></div>
+	</div>
 </div>
 
 
