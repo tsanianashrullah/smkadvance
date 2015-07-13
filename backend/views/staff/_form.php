@@ -5,10 +5,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="siswa-form">
-<div class="panel panel-primary col-lg-6">
-      <div class="panel-heading" align='center'>Isi Data Staff</div>
-        <div class="col-lg-6">
-            <br>
+
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'nama_staff')->textInput(['maxlength' => 30]) ?>

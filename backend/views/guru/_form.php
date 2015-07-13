@@ -13,17 +13,15 @@ $this->title = 'Tambah Data Guru';
 <div class="guru-form" >
 
     <?php $form = ActiveForm::begin(); ?>
- <div class="panel panel-primary col-lg-6">
-      <div class="panel-heading" align='center'>Isi Data Guru</div>
-        <div class="col-lg-6">
+ 
             <br>
             
 
-    <?= $form->field($model, 'nip')->textInput(['maxlength' => 10, 'style' => 'width:180px;']) ?>
+    <?= $form->field($model, 'nip')->textInput(['maxlength' => 10, ]) ?>
 
-    <?= $form->field($model, 'nama_guru')->textInput(['maxlength' => 30, 'style' => 'width:250px;']) ?>
+    <?= $form->field($model, 'nama_guru')->textInput(['maxlength' => 30, ]) ?>
 
-    <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => 25,'style' => 'width:250px;']) ?>
+    <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => 25,]) ?>
 <?= $form->field($model, 'tgl_lahir')->widget(
     DatePicker::className(), [
         // inline too, not bad

@@ -15,7 +15,7 @@ $this->title = 'Sistem Informasi SMK PGRI 1 Cimahi';
  </ol>  <!-- Wrapper for slides -->
  <div class="carousel-inner" role="listbox">
    <div class="item active">
-     <img src="img/1.png" alt="" class="img-thumbnail" height='300px'>
+     <img src="img/1.png" alt="" class="img-thumbnail" height='200px'>
      <div class="carousel-caption">
        <h1>Selamat Datang</h1><br>
        <h3>Di Sistem Informasi</h3><br>
@@ -23,13 +23,13 @@ $this->title = 'Sistem Informasi SMK PGRI 1 Cimahi';
      </div>
    </div>
    <div class="item">
-     <img src="img/2.png" alt="When Iron Man" class="img-responsive" height='300px'>
+     <img src="img/2.png" alt="When Iron Man" class="img-responsive" height='200px'>
      <div class="carousel-caption">
        Iron
      </div>
    </div>
    <div class="item">
-     <img src="img/3.png" alt="When Iron Man" class="img-responsive" height='300px'>
+     <img src="img/3.png" alt="When Iron Man" class="img-responsive" height='200px'>
      <div class="carousel-caption">
        Iron
      </div>

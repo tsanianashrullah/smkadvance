@@ -4,11 +4,12 @@ use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 
 $this->title = 'Pusat Data Staff SMK';
-$this->params['breadcrumbs'][]= $this->title;
+
 ?>
 <div class="guru-index">
   <div class="panel panel-primary">
@@ -23,11 +24,20 @@ $this->params['breadcrumbs'][]= $this->title;
        
     
 <div class="btn-group">
-         <?= Html::a('Tambah Data Staff',['create'], ['class' => 'btn btn-success']) ?>
+         <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
   
-</div>
+</div><div>
+        <?php
+            Modal::begin([
+                    'header'=>'<h4>Guru</h4>',
+                    'id' => 'modal',
+                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                ]);
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+    ?></div>
 <div class="pull-right"> 
 <div class="btn-group open">
 

@@ -69,7 +69,7 @@ public function actionCreate()
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->nip]);
 	} else {
-		return $this->render('create',[
+		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
 	}
