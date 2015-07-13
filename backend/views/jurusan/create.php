@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="guru-create"><div class="row"> 
+<div class="col-xs-12 .col-md-8">
    <h6><?= Html::encode($this->title) ?></h6>
 
     <?= $this->render('form', [
