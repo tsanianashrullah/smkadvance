@@ -32,7 +32,7 @@ class Guru extends \yii\db\ActiveRecord
     {
         return [
             [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'required', 'message' => 'Data harus diisi'],
-            [['nip'],'integer'],
+  //          [['nip'],'integer'],
             [['tgl_lahir'], 'safe'],
             [['nama_guru'], 'string', 'max' => 30],
             [['tempat_lahir'], 'string', 'max' => 25],
@@ -62,10 +62,7 @@ class Guru extends \yii\db\ActiveRecord
             'pend_akhir'=>'Pendidikan Terakhir',
             'program_keahlian'=>'Program Keahlian',
             'status'=>'Status',
+            'globalSearch'=>'Pencarian Data',
         ];
-    }
-    public function getJurusan()
-    {
-        return $this->hasMany(Jurusan::className(),['guru'=>'nip']);
     }
 }

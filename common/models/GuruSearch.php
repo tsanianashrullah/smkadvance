@@ -52,10 +52,10 @@ class GuruSearch extends Guru
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
-        }
+        }/*
         $query->andFilterWhere([
             'nip' => $this->nip,
-        ]);
+        ]);*/
 
         $query->orFilterWhere(['like', 'nip', $this->globalSearch])
             ->orFilterWhere(['like', 'nama_guru', $this->globalSearch])

@@ -15,15 +15,8 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'nip') ?>
+    <?= $form->field($model, 'globalSearch') ?>
 
-    <?= $form->field($model, 'nama_guru') ?>
-
-    <?= $form->field($model, 'tempat_lahir') ?>
-
-    <?= $form->field($model, 'tgl_lahir') ?>
-
-    <?= $form->field($model, 'jk') ?>
 
     <?php // echo $form->field($model, 'alamat') ?>
 
