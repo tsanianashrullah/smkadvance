@@ -16,6 +16,8 @@ use Yii;
  */
 class Jurusan extends \yii\db\ActiveRecord
 {
+    
+   public $globalSearch;
     /**
      * @inheritdoc
      */

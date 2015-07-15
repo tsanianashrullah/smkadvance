@@ -18,7 +18,7 @@ class GuruSearch extends Guru
     public function rules()
     {
         return [
-            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'safe'],
+            [['nip', 'globalSearch','nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'safe'],
         ];
     }
 
@@ -53,20 +53,19 @@ class GuruSearch extends Guru
             // $query->where('0=1');
             return $dataProvider;
         }
-
         $query->andFilterWhere([
-            'tgl_lahir' => $this->tgl_lahir,
+            'nip' => $this->nip,
         ]);
 
-        $query->andFilterWhere(['like', 'nip', $this->nip])
-            ->andFilterWhere(['like', 'nama_guru', $this->nama_guru])
-            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
-            ->andFilterWhere(['like', 'jk', $this->jk])
-            ->andFilterWhere(['like', 'agama', $this->agama])
-            ->andFilterWhere(['like', 'pend_akhir', $this->pend_akhir])
-            ->andFilterWhere(['like', 'program_keahlian', $this->program_keahlian])
-            ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'alamat', $this->alamat]);
+        $query->orFilterWhere(['like', 'nip', $this->globalSearch])
+            ->orFilterWhere(['like', 'nama_guru', $this->globalSearch])
+            ->orFilterWhere(['like', 'tempat_lahir', $this->globalSearch])
+            ->orFilterWhere(['like', 'jk', $this->globalSearch])
+            ->orFilterWhere(['like', 'agama', $this->globalSearch])
+            ->orFilterWhere(['like', 'pend_akhir', $this->globalSearch])
+            ->orFilterWhere(['like', 'program_keahlian', $this->globalSearch])
+            ->orFilterWhere(['like', 'status', $this->globalSearch])
+            ->orFilterWhere(['like', 'alamat', $this->globalSearch]);
 
         return $dataProvider;
     }

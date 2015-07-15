@@ -18,7 +18,7 @@ class JurusanSearch extends Jurusan
     public function rules()
     {
         return [
-            [['id','jurusan','id_guru','keterangan'], 'safe'],
+            [['id','jurusan','id_guru','keterangan','globalSearch'], 'safe'],
         ];
     }
 
@@ -58,9 +58,9 @@ class JurusanSearch extends Jurusan
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'jurusan', $this->jurusan])
-            ->andFilterWhere(['like', 'id_guru', $this->id_guru])
-            ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
+        $query->orFilterWhere(['like', 'jurusan', $this->globalSearch])
+            ->orFilterWhere(['like', 'id_guru', $this->globalSearch])
+            ->orFilterWhere(['like', 'keterangan', $this->globalSearch]);
 
         return $dataProvider;
     }

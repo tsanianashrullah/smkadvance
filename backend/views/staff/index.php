@@ -19,19 +19,19 @@ $this->title = 'Pusat Data Staff SMK';
     <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
         <div class="panel-body">
     
-    <?php //ini awalan ?>
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
 
        
     
 <div class="btn-group">
-         <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+         <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
   
 </div><div>
         <?php
             Modal::begin([
-                    'header'=>'<h4>Guru</h4>',
+                    'header'=>'<h4>Staff</h4>',
                     'id' => 'modal',
                     'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
                 ]);

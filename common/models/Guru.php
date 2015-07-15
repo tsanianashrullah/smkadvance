@@ -16,6 +16,7 @@ use Yii;
  */
 class Guru extends \yii\db\ActiveRecord
 {
+   public $globalSearch;
     /**
      * @inheritdoc
      */
