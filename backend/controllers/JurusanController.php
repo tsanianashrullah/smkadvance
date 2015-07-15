@@ -30,21 +30,11 @@ class JurusanController extends Controller
 public function actionIndex()
 {	$searchModel = new JurusanSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-	$query = Jurusan::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => $query->count(),
-        ]);
-        $guru = $query->orderBy('jurusan')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+	   $dataProvider->pagination->pageSize=10;
+	
 
         return $this->render('index', [
-        'guru' => $guru,
-        'pagination' => $pagination,
+        
         'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
         ]);
@@ -69,7 +59,7 @@ public function actionCreate()
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->id]);
 	} else {
-		return $this->render('create',[
+		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
 	}

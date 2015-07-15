@@ -31,21 +31,10 @@ public function actionIndex()
 {
 	$searchModel = new StaffSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-	$query = Staff::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => $query->count(),
-        ]);
-        $staff = $query->orderBy('nama_staff')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-
+   $dataProvider->pagination->pageSize=10;
+	
         return $this->render('index', [
-            'staff' => $staff,
-            'pagination' => $pagination,
+          
             	'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
         ]);

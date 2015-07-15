@@ -1,9 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'Sistem Informasi SMK PGRI 1 Cimahi';
+ $this->title ='Sistem Informasi SMK PGRI 1 Cimahi';
 ?>
-<div class="site-index">
+
 
     <div class="jumbotron">
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

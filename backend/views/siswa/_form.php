@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="siswa-form">
-            <br>
+            
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'nisn')->textInput(['maxlength'=> 10]) ?>  
@@ -32,9 +32,7 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlenght' => 50]) ?>     
 <?= $form->field($model, 'tahun_masuk')->widget(
        DatePicker::className(), [
-        // inline too, not bad
          'inline' => false, 
-         // modify template for custom rendering
         'clientOptions' => [
             'autoclose' => true, 
            'format' => 'yyyy-mm-dd',

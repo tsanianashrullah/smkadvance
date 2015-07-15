@@ -10,11 +10,7 @@ use yii\helpers\Url;
 $this->title = 'Daftar Siswa';
 
 ?>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="/site">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+
 <div class="siswa-index">
 	 <div class="panel panel-primary">
       <div class="panel-heading">
@@ -33,7 +29,7 @@ $this->title = 'Daftar Siswa';
 	</p>
 	<?php
 			Modal::begin([
-					'header'=>'<h4>Siswa</h4>',
+					'header'=>'<center><h4>Siswa</h4></center>',
 					'id' => 'modal',
 					'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
 				]);
@@ -90,11 +86,5 @@ $this->title = 'Daftar Siswa';
 ],
      ],
  ]);?> 
- <?foreach ($models as $model) {
-     display $model here
-}?>
-
-<?= LinkPager::widget([
-    'pagination' => $pages,
-]);?>
+ 
 </div>

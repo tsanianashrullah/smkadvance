@@ -15,11 +15,10 @@ $this->title = 'Tambah Data Guru';
 <div class="jurusan-form" >
 
     <?php $form = ActiveForm::begin(); ?>
- <div class="panel panel-primary col-lg-6">
-      <div class="panel-heading" align='center'>Isi Data Guru</div>
-        <div class="col-lg-6">
+ 
+    
             <br>
-    <?= $form->field($model, 'jurusan')->textInput(['maxlength' => 30, 'style' => 'width:180px;']) ?>
+    <?= $form->field($model, 'jurusan')->dropDownList(['Rekayasa Perangkat Lunak' => 'Rekayasa Perangkat Lunak', 'Administrasi Perkantoran 1' => 'Administrasi Perkantoran 1'], ['prompt'=>'.:pilih jurusan:.']) ?>
 
     <?= $form->field($model, 'id_guru')->dropDownList(
         ArrayHelper::map(Guru::find()->all(),'nip','nama_guru'),['prompt'=>'Data']

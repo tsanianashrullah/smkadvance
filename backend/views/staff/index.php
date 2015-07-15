@@ -16,28 +16,26 @@ $this->title = 'Pusat Data Staff SMK';
       <div class="panel-heading">
         <h3 class="panel-title">
 
-    <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
+    <i class="glyphicon glyphicon-list-alt"></i> 
+    <?= Html::encode($this->title) ?></h3>
+</div>
         <div class="panel-body">
-    
-    <?php //ini awalan ?>
-
-       
-    
 <div class="btn-group">
          <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
   
-</div><div>
-        <?php
-            Modal::begin([
-                    'header'=>'<h4>Guru</h4>',
-                    'id' => 'modal',
-                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                ]);
-            echo "<div id='modalContent'></div>";
-            Modal::end();
-    ?></div>
+</div>
+
+                <?php
+                    Modal::begin([
+                            'header'=>'<center><h4>Staff</h4></center>',
+                            'id' => 'modal',
+                            'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                        ]);
+                    echo "<div id='modalContent'></div>";
+                    Modal::end();
+            ?>
 <div class="pull-right"> 
 <div class="btn-group open">
 

@@ -4,7 +4,8 @@ use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 
 $this->title = 'Daftar Jurusan';
@@ -23,13 +24,21 @@ $this->params['breadcrumbs'][]= $this->title;
        
     
 <div class="btn-group">
-         <?= Html::a('Tambah Data Jurusan',['create'], ['class' => 'btn btn-success']) ?>
+         <?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
   
+
 </div>
-<div class="pull-right">
-<?= LinkPager::widget(['pagination' => $pagination]) ?></div>
+<?php
+            Modal::begin([
+                    'header'=>'<center><h4>Jurusan</h4></center>',
+                    'id' => 'modal',
+                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                ]);
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+    ?>
 <table cellspacing="0" align="center" class="table table-bordered">
     <tr>
         <th>ID</th>

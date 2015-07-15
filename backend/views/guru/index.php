@@ -268,7 +268,7 @@ $this->params['breadcrumbs'][]= $this->title;
             'alamat:ntext',
 
         
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
         ],    
     ]);
 
