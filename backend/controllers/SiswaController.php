@@ -33,6 +33,7 @@ public function actionIndex()
 {
 	$searchModel = new SiswaSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	$dataProvider->pagination->pageSize=2;
 	 $query = Siswa::find()->where(['nisn' => 1]);
     $countQuery = clone $query;
     $pages = new Pagination(['totalCount' => $countQuery->count()]);

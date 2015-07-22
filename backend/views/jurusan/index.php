@@ -9,9 +9,9 @@ use yii\bootstrap\Modal;
 
 
 $this->title = 'Daftar Jurusan';
-$this->params['breadcrumbs'][]= $this->title;
+$this->params['breadcrumbs'][]= $this->title;       
 ?>
-<div class="guru-index">
+<div class="jurusan-index">
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -25,9 +25,6 @@ $this->params['breadcrumbs'][]= $this->title;
     
 <div class="btn-group">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-
-</div>
-<div class="pull-right">
         <?php
             Modal::begin([
                     'header'=>'<h4>Jurusan</h4>',
@@ -38,28 +35,21 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 
-<?= LinkPager::widget(['pagination' => $pagination]) ?></div>
-<table cellspacing="0" align="center" class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Jurusan</th>
-        <th>ID Guru</th>
-        <th>Keterangan</th>
-        <th>Aksi</th>
-    </tr>
-    <?php foreach ($guru as $gurus): ?>
-    <tr>
-            <td data-content="ID"><?= $gurus->id; ?></td>
-            <td data-content="Jurusan"><?= $gurus->jurusan; ?></td>
-            <td data-content="ID Guru"><?= $gurus->id_guru; ?></td>
-            <td data-content="Keterangan"><?= $gurus->keterangan; ?></td>
-            <td data-content="Aksi"> 
-        <div class="btn-group">
-            <?= Html::a('Lihat', ['view', 'id' => $gurus->id], ['class' => 'btn btn-primary btn-sm']) ?>
-        </div>
-    </td>
-    </tr>
-<?php endforeach; ?>
-</table>
 </div>
 
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'jurusan',
+            'id_guru',
+            'keterangan',
+        
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
+        ],    
+    ]);
+  
+
+    ?>

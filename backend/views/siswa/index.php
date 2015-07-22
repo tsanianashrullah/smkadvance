@@ -10,11 +10,7 @@ use yii\helpers\Url;
 $this->title = 'Daftar Siswa';
 
 ?>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="/site">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+
 <div class="siswa-index">
 	 <div class="panel panel-primary">
       <div class="panel-heading">

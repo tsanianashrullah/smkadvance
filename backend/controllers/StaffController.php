@@ -31,7 +31,7 @@ public function actionIndex()
 {
 	$searchModel = new StaffSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+	$dataProvider->pagination->pageSize=2;
 	$query = Staff::find();
 
         $pagination = new Pagination([
