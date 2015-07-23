@@ -50,34 +50,29 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Selayang Pandang</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>SMK PGRI 1 Cimahi merupakan salah satu sekolah yang ada dicimahi yang mempunyai 4 Program keahlian yaitu diantaranya:
+                  1. Adm. Perkantoran
+                  2. Pemasaran
+                  3. Akuntansi
+                  4. Rekayasa Perangkat Lunak</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Lihat Selengkapnya... &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Visi</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Yaa intinya mah membuat dunia pendidikan indonesia lebih baik dan meghasilkan generasi muda yang bisa membawa nama Indonesia ke tingkat internasional</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Lihat Selengkapnya... &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Misi</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Menjaga Perdamaian dunia dengan menjadikan generasi yang dapat yaa dapat aja deh.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Lihat Selengkapnya... &raquo;</a></p>
             </div>
         </div>
 

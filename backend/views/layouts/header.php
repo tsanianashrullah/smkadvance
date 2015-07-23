@@ -9,17 +9,18 @@ use yii\bootstrap\NavBar;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">PGRI 1</span><span class="logo-lg">Sistem Informasi</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">sssToggle navigation</span>
+            <span class="sr-only"></span>
         </a>
 
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
 
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
@@ -227,45 +228,33 @@ use yii\bootstrap\NavBar;
                         </li>
                     </ul>
                 </li>
+=======
+>>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
                 <!-- User Account: style can be found in dropdown.less -->
-
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/avatar04.png" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Mr. X</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/avatar04.png" class="img-circle"
-                                 alt="User Image"/>
-
-                            <p>
-                                Mr. X - Web Developer
-                                <small>Admin</small>
-                            </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <?= Html::a(
-                                    'Sign out',
-                                    ['/site/logout'],
-                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
-                                ) ?>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+        <?php
+            Nav::begin([
+                            ]);
+            $menuItems = [
+                ['label' => 'Home', 'url' => ['/site/index']],
+            ];
+            if (Yii::$app->user->isGuest) {
+                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                $menuItems[]= ['label'=>'Sejarah','url'=>['/site/sejarah']];
+            } else {
+                $menuItems[] = [
+                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'url' => ['/site/logout'],
+                    'linkOptions' => ['data-method' => 'post']
+                ];
+            }
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => $menuItems,
+            ]);
+        ?>
 
                 <!-- User Account: style can be found in dropdown.less -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                
             </ul>
         </div>
     </nav>

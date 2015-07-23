@@ -50,6 +50,7 @@ $fieldOptions2 = [
             </div>
             <!-- /.col -->
         </div>
+        
 
 
         <?php ActiveForm::end(); ?>

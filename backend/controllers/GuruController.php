@@ -84,9 +84,9 @@ public function actionUpdate($id)
 				]);
 	}
 }
-public function actionDelete($nip)
+public function actionDelete($id)
 {
-	$this->findModel($nip)->delete();
+	$this->findModel($id)->delete();
 	return $this->redirect(['index']);
 }
 

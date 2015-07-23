@@ -11,12 +11,22 @@ use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
-
+use yii\filters\AccessControl;
 class SiswaController extends Controller
 {
 	public function behavior()
 	{
 		return[
+                'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create','update'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    ],
+                    ],
 			'verb'=> [
 				'class'=> VerbFiltes::className(),
 				'actions'=>[
@@ -33,7 +43,17 @@ public function actionIndex()
 {
 	$searchModel = new SiswaSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+<<<<<<< HEAD
 	    $dataProvider->pagination->pageSize=10;
+=======
+	$dataProvider->pagination->pageSize=2;
+	 $query = Siswa::find()->where(['nisn' => 1]);
+    $countQuery = clone $query;
+    $pages = new Pagination(['totalCount' => $countQuery->count()]);
+    $models = $query->offset($pages->offset)
+        ->limit($pages->limit)
+        ->all();
+>>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
         return $this->render('index', [
            'dataProvider' => $dataProvider,
 			'searchModel' => $searchModel, 

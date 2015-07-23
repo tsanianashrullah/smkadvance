@@ -9,9 +9,9 @@ use yii\helpers\Url;
 
 
 $this->title = 'Daftar Jurusan';
-$this->params['breadcrumbs'][]= $this->title;
+$this->params['breadcrumbs'][]= $this->title;       
 ?>
-<div class="guru-index">
+<div class="jurusan-index">
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][]= $this->title;
        
     
 <div class="btn-group">
+<<<<<<< HEAD
 
          <?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
@@ -36,6 +37,9 @@ $this->params['breadcrumbs'][]= $this->title;
 
 </div>
 <div class="pull-right">
+=======
+        <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+>>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
         <?php
             Modal::begin([
                     'header'=>'<h4>Jurusan</h4>',
@@ -47,6 +51,7 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 
+<<<<<<< HEAD
 <table cellspacing="0" align="center" class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -69,5 +74,23 @@ $this->params['breadcrumbs'][]= $this->title;
     </tr>
 <?php endforeach; ?>
 </table>
+=======
+>>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
 </div>
 
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'jurusan',
+            'id_guru',
+            'keterangan',
+        
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
+        ],    
+    ]);
+  
+
+    ?>

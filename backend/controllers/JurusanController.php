@@ -30,8 +30,22 @@ class JurusanController extends Controller
 public function actionIndex()
 {	$searchModel = new JurusanSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+<<<<<<< HEAD
 	   $dataProvider->pagination->pageSize=10;
 	
+=======
+	$dataProvider->pagination->pageSize=2;
+	$query = Jurusan::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => $query->count(),
+        ]);
+        $guru = $query->orderBy('jurusan')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+>>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
 
         return $this->render('index', [
         
