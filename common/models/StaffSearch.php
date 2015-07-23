@@ -15,7 +15,7 @@ class StaffSearch extends Staff
     public function rules()
     {
         return [
-            [['id', 'nama_staff', 'tempat_lahir', 'tgl_lahir', 'alamat','bagian','jk'], 'safe'],
+            [['id', 'nama_staff', 'tempat_lahir', 'tgl_lahir', 'alamat','bagian','jk','globalSearch'], 'safe'],
         ];
     }
     public function scenarios()
@@ -37,13 +37,13 @@ class StaffSearch extends Staff
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['like', 'id', $this->id])
-            ->andFilterWhere(['like', 'nama_staff', $this->nama_staff])
-            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
-            ->andFilterWhere(['like', 'tgl_lahir', $this->tgl_lahir])
-            ->andFilterWhere(['like', 'alamat', $this->alamat])
-            ->andFilterWhere(['like', 'bagian', $this->bagian])
-            ->andFilterWhere(['like', 'jk', $this->jk]);
+        $query->orFilterWhere(['like', 'id', $this->globalSearch])
+            ->orFilterWhere(['like', 'nama_staff', $this->globalSearch])
+            ->orFilterWhere(['like', 'tempat_lahir', $this->globalSearch])
+            ->orFilterWhere(['like', 'tgl_lahir', $this->globalSearch])
+            ->orFilterWhere(['like', 'alamat', $this->globalSearch])
+            ->orFilterWhere(['like', 'bagian', $this->globalSearch])
+            ->orFilterWhere(['like', 'jk', $this->globalSearch]);
 
         return $dataProvider;
     }

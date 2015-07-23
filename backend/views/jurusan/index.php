@@ -18,27 +18,35 @@ $this->params['breadcrumbs'][]= $this->title;
 
     <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
         <div class="panel-body">
-    
-    <?php //ini awalan ?>
+            
+         <?php echo $this->render('search', ['model' => $searchModel]); ?>
     
        
     
 <div class="btn-group">
+
          <?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
   
 
 </div>
-<?php
+
+<?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+
+</div>
+<div class="pull-right">
+        <?php
             Modal::begin([
-                    'header'=>'<center><h4>Jurusan</h4></center>',
+                    'header'=>'<h4>Jurusan</h4>',
+
                     'id' => 'modal',
                     'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
                 ]);
             echo "<div id='modalContent'></div>";
             Modal::end();
     ?>
+
 <table cellspacing="0" align="center" class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -49,15 +57,17 @@ $this->params['breadcrumbs'][]= $this->title;
     </tr>
     <?php foreach ($guru as $gurus): ?>
     <tr>
-        <td data-content="ID"><?= $gurus->id; ?></td>
-        <td data-content="Jurusan"><?= $gurus->jurusan; ?></td>
-        <td data-content="ID Guru"><?= $gurus->id_guru; ?></td>
-        <td data-content="Keterangan"><?= $gurus->keterangan; ?></td>
-        <td data-content="Aksi"> 
-<div class="btn-group">
-        <?= Html::a('Lihat', ['view', 'id' => $gurus->id], ['class' => 'btn btn-primary btn-sm']) ?>
-    </div>
-</td>
-</tr>
+            <td data-content="ID"><?= $gurus->id; ?></td>
+            <td data-content="Jurusan"><?= $gurus->jurusan; ?></td>
+            <td data-content="ID Guru"><?= $gurus->id_guru; ?></td>
+            <td data-content="Keterangan"><?= $gurus->keterangan; ?></td>
+            <td data-content="Aksi"> 
+        <div class="btn-group">
+            <?= Html::a('Lihat', ['view', 'id' => $gurus->id], ['class' => 'btn btn-primary btn-sm']) ?>
+        </div>
+    </td>
+    </tr>
 <?php endforeach; ?>
+</table>
 </div>
+

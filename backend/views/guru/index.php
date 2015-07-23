@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][]= $this->title;
     <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
         <div class="panel-body">
     
-    <?php //ini awalan ?>
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
+
     
        <div class="pull-left">
     <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
@@ -29,6 +30,7 @@ $this->params['breadcrumbs'][]= $this->title;
     
         
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        
         <?php
             Modal::begin([
                     'header'=>'<h4>Staff</h4>',

@@ -41,8 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) 
    
 ?>
- 
-<a id="linkId" >Export Table as Xml</a>
-    ?>
+
 
 </div>

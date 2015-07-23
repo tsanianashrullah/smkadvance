@@ -15,8 +15,12 @@ $this->title = 'Tambah Data Guru';
 <div class="jurusan-form" >
 
     <?php $form = ActiveForm::begin(); ?>
+<<<<<<< HEAD
  
     
+=======
+        <div class="col-lg-6">
+>>>>>>> 5d45bdfe5f4bd900c097b076659bf9f76048bd92
             <br>
     <?= $form->field($model, 'jurusan')->dropDownList(['Rekayasa Perangkat Lunak' => 'Rekayasa Perangkat Lunak', 'Administrasi Perkantoran 1' => 'Administrasi Perkantoran 1'], ['prompt'=>'.:pilih jurusan:.']) ?>
 

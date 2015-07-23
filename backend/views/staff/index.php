@@ -20,10 +20,13 @@ $this->title = 'Pusat Data Staff SMK';
     <?= Html::encode($this->title) ?></h3>
 </div>
         <div class="panel-body">
-<div class="btn-group">
-         <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+
+    
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
+<div class="pull-right">
+         <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+       
   
 </div>
 
@@ -36,6 +39,17 @@ $this->title = 'Pusat Data Staff SMK';
                     echo "<div id='modalContent'></div>";
                     Modal::end();
             ?>
+
+</div><div>
+        <?php
+            Modal::begin([
+                    'header'=>'<h4>Staff</h4>',
+                    'id' => 'modal',
+                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                ]);
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+    ?></div>
 <div class="pull-right"> 
 <div class="btn-group open">
 
@@ -236,7 +250,7 @@ $this->title = 'Pusat Data Staff SMK';
     </div>
 
 </div>
-</div>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

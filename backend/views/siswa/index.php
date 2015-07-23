@@ -20,7 +20,8 @@ $this->title = 'Daftar Siswa';
         <div class="panel-body">
     
 	
-	<?php ?>
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
+
 
 	<p>
 		

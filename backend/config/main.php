@@ -13,14 +13,15 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
-            'view' => [
+    'view' => [
          'theme' => [
              'pathMap' => [
                 '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
              ],
          ],
-    
     ],
+
+    
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

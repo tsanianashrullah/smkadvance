@@ -6,6 +6,7 @@ use Yii;
 
 class Staff extends \yii\db\ActiveRecord
 	{
+	public $globalSearch;
 	public static function tableName()
 	{
 	return 'staff';
@@ -25,7 +26,7 @@ class Staff extends \yii\db\ActiveRecord
  		];
  	}
 
- public function attributLabels()
+ public function attributeLabels()
 	{
 		return [
 			'id' => 'Id Staff',
@@ -35,10 +36,7 @@ class Staff extends \yii\db\ActiveRecord
 			'alamat' => 'Alamat',
 			'bagian' => 'Bagian',
 			'jk' =>'Jenis Kelamin',
-
-
-
-
+			'globalSearch'=>'Pencarian Data',
 		];
 
 

@@ -18,7 +18,7 @@ class SiswaSearch extends Siswa
     public function rules()
     {
         return [
-            [['nisn', 'nama_siswa', 'tempat_lahir', 'tgl_lahir','agama','anak_ke','nama_ayah','nama_ibu','pekerjaan_ayah', 'alamat','tahun_masuk','no_tlp'], 'safe'],
+            [['nisn','globalSearch', 'nama_siswa', 'tempat_lahir', 'tgl_lahir','agama','anak_ke','nama_ayah','nama_ibu','pekerjaan_ayah', 'alamat','tahun_masuk','no_tlp'], 'safe'],
         ];
     }
 
@@ -54,18 +54,18 @@ class SiswaSearch extends Siswa
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['like', 'nisn', $this->nisn])
-            ->andFilterWhere(['like', 'nama_siswa', $this->nama_siswa])
-            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
-            ->andFilterWhere(['like', 'tgl_lahir', $this->tgl_lahir])
-            ->andFilterWhere(['like', 'agama', $this->agama])
-            ->andFilterWhere(['like', 'anak_ke', $this->anak_ke])
-            ->andFilterWhere(['like', 'nama_ayah', $this->nama_ayah])
-            ->andFilterWhere(['like', 'nama_ibu', $this->nama_ibu])
-            ->andFilterWhere(['like', 'alamat', $this->alamat])
-            ->andFilterWhere(['like', 'pekerjaan_ayah', $this->pekerjaan_ayah])
-            ->andFilterWhere(['like', 'tahun_masuk', $this->tahun_masuk])
-            ->andFilterWhere(['like', 'no_tlp', $this->no_tlp]);
+        $query->orFilterWhere(['like', 'nisn', $this->globalSearch])
+            ->orFilterWhere(['like', 'nama_siswa', $this->globalSearch])
+            ->orFilterWhere(['like', 'tempat_lahir', $this->globalSearch])
+            ->orFilterWhere(['like', 'tgl_lahir', $this->globalSearch])
+            ->orFilterWhere(['like', 'agama', $this->globalSearch])
+            ->orFilterWhere(['like', 'anak_ke', $this->globalSearch])
+            ->orFilterWhere(['like', 'nama_ayah', $this->globalSearch])
+            ->orFilterWhere(['like', 'nama_ibu', $this->globalSearch])
+            ->orFilterWhere(['like', 'alamat', $this->globalSearch])
+            ->orFilterWhere(['like', 'pekerjaan_ayah', $this->globalSearch])
+            ->orFilterWhere(['like', 'tahun_masuk', $this->globalSearch])
+            ->orFilterWhere(['like', 'no_tlp', $this->globalSearch]);
 
         return $dataProvider;
     }

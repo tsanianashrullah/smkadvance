@@ -16,6 +16,8 @@ use Yii;
  */
 class Jurusan extends \yii\db\ActiveRecord
 {
+    
+   public $globalSearch;
     /**
      * @inheritdoc
      */
@@ -46,6 +48,7 @@ class Jurusan extends \yii\db\ActiveRecord
         'jurusan'=>'Jurusan',
         'id_guru'=>'Nama Guru',
         'keterangan'=>'Keterangan',
+        'globalSearch'=>'Pencarian Data',
         ];
     }
     public function getGuru()

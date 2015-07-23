@@ -4,20 +4,13 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "barang".
- *
- * @property string $kode_barang
- * @property string $nama_barang
- * @property string $kode_supplier
- * @property string $stok
- * @property string $keterangan
- */
 class Siswa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+    
+    public $globalSearch;
     public static function tableName()
     {
         return 'siswa';
@@ -63,8 +56,7 @@ class Siswa extends \yii\db\ActiveRecord
             'nama_ibu' => 'Nama Ibu',
             'pekerjaan_ayah' => 'Pekerjaan Orang Tua',
             'alamat' => 'Alamat',
-
-
+            'globalSearch'=>'Pencarian Data',
             'tahun_masuk' => 'Tahun Masuk',
             'no_tlp' => 'No.Telephone'
         ];

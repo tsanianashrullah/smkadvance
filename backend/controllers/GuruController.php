@@ -10,23 +10,14 @@ use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use dosamigos\tableexport\ButtonTableExport;
+use yii\db\ActiveRecord;
 
 class GuruController extends Controller
 {
 	public function behavior()
 	{
 		return[
-		            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['create','update','delete'],
-                'rules' => 
-                    [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    ],
-            ],
+		            
 			'verb'=> [
 				'class'=> VerbFiltes::className(),
 				'actions'=>[
@@ -41,7 +32,20 @@ class GuruController extends Controller
 public function actionIndex()
 {	$searchModel = new GuruSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-  
+
+	$dataProvider->pagination->pageSize=2;
+	 $query = Guru::find()->where(['nip' => 1]);
+    $countQuery = clone $query;
+	$query = Guru::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+        $guru = $query->orderBy('nama_guru')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
         return $this->render('index', [
        
         'searchModel'=> $searchModel,
@@ -49,16 +53,11 @@ public function actionIndex()
         ]);
 
 }
-public function actionView($nip)
+public function actionView($id)
 {
 	return $this->render('view',[
-		'model' => $this->findModel($nip),
+		'model' => $this->findModel($id),
 		]);
-	 
-
-
-
-
 }
 
 public function actionCreate()
@@ -73,9 +72,9 @@ public function actionCreate()
 				]);
 	}
 }
-public function actionUpdate($nip)
+public function actionUpdate($id)
 {
-	$model = $this->findModel($nip);
+	$model = $this->findModel($id);
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->nip]);
@@ -85,15 +84,15 @@ public function actionUpdate($nip)
 				]);
 	}
 }
-public function actionDelete($id)
+public function actionDelete($nip)
 {
-	$this->findModel($id)->delete();
+	$this->findModel($nip)->delete();
 	return $this->redirect(['index']);
 }
 
-protected function findModel($nip)
+protected function findModel($id)
 {
-if (($model = Guru::findOne($nip)) !== null){
+if (($model = Guru::findOne($id)) !== null){
 	return $model;
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
