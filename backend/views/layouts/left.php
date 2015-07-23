@@ -1,5 +1,7 @@
-x<?php
+<?php
 use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Menu;
 use yii\helpers\html;
 use app\assets\AppAsset;
 
@@ -11,12 +13,10 @@ use app\assets\AppAsset;
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/avatar04.png" class="img-circle" alt="User Image"/>
+                <img src="<?= $directoryAsset ?>/img/logo.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p> Mr. X</p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <p>SMK PGRI 1 Cimahi</p>
             </div>
         </div>
 
@@ -36,47 +36,41 @@ use app\assets\AppAsset;
         Nav::widget(
             [
                 'encodeLabels' => false,
-                'options' => ['class' => 'sidebar-menu'],
-                'items' => [
-                    '<li class="header">Sistem Informasi SMK</li>',
-                    [
-                        'label' => '<i class="glyphicon glyphicon-home"></i><span>Beranda</span>', //for basic
-                        'url' => ['/site/index'],
-                    ],
+                ]);
+            $menuItems = [
+                ['label' => 'Home', 'url' => ['/site/index']],
+            ];
+            if (Yii::$app->user->isGuest) {
+                    $menuItems[] =[
+                        'label' => 'Masuk', //for basic
+                        'url' => ['/site/login'],
+                    ];
+                } else{
                     //['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
 
-                    [
-                        'label' => '<i class="glyphicon glyphicon-education"></i><span>Pengajar</span>', //for basic
+                    $menuItems[] =[
+                        'label' =>  '<i class="glyphicon glyphicon-education"></i><span>Pengajar</span>', //for basic
                         'url' => ['/guru/index'],
-                    ],
-                    [
+                    ];
+                    $menuItems[] =[
                         'label' => '<i class="glyphicon glyphicon-user"></i><span>Siswa</span>', //for basic
                         'url' => ['/siswa/index'],
-                    ],
-                    [
+                    ];
+                    $menuItems[] =[
                         'label' => '<i class="glyphicon glyphicon-send"></i><span>Staff</span>', //for basic
                         'url' => ['/staff/index'],
-                    ],
+                    ];
                     
-                    [
+                    $menuItems[] =[
                         'label' => '<i class="glyphicon glyphicon-blackboard"></i><span>Jurusan</span>', //for basic
                         'url' => ['/jurusan/index'],
-                    ],
-
-                    [
-                        'label' => '<i class="glyphicon glyphicon-lock"></i><span>Masuk</span>', //for basic
-                        'url' => ['/site/login'],
-                        'visible' =>Yii::$app->user->isGuest
-                    ],
-                    /*
-                    ['label' => '<i class="glyphicon glyphicon-remove-sign"></i><span>Logout (' . Yii::$app->user->identity->username . ')</span>',
-                      'url' => ['/site/logout'],
-                      'linkOptions' => ['data-method' => 'post']],     */
-                                   
-                ],
-            ]
-        );
+                    ];
+                }
+                echo Nav::widget([
+                'options' => ['class' => 'sidebar-menu'],
+                'items' => $menuItems,
+            ]);
         ?>
         
 

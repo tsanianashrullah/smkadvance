@@ -11,12 +11,22 @@ use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
-
+use yii\filters\AccessControl;
 class SiswaController extends Controller
 {
 	public function behavior()
 	{
 		return[
+                'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create','update'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    ],
+                    ],
 			'verb'=> [
 				'class'=> VerbFiltes::className(),
 				'actions'=>[

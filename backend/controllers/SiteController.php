@@ -72,7 +72,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->render('login');
+        return $this->redirect('../web/index.php?r=site/login');
     }
 
     public function actionContact()
