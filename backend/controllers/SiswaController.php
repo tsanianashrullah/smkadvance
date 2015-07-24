@@ -43,9 +43,7 @@ public function actionIndex()
 {
 	$searchModel = new SiswaSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-<<<<<<< HEAD
-	    $dataProvider->pagination->pageSize=10;
-=======
+
 	$dataProvider->pagination->pageSize=2;
 	 $query = Siswa::find()->where(['nisn' => 1]);
     $countQuery = clone $query;
@@ -53,7 +51,6 @@ public function actionIndex()
     $models = $query->offset($pages->offset)
         ->limit($pages->limit)
         ->all();
->>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
         return $this->render('index', [
            'dataProvider' => $dataProvider,
 			'searchModel' => $searchModel, 
