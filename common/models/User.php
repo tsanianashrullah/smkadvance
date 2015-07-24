@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    //public static $roles = [20 => 'admin', 30 => 'editor', 40 => 'viewer', '50' => 'author'];
     public static function tableName()
     {
         return '{{%user}}';
