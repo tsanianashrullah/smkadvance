@@ -15,21 +15,14 @@ $this->title = 'Pusat Data Staff SMK';
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
-
-    <i class="glyphicon glyphicon-list-alt"></i> 
-    <?= Html::encode($this->title) ?></h3>
+            <i class="glyphicon glyphicon-list-alt"></i> 
+                <?= Html::encode($this->title) ?></h3>
 </div>
         <div class="panel-body">
-
-    
-<<<<<<< HEAD
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
-<div class="pull-right">
-         <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-       
-  
-</div>
+    <div class="pull-right">
+             <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+
 
                 <?php
                     Modal::begin([
@@ -40,12 +33,7 @@ $this->title = 'Pusat Data Staff SMK';
                     echo "<div id='modalContent'></div>";
                     Modal::end();
             ?>
-
-=======
-<div class="btn-group">
-         <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
->>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
-</div><div>
+<div>
         <?php
             Modal::begin([
                     'header'=>'<h4>Staff</h4>',
@@ -55,12 +43,7 @@ $this->title = 'Pusat Data Staff SMK';
             echo "<div id='modalContent'></div>";
             Modal::end();
     ?></div>
-
-<<<<<<< HEAD
 </div>
-
-=======
->>>>>>> 2f2891ef17ead043f7715ba3c6f393ca945ace49
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

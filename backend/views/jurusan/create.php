@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="jurusan-create">
-   <h6><?= Html::encode($this->title) ?></h6>
 
     <?= $this->render('form', [
         'model' => $model,

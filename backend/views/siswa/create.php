@@ -1,8 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-
-
 $this->params['breadcrumbs'][] = ['label' => 'Siswa','url'=> ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

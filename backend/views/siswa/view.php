@@ -17,7 +17,6 @@ $this->title = $model->nama_siswa;
 						'method' => 'post',
 					
 						],
-
 		]) ?>
 	</div>
 	

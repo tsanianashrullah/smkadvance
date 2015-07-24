@@ -13,6 +13,7 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        
     'view' => [
          'theme' => [
              'pathMap' => [
@@ -35,9 +36,10 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorHandler' => [
+                'errorAction' => 'site/error',
+            ],
         ],
-    ],
+    
     'params' => $params,
 ];

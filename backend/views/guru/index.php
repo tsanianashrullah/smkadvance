@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][]= $this->title;
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
 
     
-       <div class="pull-left">
+       <div class="pull-right">
     <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?php
             Modal::begin([

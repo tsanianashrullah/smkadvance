@@ -23,11 +23,11 @@ $this->title = 'Daftar Siswa';
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
 
 
-	<p>
+	<div class=pull-right>
 		
 		<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
 
-	</p>
+	</div><br><br>
 	<?php
 			Modal::begin([
 					'header'=>'<center><h4>Siswa</h4></center>',
