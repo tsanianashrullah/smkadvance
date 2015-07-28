@@ -43,7 +43,11 @@ public function actionIndex()
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
+<<<<<<< HEAD
         return $this->render('index', [
+=======
+     return $this->render('index', [
+>>>>>>> 3802d69bae8e67ffc0e493b3b9db8dd048006f2b
           
             	'searchModel'=> $searchModel,
 				'dataProvider'=> $dataProvider,

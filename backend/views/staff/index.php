@@ -19,9 +19,15 @@ $this->title = 'Pusat Data Staff SMK';
                 <?= Html::encode($this->title) ?></h3>
 </div>
         <div class="panel-body">
+<<<<<<< HEAD
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
     <div class="pull-right">
              <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+=======
+
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
+<div class="pull-right">
+>>>>>>> 3802d69bae8e67ffc0e493b3b9db8dd048006f2b
 
 
                 <?php
@@ -33,6 +39,7 @@ $this->title = 'Pusat Data Staff SMK';
                     echo "<div id='modalContent'></div>";
                     Modal::end();
             ?>
+<<<<<<< HEAD
 <div>
         <?php
             Modal::begin([
@@ -44,6 +51,13 @@ $this->title = 'Pusat Data Staff SMK';
             Modal::end();
     ?></div>
 </div>
+=======
+<div class="btn-group">
+         <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
+
+</div>
+</div>
+>>>>>>> 3802d69bae8e67ffc0e493b3b9db8dd048006f2b
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
