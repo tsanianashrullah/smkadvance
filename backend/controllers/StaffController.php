@@ -43,12 +43,9 @@ public function actionIndex()
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-<<<<<<< HEAD
-        return $this->render('index', [
-=======
-     return $this->render('index', [
->>>>>>> 3802d69bae8e67ffc0e493b3b9db8dd048006f2b
-          
+
+     return $this->render('index', 
+     	[
             	'searchModel'=> $searchModel,
 				'dataProvider'=> $dataProvider,
 
@@ -64,19 +61,21 @@ public function actionView($id)
 }
 
 public function actionCreate()
-{ if(yii::$app->user->can('create'))
+{ 
+	if(yii::$app->user->can('create'))
 	{
 			$model = new Staff();
-			$modelsStaff = [new Staff];
+
 		if($model->load(Yii::$app->request->post()) && $model->save()){
 				return $this->redirect(['view', 'id' => $model->id]);
 		} else {
 			return $this->renderAjax('create',[
 					'model' => $model,
-					'modelsStaff' => (empty($modelsStaff)) ? [new Staff] : $modelsStaff,
 					]);
 		}
-	}else{throw new ForbiddenHttpException;}
+	}else{
+		throw new ForbiddenHttpException;
+	}
 }
 public function actionUpdate($id)
 {
