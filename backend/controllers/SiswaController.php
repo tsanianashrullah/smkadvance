@@ -92,7 +92,8 @@ public function actionCreate()
             Yii::$app->getSession()->setFlash(
                 'error',"{$e->getMessage()}"
             );
-        }		} else {
+        }		
+    } else {
 			return $this->renderAjax('create',[
 					'model' => $model,
 					]);
