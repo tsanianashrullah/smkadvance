@@ -65,7 +65,16 @@ class GuruSearch extends Guru
             ->orFilterWhere(['like', 'pend_akhir', $this->globalSearch])
             ->orFilterWhere(['like', 'program_keahlian', $this->globalSearch])
             ->orFilterWhere(['like', 'status', $this->globalSearch])
-            ->orFilterWhere(['like', 'alamat', $this->globalSearch]);
+            ->orFilterWhere(['like', 'alamat', $this->globalSearch])
+            ->andFilterWhere(['like', 'nip', $this->nip])
+            ->andFilterWhere(['like', 'nama_guru', $this->nama_guru])
+            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
+            ->andFilterWhere(['like', 'jk', $this->jk])
+            ->andFilterWhere(['like', 'agama', $this->agama])
+            ->andFilterWhere(['like', 'pend_akhir', $this->pend_akhir])
+            ->andFilterWhere(['like', 'program_keahlian', $this->program_keahlian])
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'alamat', $this->alamat]);            
 
         return $dataProvider;
     }

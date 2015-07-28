@@ -60,8 +60,10 @@ class JurusanSearch extends Jurusan
 
         $query->orFilterWhere(['like', 'jurusan', $this->globalSearch])
             ->orFilterWhere(['like', 'id_guru', $this->globalSearch])
-            ->orFilterWhere(['like', 'keterangan', $this->globalSearch]);
-
+            ->orFilterWhere(['like', 'keterangan', $this->globalSearch])
+            ->andFilterWhere(['like', 'jurusan', $this->jurusan])
+            ->andFilterWhere(['like', 'id_guru', $this->id_guru])
+            ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
         return $dataProvider;
     }
 }

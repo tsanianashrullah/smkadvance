@@ -65,7 +65,19 @@ class SiswaSearch extends Siswa
             ->orFilterWhere(['like', 'alamat', $this->globalSearch])
             ->orFilterWhere(['like', 'pekerjaan_ayah', $this->globalSearch])
             ->orFilterWhere(['like', 'tahun_masuk', $this->globalSearch])
-            ->orFilterWhere(['like', 'no_tlp', $this->globalSearch]);
+            ->orFilterWhere(['like', 'no_tlp', $this->globalSearch])
+            ->andFilterWhere(['like', 'nisn', $this->nisn])
+            ->andFilterWhere(['like', 'nama_siswa', $this->nama_siswa])
+            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
+            ->andFilterWhere(['like', 'tgl_lahir', $this->tgl_lahir])
+            ->andFilterWhere(['like', 'agama', $this->agama])
+            ->andFilterWhere(['like', 'anak_ke', $this->anak_ke])
+            ->andFilterWhere(['like', 'nama_ayah', $this->nama_ayah])
+            ->andFilterWhere(['like', 'nama_ibu', $this->nama_ibu])
+            ->andFilterWhere(['like', 'alamat', $this->alamat])
+            ->andFilterWhere(['like', 'pekerjaan_ayah', $this->pekerjaan_ayah])
+            ->andFilterWhere(['like', 'tahun_masuk', $this->tahun_masuk])
+            ->andFilterWhere(['like', 'no_tlp', $this->no_tlp]);
 
         return $dataProvider;
     }

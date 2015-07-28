@@ -10,6 +10,7 @@ if (Yii::$app->controller->action->id === 'login') {
  * Do not use this code in your template. Remove it. 
  * Instead, use the code  $this->layout = '//main-login'; in your controller.
  */
+        require_once('alert.php');
     echo $this->render(
         'main-login',
         ['content' => $content]

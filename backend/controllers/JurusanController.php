@@ -14,6 +14,19 @@ use dosamigos\tableexport\ButtonTableExport;
 
 class JurusanController extends Controller
 {
+
+// ...
+	public function actions()
+	{
+	    return [
+	        // ...
+	        'download' => [
+	            'class' => JurusanController::className()
+	        ]
+	        // ...
+	    ];
+	}
+
 	public function behavior()
 	{
 		return[		
@@ -55,16 +68,26 @@ public function actionCreate()
 	{
 	$model = new Jurusan();
 
-	if($model->load(Yii::$app->request->post()) && $model->save()){
+	 if ($model->load(Yii::$app->request->post())) {
+        try{
+            if($model->save()){
+                Yii::$app->getSession()->setFlash(
+                    'success','Data saved!'
+                );
 			return $this->redirect(['view', 'id' => $model->id]);
-	} else {
+            }
+        }catch(Exception $e){
+            Yii::$app->getSession()->setFlash(
+                'error',"{$e->getMessage()}"
+            );
+        }
+    } else {
 		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
-	}
+    }
 	} else {
-		throw new ForbiddenHttpException;
-		
+		throw new ForbiddenHttpException;		
 	}
 
 }
