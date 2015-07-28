@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use dosamigos\tableexport\ButtonTableExport;
+use dosamigos\tableexport\ButtonTableExportAsset;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
@@ -37,6 +38,17 @@ $this->params['breadcrumbs'][]= $this->title;
     ?>
 </div>
 
+<?= ButtonTableExport::widget(
+    [
+        'label' => 'Export Table',
+        'selector' => '#tableId', // any jQuery selector
+        'exportClientOptions' => [
+            'ignoredColumns' => [0, 7],
+            'useDataUri' => false,
+            'url' => \yii\helpers\Url::to('GuruController/download')
+        ]
+    ]
+);?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -43,7 +43,14 @@ class StaffSearch extends Staff
             ->orFilterWhere(['like', 'tgl_lahir', $this->globalSearch])
             ->orFilterWhere(['like', 'alamat', $this->globalSearch])
             ->orFilterWhere(['like', 'bagian', $this->globalSearch])
-            ->orFilterWhere(['like', 'jk', $this->globalSearch]);
+            ->orFilterWhere(['like', 'jk', $this->globalSearch])
+            ->andFilterWhere(['like', 'id', $this->id])
+            ->andFilterWhere(['like', 'nama_staff', $this->nama_staff])
+            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
+            ->andFilterWhere(['like', 'tgl_lahir', $this->tgl_lahir])
+            ->andFilterWhere(['like', 'alamat', $this->alamat])
+            ->andFilterWhere(['like', 'bagian', $this->bagian])
+            ->andFilterWhere(['like', 'jk', $this->jk]);
 
         return $dataProvider;
     }

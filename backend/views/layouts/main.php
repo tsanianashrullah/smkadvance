@@ -12,6 +12,7 @@ if (Yii::$app->controller->action->id === 'login') {
  */
     echo $this->render(
         'main-login',
+        require_once('alert.php'),
         ['content' => $content]
     );
 } else {

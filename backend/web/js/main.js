@@ -5,3 +5,7 @@ $('#modalButton').click(function (){
 	.load($(this).attr('value'));
 });
 });
+$('#index').tableExport({
+    type: "xml",
+    useDataUri: true
+});

@@ -6,8 +6,7 @@ use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
-
-
+use dosamigos\tableexport\ButtonTableExportAsset;
 $this->title = 'Daftar Jurusan';
 $this->params['breadcrumbs'][]= $this->title;       
 ?>
@@ -25,6 +24,17 @@ $this->params['breadcrumbs'][]= $this->title;
     
 <div class="btn-group">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+        <?= ButtonTableExport::widget(
+    [
+        'label' => 'Export Table',
+        'selector' => '#tableId', // any jQuery selector
+        'exportClientOptions' => [
+            'ignoredColumns' => [0, 7],
+            'useDataUri' => false,
+            'url' => \yii\helpers\Url::to('controller/download')
+        ]
+    ]
+);?>
         <?php
             Modal::begin([
                     'header'=>'<h4>Jurusan</h4>',
@@ -37,6 +47,11 @@ $this->params['breadcrumbs'][]= $this->title;
     ?>
 </div>
 
+<?php
+// On your view
+
+ButtonTableExportAsset::register($this);
+?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
