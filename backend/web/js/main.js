@@ -4,9 +4,3 @@ $('#modalButton').click(function (){
 	.find('#modalContent')
 	.load($(this).attr('value'));
 });
-});
-$('#index').tableExport({
-    type: "xml",
-    useDataUri: true
-});
-

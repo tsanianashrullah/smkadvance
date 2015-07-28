@@ -19,11 +19,19 @@ $this->title = 'Pusat Data Staff SMK';
                 <?= Html::encode($this->title) ?></h3>
 </div>
         <div class="panel-body">
+<<<<<<< HEAD
 
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
 <div class="pull-right">
          <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
 
+=======
+     <?php echo $this->render('search', ['model' => $searchModel]); ?>
+    <div class="pull-right">
+             <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+</div>     
+<div>
+>>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
         <?php
             Modal::begin([
                     'header'=>'<h4>Staff</h4>',
@@ -32,9 +40,16 @@ $this->title = 'Pusat Data Staff SMK';
                 ]);
             echo "<div id='modalContent'></div>";
             Modal::end();
-    ?></div>
+    ?>
 </div>
+<<<<<<< HEAD
    <?= GridView::widget([
+=======
+
+
+</div>
+    <?= GridView::widget([
+>>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
