@@ -19,11 +19,10 @@ $this->params['breadcrumbs'][]= $this->title;
         <div class="panel-body">
             
          <?php echo $this->render('search', ['model' => $searchModel]); ?>
-    
-       
-    
-<div class="btn-group">
+
+<div class="pull-right">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+<<<<<<< HEAD
         <?= ButtonTableExport::widget(
     [
         'label' => 'Export Table',
@@ -35,6 +34,10 @@ $this->params['breadcrumbs'][]= $this->title;
         ]
     ]
 );?>
+=======
+</div>
+<div class="btn-group">
+>>>>>>> 4c3f4c6bc419a8a5de53bceec6d8062330dd8d62
         <?php
             Modal::begin([
                     'header'=>'<h4>Jurusan</h4>',
@@ -47,11 +50,15 @@ $this->params['breadcrumbs'][]= $this->title;
     ?>
 </div>
 
+<<<<<<< HEAD
 <?php
 // On your view
 
 ButtonTableExportAsset::register($this);
 ?>
+=======
+<div>
+>>>>>>> 4c3f4c6bc419a8a5de53bceec6d8062330dd8d62
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -64,7 +71,5 @@ ButtonTableExportAsset::register($this);
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],    
-    ]);
-  
-
-    ?>
+    ]);?> 
+    </div>

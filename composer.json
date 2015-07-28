@@ -22,7 +22,11 @@
         "2amigos/yii2-date-picker-widget": "~1.0",
         "2amigos/yii2-table-export-widget": "*",
         "kartik-v/yii2-export": "*",
+<<<<<<< HEAD
         "2amigos/yii2-editable-widget": "^0.1.4"
+=======
+        "wbraganca/yii2-dynamicform": "*"
+>>>>>>> 4c3f4c6bc419a8a5de53bceec6d8062330dd8d62
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
