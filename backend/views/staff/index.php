@@ -32,7 +32,8 @@ $this->title = 'Pusat Data Staff SMK';
                 ]);
             echo "<div id='modalContent'></div>";
             Modal::end();
-    ?></div>
+    ?>
+</div>
 
 
 </div>
