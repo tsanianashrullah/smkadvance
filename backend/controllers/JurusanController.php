@@ -87,7 +87,7 @@ public function actionCreate()
 				]);
     }
 	} else {
-		throw new ForbiddenHttpException;		
+		throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');		
 	}
 
 }
@@ -105,7 +105,7 @@ public function actionUpdate($id)
 					]);
 		}
 	}else{
-		throw new ForbiddenHttpException;
+		throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');
 		
 	}
 
@@ -117,7 +117,7 @@ public function actionDelete($id)
 		$this->findModel($id)->delete();
 		return $this->redirect(['index']);
 	}else{
-	throw new ForbiddenHttpException;
+	throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');
 		
 	}
 }

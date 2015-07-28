@@ -68,8 +68,19 @@ public function actionCreate()
 	{
 			$model = new Staff();
 			$modelsStaff = [new Staff];
-		if($model->load(Yii::$app->request->post()) && $model->save()){
-				return $this->redirect(['view', 'id' => $model->id]);
+	 if ($model->load(Yii::$app->request->post())) {
+        try{
+            if($model->save()){
+                Yii::$app->getSession()->setFlash(
+                    'success','Data saved!'
+                );
+			return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }catch(Exception $e){
+            Yii::$app->getSession()->setFlash(
+                'error',"{$e->getMessage()}"
+            );
+        }
 		} else {
 			return $this->renderAjax('create',[
 					'model' => $model,

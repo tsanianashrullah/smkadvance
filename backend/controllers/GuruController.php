@@ -51,8 +51,19 @@ public function actionCreate()
 	if(Yii::$app->user->can('create')){
 		$model = new Guru();
 
-	if($model->load(Yii::$app->request->post()) && $model->save()){
+	 if ($model->load(Yii::$app->request->post())) {
+        try{
+            if($model->save()){
+                Yii::$app->getSession()->setFlash(
+                    'success','Data saved!'
+                );
 			return $this->redirect(['view', 'id' => $model->nip]);
+            }
+        }catch(Exception $e){
+            Yii::$app->getSession()->setFlash(
+                'error',"{$e->getMessage()}"
+            );
+        }
 	} else {
 		return $this->renderAjax('create',[
 				'model' => $model,

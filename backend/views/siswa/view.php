@@ -7,20 +7,23 @@ use yii\widgets\DetailView;
 
 $this->title = $model->nama_siswa;
 ?>
-<div class="siswa-view">
-	<div class="pull-right">
-		<?= Html::a('Update',['update', 'id' => $model->nisn], ['class' => 'btn btn-primary']) ?>
-		<?= Html::a('Delete',['delete', 'id' => $model->nisn], [
-					'class' => 'btn btn-danger',
-					'data' => [
-						'confrim' => 'Are you sure you want to delete items?',
-						'method' => 'post',
-					
-						],
-		]) ?>
-	</div>
-	
-<div class="row">
+
+<div class="guru-view">
+<div class="panel panel-primary">
+      <div class="panel-heading">Update Data Guru</div>
+        <div class="panel-body">
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->nisn], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->nisn], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
   <div class="col-xs-12 .col-md-8">
 	<?= DetailView::widget([
 		'model'=> $model,

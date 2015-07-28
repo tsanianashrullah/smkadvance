@@ -79,15 +79,26 @@ public function actionCreate()
 		{
 			$model = new Siswa();
 
-		if($model->load(Yii::$app->request->post()) && $model->save()){
-				return $this->redirect(['view', 'id' => $model->nisn]);
-		} else {
+
+	 if ($model->load(Yii::$app->request->post())) {
+        try{
+            if($model->save()){
+                Yii::$app->getSession()->setFlash(
+                    'success','Data saved!'
+                );
+			return $this->redirect(['view', 'id' => $model->nisn]);
+            }
+        }catch(Exception $e){
+            Yii::$app->getSession()->setFlash(
+                'error',"{$e->getMessage()}"
+            );
+        }		} else {
 			return $this->renderAjax('create',[
 					'model' => $model,
 					]);
 		}
 	}else{
-		throw  new ForbidenHttpException; 
+		throw  new ForbidenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu'); 
 		
 	}
 	
@@ -96,8 +107,19 @@ public function actionUpdate($id)
 {
 	$model = $this->findModel($id);
 
-	if($model->load(Yii::$app->request->post()) && $model->save()){
+	 if ($model->load(Yii::$app->request->post())) {
+        try{
+            if($model->save()){
+                Yii::$app->getSession()->setFlash(
+                    'success','Data saved!'
+                );
 			return $this->redirect(['view', 'id' => $model->nisn]);
+            }
+        }catch(Exception $e){
+            Yii::$app->getSession()->setFlash(
+                'error',"{$e->getMessage()}"
+            );
+        }
 	} else {
 		return $this->renderAjax('update',[
 				'model' => $model,
