@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 use dosamigos\tableexport\ButtonTableExport;
 
 class JurusanController extends Controller
@@ -32,19 +33,8 @@ public function actionIndex()
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 	   $dataProvider->pagination->pageSize=10;
-	
-
 	$dataProvider->pagination->pageSize=2;
-	$query = Jurusan::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => $query->count(),
-        ]);
-        $guru = $query->orderBy('jurusan')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+	
         return $this->render('index', [
         
         'searchModel'=> $searchModel,
@@ -57,15 +47,12 @@ public function actionView($id)
 	return $this->render('view',[
 		'model' => $this->findModel($id),
 		]);
-	 
-
-
-
-
 }
 
 public function actionCreate()
 {
+	if( Yii::$app->user->can('create'))
+	{
 	$model = new Jurusan();
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
@@ -75,23 +62,41 @@ public function actionCreate()
 				'model' => $model,
 				]);
 	}
+	} else {
+		throw new ForbiddenHttpException;
+		
+	}
+
 }
 public function actionUpdate($id)
 {
-	$model = $this->findModel($id);
+	if( Yii::$app->user->can('update'))
+	{
+		$model = $this->findModel($id);
 
-	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'id' => $model->id]);
-	} else {
-		return $this->render('update',[
-				'model' => $model,
-				]);
+		if($model->load(Yii::$app->request->post()) && $model->save()){
+				return $this->redirect(['view', 'id' => $model->id]);
+		} else {
+			return $this->render('update',[
+					'model' => $model,
+					]);
+		}
+	}else{
+		throw new ForbiddenHttpException;
+		
 	}
+
 }
 public function actionDelete($id)
 {
-	$this->findModel($id)->delete();
-	return $this->redirect(['index']);
+	if( Yii::$app->user->can('delete'))
+	{
+		$this->findModel($id)->delete();
+		return $this->redirect(['index']);
+	}else{
+	throw new ForbiddenHttpException;
+		
+	}
 }
 
 protected function findModel($id)

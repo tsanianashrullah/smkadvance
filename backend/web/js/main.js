@@ -6,5 +6,3 @@ $('#modalButton').click(function (){
 });
 });
 
-
-

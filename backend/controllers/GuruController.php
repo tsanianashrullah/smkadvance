@@ -32,23 +32,9 @@ class GuruController extends Controller
 public function actionIndex()
 {	$searchModel = new GuruSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
 	$dataProvider->pagination->pageSize=2;
-	 $query = Guru::find()->where(['nip' => 1]);
-    $countQuery = clone $query;
-	$query = Guru::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => $query->count(),
-        ]);
-        $guru = $query->orderBy('nama_guru')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-        return $this->render('index', [
-       
-        'searchModel'=> $searchModel,
+	 return $this->render('index', [
+      	'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
         ]);
 
@@ -62,7 +48,8 @@ public function actionView($id)
 
 public function actionCreate()
 {
-	$model = new Guru();
+	if(Yii::$app->user->can('create')){
+		$model = new Guru();
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->nip]);
@@ -71,6 +58,11 @@ public function actionCreate()
 				'model' => $model,
 				]);
 	}
+}else{
+		throw  new ForbidenHttpException;
+
+	}
+	
 }
 public function actionUpdate($id)
 {

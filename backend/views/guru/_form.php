@@ -46,7 +46,7 @@ $this->title = 'Tambah Data Guru';
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 7]) ?>
 
-    <div class="form-group">
+     <div class="panel-footer" style="text-align: right;">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
     </div>

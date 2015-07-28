@@ -20,17 +20,11 @@ $this->params['breadcrumbs'][]= $this->title;
         <div class="panel-body">
             
          <?php echo $this->render('search', ['model' => $searchModel]); ?>
-    
-       
-    
-
-
-
-
 
 <div class="pull-right">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
 </div>
+<div class="btn-group">
         <?php
             Modal::begin([
                     'header'=>'<h4>Jurusan</h4>',
@@ -41,7 +35,7 @@ $this->params['breadcrumbs'][]= $this->title;
             echo "<div id='modalContent'></div>";
             Modal::end();
     ?>
-
+</div>
 
 <div>
     <?= GridView::widget([
@@ -56,8 +50,5 @@ $this->params['breadcrumbs'][]= $this->title;
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],    
-    ]);
-  
-
-    ?> 
+    ]);?> 
     </div>

@@ -40,13 +40,10 @@ use dosamigos\datepicker\DatePicker;
         ]);?>
 <?= $form->field($model, 'no_tlp')->textInput(['maxlength' => 13, 'size' => 10]) ?>   
 
-
-
-
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Create', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
-    </div></table>
+    </div>
 
     <?php ActiveForm::end(); ?>
     

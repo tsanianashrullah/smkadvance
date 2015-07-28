@@ -7,6 +7,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use backend\models\AuthItem;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -119,6 +120,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+        $authItems = AuthItem::find()->all();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
@@ -129,6 +131,7 @@ class SiteController extends Controller
 
         return $this->render('signup', [
             'model' => $model,
+            'authItems' => $authItems,
         ]);
     }
 

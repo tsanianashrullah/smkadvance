@@ -46,7 +46,8 @@ public function actionIndex()
         return $this->render('index', [
           
             	'searchModel'=> $searchModel,
-		'dataProvider'=> $dataProvider,
+				'dataProvider'=> $dataProvider,
+
         ]);
 }
 public function actionView($id)
@@ -59,16 +60,19 @@ public function actionView($id)
 }
 
 public function actionCreate()
-{
-	$model = new Staff();
-
-	if($model->load(Yii::$app->request->post()) && $model->save()){
-			return $this->redirect(['view', 'id' => $model->id]);
-	} else {
-		return $this->renderAjax('create',[
-				'model' => $model,
-				]);
-	}
+{ if(yii::$app->user->can('create'))
+	{
+			$model = new Staff();
+			$modelsStaff = [new Staff];
+		if($model->load(Yii::$app->request->post()) && $model->save()){
+				return $this->redirect(['view', 'id' => $model->id]);
+		} else {
+			return $this->renderAjax('create',[
+					'model' => $model,
+					'modelsStaff' => (empty($modelsStaff)) ? [new Staff] : $modelsStaff,
+					]);
+		}
+	}else{throw new ForbiddenHttpException;}
 }
 public function actionUpdate($id)
 {
