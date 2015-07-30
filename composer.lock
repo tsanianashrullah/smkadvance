@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "5a0a66f2e512e06aba91f3f6c73670c1",
-=======
-    "hash": "cadec4e85951850ee580d18b7272971c",
->>>>>>> 4c3f4c6bc419a8a5de53bceec6d8062330dd8d62
+    "hash": "3b171afc78d3f5183c3284d28d355af0",
     "packages": [
         {
             "name": "2amigos/yii2-date-picker-widget",
@@ -113,50 +109,6 @@
                 "yii"
             ],
             "time": "2014-09-01 13:43:36"
-        },
-        {
-            "name": "2amigos/yii2-editable-widget",
-            "version": "0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yii2-editable-widget.git",
-                "reference": "4ef78e7bfd575dc39e43e85ef23196382cb72783"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-editable-widget/zipball/4ef78e7bfd575dc39e43e85ef23196382cb72783",
-                "reference": "4ef78e7bfd575dc39e43e85ef23196382cb72783",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/select2": "3.5.2",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "dosamigos\\editable\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://2amigos.us"
-                }
-            ],
-            "description": "X-Editable widget for Yii2.",
-            "keywords": [
-                "extension",
-                "widget",
-                "x-editable",
-                "yii"
-            ],
-            "time": "2015-02-20 15:13:36"
         },
         {
             "name": "2amigos/yii2-table-export-widget",
@@ -484,34 +436,6 @@
             }
         },
         {
-            "name": "bower-asset/select2",
-            "version": "3.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/select2/select2.git",
-                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/select2/select2/zipball/6633cda9061d9fc65075dd140c63f9a6adbcbd72",
-                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.7.1"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "select2.js",
-                    "select2.css",
-                    "select2.png",
-                    "select2x2.png",
-                    "select2-spinner.gif"
-                ]
-            }
-        },
-        {
             "name": "bower-asset/yii2-pjax",
             "version": "v2.0.4",
             "source": {
@@ -747,7 +671,7 @@
         },
         {
             "name": "kartik-v/yii2-export",
-            "version": "v1.2.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-export.git",
@@ -842,6 +766,52 @@
                 "yii2"
             ],
             "time": "2015-07-14 19:20:52"
+        },
+        {
+            "name": "kartik-v/yii2-helpers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-helpers.git",
+                "reference": "daafedf1ae6130d2287e417941b8c50ad59a50c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/daafedf1ae6130d2287e417941b8c50ad59a50c0",
+                "reference": "daafedf1ae6130d2287e417941b8c50ad59a50c0",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\helpers\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A collection of useful helper functions for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-helpers",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "helper",
+                "utilities",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-06-15 17:18:24"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1748,7 +1718,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kartik-v/yii2-export": 20,
+        "kartik-v/yii2-helpers": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
