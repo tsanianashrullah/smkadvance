@@ -11,7 +11,7 @@ use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
-
+use yii\web\UploadedFile;
 class GuruController extends Controller
 {
 	public function behavior()
@@ -53,6 +53,10 @@ public function actionCreate()
 
 	 if ($model->load(Yii::$app->request->post())) {
         try{
+        	$imageName= $model->nip;
+            $model->file=UploadedFile::getInstance($model, 'file');
+            $model->file->saveAs( 'uploads/' . $imageName . '.' .   $model->file->extension );
+            $model->foto = 'uploads/' . $imageName . '.' .   $model->file->extension;
             if($model->save()){
                 Yii::$app->getSession()->setFlash(
                     'success','Data saved!'

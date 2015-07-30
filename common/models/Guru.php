@@ -4,19 +4,10 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "guru".
- *
- * @property string $nip
- * @property string $nama_guru
- * @property string $tempat_lahir
- * @property string $tgl_lahir
- * @property string $jk
- * @property string $alamat
- */
 class Guru extends \yii\db\ActiveRecord
 {
    public $globalSearch;
+   public $file;
     /**
      * @inheritdoc
      */
@@ -35,6 +26,8 @@ class Guru extends \yii\db\ActiveRecord
   //          [['nip'],'integer'],
             [['tgl_lahir'], 'safe'],
             [['nama_guru'], 'string', 'max' => 30],
+
+            [['file'], 'file'],
             [['tempat_lahir'], 'string', 'max' => 25],
             [['jk'], 'string', 'max' => 15],
             [['alamat'], 'string', 'max' => 50 ],
@@ -63,6 +56,8 @@ class Guru extends \yii\db\ActiveRecord
             'program_keahlian'=>'Program Keahlian',
             'status'=>'Status',
             'globalSearch'=>'Cari Data',
+            'foto'=>'Foto',
+            'file'=>'Foto',
         ];
     }
 }

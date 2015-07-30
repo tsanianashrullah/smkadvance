@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][]= $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'jurusan',
-            'id_guru',
+            'guru.nama_guru',
             'keterangan',
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],

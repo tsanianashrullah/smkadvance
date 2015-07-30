@@ -27,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?php
+//      'model'=$model;
+    $img = Html::img("@web/$model->foto"); 
+    ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -37,6 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'tgl_lahir',
             'jk',
             'alamat',
+            [
+                 'label'=>'Foto',
+                 'format'=>'raw',
+                 'value'=>$img,
+                 [
+                 'width'=>10,
+                 'heigth'=>10,
+                 ],
+           ],
         ],
     ]) 
    
