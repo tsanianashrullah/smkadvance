@@ -8,7 +8,7 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 
-$this->title = 'Pusat Data Staff SMK';
+$this->title = 'Daftar Staff';
 
 ?>
 <div class="guru-index">

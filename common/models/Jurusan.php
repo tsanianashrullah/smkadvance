@@ -46,9 +46,9 @@ class Jurusan extends \yii\db\ActiveRecord
     {
         return [
         'jurusan'=>'Jurusan',
-        'id_guru'=>'Nama Guru',
+        'id_guru'=>'Kepala Jurusan',
         'keterangan'=>'Keterangan',
-        'globalSearch'=>'Pencarian Data',
+        'globalSearch'=>'Cari Data',
         ];
     }
     public function getGuru()

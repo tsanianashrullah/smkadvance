@@ -1,12 +1,12 @@
 <?php
 //use yii\helpers\Html;
-//use yii\grid\GridView;
+use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use kartik\export\ExportMenu;
-use kartik\grid\GridView;
+//use kartik\grid\GridView;
 use kartik\helpers\Html;
 
 
@@ -50,6 +50,6 @@ $this->params['breadcrumbs'][]= $this->title;
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],
-    )];
+    ]);
 ?> 
     </div>

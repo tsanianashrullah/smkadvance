@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 
-$this->title = 'Daftar Guru';
+$this->title = 'Daftar Pengajar';
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 

@@ -70,6 +70,7 @@ class Siswa extends \yii\db\ActiveRecord
             'tahun_masuk' => 'Tahun Masuk',
             'no_tlp' => 'No Tlp',
             'foto' => 'Foto',
+            'globalSearch'=>'Cari Data',
         ];
     }
 }
