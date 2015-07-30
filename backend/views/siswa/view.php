@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use kartik\social\FacebookPlugin;
 
 
 $this->title = $model->nama_siswa;
@@ -42,6 +42,7 @@ $this->title = $model->nama_siswa;
 			'no_tlp:ntext',
 		],
 	]) ?>
+	<?php echo FacebookPlugin::widget(['type'=>FacebookPlugin::COMMENT, 'settings' => ['data-width'=>1000, 'data-numposts'=>5]]); ?>
 	</div>
 </div>
 

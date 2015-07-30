@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'nip' => $model->nip], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'nip' => $model->nip], [
+        <?= Html::a('Update', ['update', 'id' => $model->nip], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->nip], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?php
 //      'model'=$model;
-    $img = Html::img("@web/$model->foto"); 
+    $img = Html::img("@web/$model->foto",['width'=>'200', 'height'=>'150']); 
     ?>
     <?= DetailView::widget([
         'model' => $model,
@@ -43,11 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                  'label'=>'Foto',
                  'format'=>'raw',
-                 'value'=>$img,
-                 [
-                 'width'=>10,
-                 'heigth'=>10,
-                 ],
+                 'value'=>$img, ['width'=>'100'],
+                 
            ],
         ],
     ]) 
