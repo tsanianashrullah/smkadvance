@@ -12,7 +12,7 @@ use yii\data\Pagination;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
-use yii\web\ForbidenHttpException;
+use yii\web\ForbiddenHttpException;
 
 
 class SiswaController extends Controller
@@ -46,23 +46,11 @@ public function actionIndex()
 {
 	$searchModel = new SiswaSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-	$dataProvider->pagination->pageSize=2;
-
-	$dataProvider->pagination->pageSize=2;
-	 $query = Siswa::find()->where(['nisn' => 1]);
-    $countQuery = clone $query;
-    $pages = new Pagination(['totalCount' => $countQuery->count()]);
-    $models = $query->offset($pages->offset)
-        ->limit($pages->limit)
-        ->all();
-        return $this->render('index', [
+	$dataProvider->pagination->pageSize=10;
+	    return $this->render('index', [
            'dataProvider' => $dataProvider,
 			'searchModel' => $searchModel, 
-		
-			          
-        ]);
-       
+		]);
 }
 public function actionView($id)
 {
@@ -99,14 +87,16 @@ public function actionCreate()
 					]);
 		}
 	}else{
-		throw  new ForbidenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu'); 
+		throw  new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu'); 
 		
 	}
 	
 }
 public function actionUpdate($id)
 {
-	$model = $this->findModel($id);
+	if(yii::$app->user->can('update'))
+	{
+		$model = $this->findModel($id);
 
 	 if ($model->load(Yii::$app->request->post())) {
         try{
@@ -126,11 +116,24 @@ public function actionUpdate($id)
 				'model' => $model,
 				]);
 	}
+	}else{
+		throw new ForbiddenHttpException('update hanya bisa dilakukan oleh administrator');
+		
+	}
+	
 }
 public function actionDelete($id)
 {
+	if(yii::$app->user->can('delete'))
+	{
+
 	$this->findModel($id)->delete();
 	return $this->redirect(['index']);
+
+	}else{
+		throw new ForbiddenHttpEXception('Delete hanya bisa dilakukan oleh administrator');
+		
+	}
 }
 
 protected function findModel($id)

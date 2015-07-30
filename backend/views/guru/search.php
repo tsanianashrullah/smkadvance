@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'globalSearch') ?>
+    <?= $form->field($model, 'globalSearch')->textInput(['style' => 'width:250px;']) ?>
 
 
     <?php // echo $form->field($model, 'alamat') ?>

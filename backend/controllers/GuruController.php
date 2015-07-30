@@ -32,7 +32,7 @@ class GuruController extends Controller
 public function actionIndex()
 {	$searchModel = new GuruSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	$dataProvider->pagination->pageSize=2;
+	$dataProvider->pagination->pageSize=10;
 	 return $this->render('index', [
       	'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
@@ -77,7 +77,9 @@ public function actionCreate()
 }
 public function actionUpdate($id)
 {
-	$model = $this->findModel($id);
+	if(yii::$app->user->can('update'))
+	{
+		$model = $this->findModel($id);
 
 	if($model->load(Yii::$app->request->post()) && $model->save()){
 			return $this->redirect(['view', 'id' => $model->nip]);
@@ -85,12 +87,23 @@ public function actionUpdate($id)
 		return $this->render('update',[
 				'model' => $model,
 				]);
+		}
+	}else{
+		throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');
+		
 	}
 }
 public function actionDelete($id)
 {
-	$this->findModel($id)->delete();
+	if(yii::$app->user->can('delete'))
+	{
+		$this->findModel($id)->delete();
 	return $this->redirect(['index']);
+}else{
+	throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
+	
+	}
+	
 }
 
 protected function findModel($id)

@@ -9,22 +9,20 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 
-
-
 $this->title = 'Daftar Guru';
 $this->params['breadcrumbs'][]= $this->title;
 ?>
+
 <div class="guru-index">
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
-
-    <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
-        <div class="panel-body">
-    
+            <i class="glyphicon glyphicon-list-alt"></i> 
+            <?= Html::encode($this->title) ?>
+        </h3>
+        </div>
+    <div class="panel-body">
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
-
-    
        <div class="pull-right">
     <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
         <?php
@@ -35,21 +33,8 @@ $this->params['breadcrumbs'][]= $this->title;
                 ]);
             echo "<div id='modalContent'></div>";
             Modal::end();
-    ?>
+        ?>
 </div>
-
-<?= ButtonTableExport::widget(
-    [
-        'label' => 'Export Table',
-        'selector' => '#tableId', // any jQuery selector
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7],
-            'useDataUri' => false,
-            'url' => \yii\helpers\Url::to('GuruController/download')
-        ]
-    ]
-);?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -58,7 +43,6 @@ $this->params['breadcrumbs'][]= $this->title;
             'nip',
             'nama_guru',
             'tempat_lahir',
-            'jk',
             [
             'attribute'=>'tgl_lahir',
             'value' =>'tgl_lahir',

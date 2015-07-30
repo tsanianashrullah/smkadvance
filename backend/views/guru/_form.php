@@ -12,7 +12,7 @@ $this->title = 'Tambah Data Guru';
 
 <div class="guru-form" >
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
  
             <br>
             

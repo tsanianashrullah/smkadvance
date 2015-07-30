@@ -50,20 +50,20 @@ use app\assets\AppAsset;
                     //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
 
                     $menuItems[] =[
-                        'label' =>  '<i class="glyphicon glyphicon-education"></i><span>Pengajar</span>', //for basic
+                        'label' =>  'Pengajar', //for basic
                         'url' => ['/guru/index'],
                     ];
                     $menuItems[] =[
-                        'label' => '<i class="glyphicon glyphicon-user"></i><span>Siswa</span>', //for basic
+                        'label' => 'Siswa', //for basic
                         'url' => ['/siswa/index'],
                     ];
                     $menuItems[] =[
-                        'label' => '<i class="glyphicon glyphicon-send"></i><span>Staff</span>', //for basic
+                        'label' => 'Staff', //for basic
                         'url' => ['/staff/index'],
                     ];
                     
                     $menuItems[] =[
-                        'label' => '<i class="glyphicon glyphicon-blackboard"></i><span>Jurusan</span>', //for basic
+                        'label' => 'Jurusan', //for basic
                         'url' => ['/jurusan/index'],
                     ];
                 }

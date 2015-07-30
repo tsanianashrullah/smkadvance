@@ -19,7 +19,7 @@ $fieldOptions2 = [
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
 ];
 ?>
-
+<background>
 <div class="login-box">
     <div class="login-logo">
         <a href="#"><b>Sistem Informasi</b>SMK</a>

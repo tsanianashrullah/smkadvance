@@ -36,7 +36,7 @@ class Staff extends \yii\db\ActiveRecord
 			'alamat' => 'Alamat',
 			'bagian' => 'Bagian',
 			'jk' =>'Jenis Kelamin',
-			'globalSearch'=>'Pencarian Data',
+			'globalSearch'=>'Cari Data',
 		];
 
 

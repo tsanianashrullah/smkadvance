@@ -39,7 +39,7 @@ use yii\bootstrap\NavBar;
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
+                    'linkOptions' => ['data-method' => 'post', 'class' => 'btn-danger']
                 ];
             }
             echo Nav::widget([
