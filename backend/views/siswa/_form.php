@@ -6,7 +6,7 @@ use dosamigos\datepicker\DatePicker;
 ?>
 <div class="siswa-form">
             
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['id' => 'form']); ?>
 
 <?= $form->field($model, 'nisn')->textInput(['maxlength'=> 10]) ?>  
 

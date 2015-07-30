@@ -44,16 +44,13 @@ class JurusanController extends Controller
 public function actionIndex()
 {	$searchModel = new JurusanSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	 $dataProvider->pagination->pageSize=10;
 
-	   $dataProvider->pagination->pageSize=10;
-	$dataProvider->pagination->pageSize=2;
-	
-        return $this->render('index', [
-        
+	    return $this->render('index', 
+	    [
         'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
-        ]);
-
+    ]);
 }
 public function actionView($id)
 {

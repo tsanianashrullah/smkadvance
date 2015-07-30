@@ -4,12 +4,28 @@ namespace common\models;
 
 use Yii;
 
+/**
+ * This is the model class for table "siswa".
+ *
+ * @property string $nisn
+ * @property string $nama_siswa
+ * @property string $tempat_lahir
+ * @property string $tgl_lahir
+ * @property string $agama
+ * @property string $anak_ke
+ * @property string $nama_ayah
+ * @property string $nama_ibu
+ * @property string $pekerjaan_ayah
+ * @property string $alamat
+ * @property string $tahun_masuk
+ * @property string $no_tlp
+ * @property string $foto
+ */
 class Siswa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
-    
     public $globalSearch;
     public static function tableName()
     {
@@ -22,21 +38,16 @@ class Siswa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nisn', 'nama_siswa', 'tempat_lahir', 'tgl_lahir', 'alamat','agama', 'anak_ke', 'nama_ayah','nama_ibu','no_tlp','tahun_masuk','pekerjaan_ayah'], 'required'],
-            [['alamat'], 'string'],
-            [['nisn', 'nama_siswa'], 'string',],
-            [['tempat_lahir'], 'string', ],
-            [['alamat'], 'string',],
-            [['nama_ayah'], 'string',],
-            [['nama_ibu'], 'string',],
-            [['no_tlp'], 'string',],
-            [['tahun_masuk'], 'string',],
-            [['agama'], 'string',],
-            [['pekerjaan_ayah'], 'string',],
-            [['anak_ke'], 'string',],
-
-            
-
+            [['nisn', 'nama_siswa', 'tempat_lahir', 'tgl_lahir', 'agama', 'anak_ke', 'nama_ayah', 'nama_ibu', 'pekerjaan_ayah', 'alamat', 'tahun_masuk', 'no_tlp'], 'required'],
+            [['tgl_lahir', 'tahun_masuk'], 'safe'],
+            [['nisn'], 'string', 'max' => 10],
+            [['nama_siswa', 'nama_ayah', 'nama_ibu'], 'string', 'max' => 30],
+            [['tempat_lahir', 'pekerjaan_ayah'], 'string', 'max' => 25],
+            [['agama'], 'string', 'max' => 15],
+            [['anak_ke'], 'string', 'max' => 4],
+            [['alamat', 'foto'], 'string', 'max' => 50],
+            [['no_tlp'], 'string', 'max' => 13],
+            [['nisn'], 'unique']
         ];
     }
 
@@ -46,19 +57,19 @@ class Siswa extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nisn' => 'NISN',
+            'nisn' => 'Nisn',
             'nama_siswa' => 'Nama Siswa',
             'tempat_lahir' => 'Tempat Lahir',
-            'tgl_lahir' => 'Tanggal Lahir',
+            'tgl_lahir' => 'Tgl Lahir',
             'agama' => 'Agama',
-            'anak_ke' => 'Anak ke-',
+            'anak_ke' => 'Anak Ke',
             'nama_ayah' => 'Nama Ayah',
             'nama_ibu' => 'Nama Ibu',
-            'pekerjaan_ayah' => 'Pekerjaan Orang Tua',
+            'pekerjaan_ayah' => 'Pekerjaan Ayah',
             'alamat' => 'Alamat',
-            'globalSearch'=>'Pencarian Data',
             'tahun_masuk' => 'Tahun Masuk',
-            'no_tlp' => 'No.Telephone'
+            'no_tlp' => 'No Tlp',
+            'foto' => 'Foto',
         ];
     }
 }

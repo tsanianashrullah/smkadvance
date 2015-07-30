@@ -15,35 +15,26 @@ $this->title = 'Daftar Siswa';
 	 <div class="panel panel-primary">
       <div class="panel-heading">
       	<h3 class="panel-title">
-
-    <i class="glyphicon glyphicon-list-alt"> </i> <?= Html::encode($this->title) ?></h3></div>
+			 <i class="glyphicon glyphicon-list-alt"></i> 
+    			<?= Html::encode($this->title) ?></h3>
+				</div>
         <div class="panel-body">
-    
-	
-     <?php echo $this->render('search', ['model' => $searchModel]); ?>
-
-
-	<div class=pull-right>
-		
-		<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-
-	</div><br><br>
-	<?php
-			Modal::begin([
-					'header'=>'<center><h4>Siswa</h4></center>',
-					'id' => 'modal',
-					'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-				]);
-			echo "<div id='modalContent'></div>";
-			Modal::end();
-	?>
-
+        	<?php echo $this->render('search', ['model' => $searchModel]); ?>
+		  <div class=pull-right>
+			<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+				<?php
+				Modal::begin([
+						'header'=>'<center><h4>Siswa</h4></center>',
+						'id' => 'modal',
+						'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+					]);
+				echo "<div id='modalContent'></div>";
+				Modal::end();
+		?>
+</div>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
-		'summary'=>'',
-'showFooter'=>true,
-'showHeader' => true,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 			'nisn',
@@ -68,13 +59,7 @@ $this->title = 'Daftar Siswa';
            
             'alamat',
             'tahun_masuk:ntext',
-            
-            
-
-
-    
-
-			[
+            [
 	'class' => 'yii\grid\ActionColumn',
 	'template' => '{view} {update} {delete} {link}',
 	'buttons' => [

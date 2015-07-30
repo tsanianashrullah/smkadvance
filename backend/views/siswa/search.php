@@ -14,8 +14,7 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
-
-    <?= $form->field($model, 'globalSearch') ?>
+    <?= $form->field($model, 'globalSearch')->textInput(['maxlength' => 15, 'style' => 'width:250px;'])  ?>
 
 
     <?php // echo $form->field($model, 'alamat') ?>
@@ -24,7 +23,7 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
-
+    </div>
     <?php ActiveForm::end(); ?>
 
 </div>

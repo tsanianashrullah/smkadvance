@@ -14,7 +14,7 @@ $this->title = 'Tambah Data jurusan';
 
 <div class="jurusan-form" >
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <?= $form->field($model, 'jurusan')->dropDownList(['Rekayasa Perangkat Lunak' => 'Rekayasa Perangkat Lunak', 'Administrasi Perkantoran 1' => 'Administrasi Perkantoran 1'], ['prompt'=>'.:pilih jurusan:.']) ?>
 
     <?= $form->field($model, 'id_guru')->dropDownList(

@@ -18,9 +18,12 @@ $this->params['breadcrumbs'][]= $this->title;
   <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">
+            <i class="glyphicon glyphicon-list-alt"></i> 
+            <?= Html::encode($this->title) ?>
+        </h3>
+        </div>
 
-    <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
-        <div class="panel-body">
+            <div class="panel-body">
     
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
 
@@ -58,7 +61,6 @@ $this->params['breadcrumbs'][]= $this->title;
             'nip',
             'nama_guru',
             'tempat_lahir',
-            'jk',
             [
             'attribute'=>'tgl_lahir',
             'value' =>'tgl_lahir',

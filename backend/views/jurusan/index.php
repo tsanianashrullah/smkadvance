@@ -22,8 +22,6 @@ $this->params['breadcrumbs'][]= $this->title;
 
 <div class="pull-right">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-<<<<<<< HEAD
-=======
         <?= ButtonTableExport::widget(
     [
         'label' => 'Export Table',
@@ -35,7 +33,7 @@ $this->params['breadcrumbs'][]= $this->title;
         ]
     ]
 );?>
->>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
+
 </div>
 <div class="btn-group">
         <?php
@@ -48,15 +46,11 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 </div>
-<<<<<<< HEAD
-
-=======
 <?php
 // On your view
 
 ButtonTableExportAsset::register($this);
 ?>
->>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
 <div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
