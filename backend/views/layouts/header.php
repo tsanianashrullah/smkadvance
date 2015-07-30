@@ -32,6 +32,10 @@ use yii\bootstrap\NavBar;
                 $menuItems[]= ['label'=>'Sejarah','url'=>['/site/sejarah']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
+                $menuItems[]=[
+                    'label' => 'Pusat Artikel',
+                    'url'=> ['/artikel/index'],
+                ];
                 $menuItems[] = [
                     'label'=> 'Tambah Admin',
                     'url' => ['/site/signup'],

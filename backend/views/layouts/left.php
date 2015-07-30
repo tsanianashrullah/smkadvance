@@ -41,14 +41,9 @@ use app\assets\AppAsset;
                 ['label' => 'Home', 'url' => ['/site/index']],
             ];
             if (Yii::$app->user->isGuest) {
-                    $menuItems[] =[
-                        'label' => 'Masuk', //for basic
-                        'url' => ['/site/login'],
-                    ];
-                } else{
                     //['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
                     //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
-
+            }else{
                     $menuItems[] =[
                         'label' =>  'Pengajar', //for basic
                         'url' => ['/guru/index'],
