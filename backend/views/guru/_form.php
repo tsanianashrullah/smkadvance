@@ -12,7 +12,7 @@ $this->title = 'Tambah Data Guru';
 
 <div class="guru-form" >
 
-    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
  
             <br>
             
@@ -45,6 +45,8 @@ $this->title = 'Tambah Data Guru';
     <?= $form->field($model, 'status')->dropdownlist(['Lajang' => 'Lajang', 'Menikah'=> 'Menikah','Cerai'=>'Cerai'], ['prompt'=>'.:: Pilih Status Anda ::.']) ?>
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 7]) ?>
+
+    <?= $form->field($model, 'file')->fileInput() ?>
 
      <div class="panel-footer" style="text-align: right;">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

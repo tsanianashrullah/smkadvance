@@ -53,6 +53,6 @@ class Jurusan extends \yii\db\ActiveRecord
     }
     public function getGuru()
     {
-        return $this->hasOne(Guru::className(),['guru'=>'nip']);
+        return $this->hasOne(Guru::className(),['nip'=>'id_guru']);
     }
 }
