@@ -29,9 +29,13 @@ use yii\bootstrap\NavBar;
                 ['label' => 'Home', 'url' => ['/site/index']],
             ];
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
                 $menuItems[]= ['label'=>'Sejarah','url'=>['/site/sejarah']];
+                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
+                $menuItems[] = [
+                    'label'=> 'Tambah Admin',
+                    'url' => ['/site/signup'],
+                    ];
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],

@@ -1,12 +1,15 @@
 <?php
-use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\helpers\Html;
+//use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
-use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
-use dosamigos\tableexport\ButtonTableExportAsset;
+use kartik\export\ExportMenu;
+use kartik\grid\GridView;
+use kartik\helpers\Html;
+
+
 $this->title = 'Daftar Jurusan';
 $this->params['breadcrumbs'][]= $this->title;       
 ?>
@@ -22,20 +25,7 @@ $this->params['breadcrumbs'][]= $this->title;
 
 <div class="pull-right">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-<<<<<<< HEAD
-=======
-        <?= ButtonTableExport::widget(
-    [
-        'label' => 'Export Table',
-        'selector' => '#tableId', // any jQuery selector
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7],
-            'useDataUri' => false,
-            'url' => \yii\helpers\Url::to('controller/download')
-        ]
-    ]
-);?>
->>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
+
 </div>
 <div class="btn-group">
         <?php
@@ -48,20 +38,8 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 </div>
-<<<<<<< HEAD
-
-=======
 <?php
-// On your view
-
-ButtonTableExportAsset::register($this);
-?>
->>>>>>> 64cf5ecf3c1da932f8c8fc99f4f06c16bdf81838
-<div>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
+$gridColumns = [
             ['class' => 'yii\grid\SerialColumn'],
 
             'jurusan',
@@ -69,6 +47,55 @@ ButtonTableExportAsset::register($this);
             'keterangan',
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
-        ],    
-    ]);?> 
+        ];
+        ?>
+<div>
+    <?= 
+$fullExportMenu = ExportMenu::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'target' => ExportMenu::TARGET_BLANK,
+    'fontAwesome' => true,
+    'pjaxContainerId' => 'kv-pjax-container',
+    'dropdownOptions' => [
+        'label' => 'Full',
+        'class' => 'btn btn-default',
+        'itemsBefore' => [
+            '<li class="dropdown-header">Export All Data</li>',
+        ],
+    ],
+]);
+echo GridView::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'pjax' => true,
+    'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container']],
+    'panel' => [
+        'type' => GridView::TYPE_PRIMARY,
+        'heading' => '<h3 class="panel-title"><i class="glyphicon glyphicon-book"></i> Library</h3>',
+    ],
+    // set a label for default menu
+    'export' => [
+        'label' => 'Page',
+        'fontAwesome' => true,
+    ],
+    // your toolbar can include the additional full export menu
+    'toolbar' => [
+        '{export}',
+        $fullExportMenu,
+        ['content'=>
+            Html::button('<i class="glyphicon glyphicon-plus"></i>', [
+                'type'=>'button', 
+                'title'=>Yii::t('kvgrid', 'Add Book'), 
+                'class'=>'btn btn-success'
+            ]) . ' '.
+            Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['grid-demo'], [
+                'data-pjax'=>0, 
+                'class' => 'btn btn-default', 
+                'title'=>Yii::t('kvgrid', 'Reset Grid')
+            ])
+        ],
+    ]
+]);
+?> 
     </div>

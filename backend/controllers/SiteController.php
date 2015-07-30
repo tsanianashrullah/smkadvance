@@ -5,6 +5,13 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use backend\models\PasswordResetRequestForm;
+use backend\models\ResetPasswordForm;
+use backend\models\SignupForm;
+use backend\models\AuthItem;
+use yii\base\InvalidParamException;
+use yii\web\ForbiddenHttpException;
+use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use common\models\LoginForm;
 use common\models\ContactForm;
@@ -116,5 +123,30 @@ public function actionCreate()
         }
     }
     return $this->render('upload',['model' => $model]);
-}    
+    } 
+    public function actionSignup()
+    {
+    if(yii::$app->user->can('daftar'))
+        {
+        $model = new SignupForm();
+            $authItems = AuthItem::find()->all();
+            if ($model->load(Yii::$app->request->post())) {
+                if ($user = $model->signup()) {
+                    if (Yii::$app->getUser()->login($user)) {
+                        return $this->goHome();
+                    }
+                }
+            }
+
+            return $this->render('signup', [
+                'model' => $model,
+                'authItems' => $authItems,
+            ]);
+    }else{
+        throw new ForbiddenHttpException('Halaman dibatasi Akses');
+    }
+ }
+ public function actionSejarah(){
+    return $this->render('sejarah');
+ }          
 }

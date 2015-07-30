@@ -49,6 +49,7 @@ $fieldOptions2 = [
                 <?= Html::submitButton('Masuk', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
+            <a href="http://127.0.0.1/smkadvanced/frontend/web/index.php?r=site/signup">Daftarkan</a>
         </div>
         
 
