@@ -11,7 +11,17 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+    'social' => [
+        // the module class
+        'class' => 'kartik\social\Module',
+ 
+        // the global settings for the facebook widget
+        'facebook' => [
+            'appId' => 'FACEBOOK_APP_ID',
+        ],
+],
+],
     'components' => [
         
     'view' => [
