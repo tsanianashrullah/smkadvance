@@ -32,6 +32,7 @@ use app\assets\AppAsset;
         </form>
         <!-- /.search form -->
 
+
         <?=
         Nav::widget(
             [
@@ -70,6 +71,88 @@ use app\assets\AppAsset;
         
 
         <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Guru</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= \yii\helpers\Url::to(['/guru/report']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-child"></i> <span>Siswa</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= \yii\helpers\Url::to(['/siswa/report']) ?>"><span class="fa fa-server"></span>Daftar Siswa</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/siswa/prestasi']) ?>"><span class="fa fa-dashboard"></span>Prestasi</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+            <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> <span>Artikel</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-database"></span>Semua</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-graduation-cap"></span>Pendidikan</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Sekolah</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-file-code-o"></span>PPDB</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Siswa</a>
+                    </li>
+                    
+                </ul>
+            </li>
+        </ul>
+
+            <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-share"></i> <span>Same tools</span>

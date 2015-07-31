@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][]= $this->title;
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
        <div class="pull-right">
     <?= Html::a('Buat',['create'], ['class' => 'btn btn-success']) ?>
-    <?= date('Y-m-d') ?>
 </div>
 
     <?= GridView::widget([

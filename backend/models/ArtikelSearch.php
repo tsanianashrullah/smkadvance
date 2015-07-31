@@ -18,7 +18,7 @@ class ArtikelSearch extends Artikel
     public function rules()
     {
         return [
-            [['globalSearch','isi','judul'], 'safe'],
+            [['globalSearch','isi','judul','tgl'], 'safe'],
         ];
     }
 
@@ -59,6 +59,8 @@ class ArtikelSearch extends Artikel
 
         $query->orFilterWhere(['like', 'isi', $this->globalSearch])
             ->orFilterWhere(['like', 'judul', $this->globalSearch])
+            ->orFilterWhere(['like', 'tgl', $this->globalSearch])
+            ->andFilterWhere(['like', 'tgl', $this->tgl])
             ->andFilterWhere(['like', 'isi', $this->isi])
             ->andFilterWhere(['like', 'judul', $this->judul]);
         return $dataProvider;
