@@ -31,7 +31,8 @@ class ArtikelController extends Controller
 		];
 	}
 public function actionIndex()
-{	$searchModel = new ArtikelSearch();
+{	
+	$searchModel = new ArtikelSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 	$dataProvider->pagination->pageSize=10;
 	 return $this->render('index', [
@@ -55,6 +56,7 @@ public function actionCreate()
 	 if ($model->load(Yii::$app->request->post())) {
         try{
         	$model->tgl= date('Y-m-d');
+        	$model->user=Yii::$app->user->identity->username;
         	$imageName= $model->judul;
             $model->file=UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'artikel/' . $imageName . '.' .   $model->file->extension );
@@ -117,6 +119,38 @@ public function actionDelete($id)
 	}
 	
 }
+
+public function actionList()
+{	
+	$searchModel= new ArtikelSearch;
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);	
+    $query = Artikel::find();
+
+    $pages = new Pagination([
+    	        'defaultPageSize' => 5,
+        	    'totalCount' => $query->count(),
+	        ]);
+
+    $models = $query->orderBy('id')
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+    return $this->render('list', [
+    	 'searchModel'=>$searchModel,
+    	 'dataProvider'=>$dataProvider,
+         'models' => $models,
+         'pages' => $pages,
+    ]);
+}
+
+public function actionDetail($id)
+{
+	return $this->render('detail',[
+		'model' => $this->findModel($id),
+		]);
+}
+
 
 protected function findModel($id)
 {

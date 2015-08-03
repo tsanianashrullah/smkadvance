@@ -137,7 +137,7 @@ use app\assets\AppAsset;
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-database"></span>Semua</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/artikel/list']) ?>"><span class="fa fa-database"></span>Semua</a>
                     </li>
                     <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-graduation-cap"></span>Pendidikan</a>
                     </li>

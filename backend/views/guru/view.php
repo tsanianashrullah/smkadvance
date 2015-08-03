@@ -18,15 +18,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-
-        <?= Html::a('Update', ['update', 'id' => $model->nip], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->nip], [
+<?php if (Yii::$app->user->isGuest) {
+                    //['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
+                    //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
+            }else{
+         $menu[]=[Html::a('Update', ['update', 'id' => $model->nip], ['class' => 'btn btn-primary'])];
+         $menu[]=[Html::a('Delete', ['delete', 'id' => $model->nip], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])]; 
+    }
+    ?>
+    <?php echo '$menu'; ?>
     </p>
     <?php
 //      'model'=$model;

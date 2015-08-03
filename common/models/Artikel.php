@@ -8,6 +8,7 @@ class Arikel extends \yii\db\ActiveRecord
 {
    public $file;
    public $globalSearch;
+   public $menu;
     /**
      * @inheritdoc
      */
@@ -24,6 +25,7 @@ class Arikel extends \yii\db\ActiveRecord
         return [
         [['judul','isi'],'required'],
         [['file'], 'file'],
+        [['menu'],'menu'],
         ];
     }
 
