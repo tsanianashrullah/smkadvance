@@ -71,7 +71,7 @@ public function actionCreate()
             );
         }
 	} else {
-		return $this->render('create',[
+		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
 	}
@@ -125,6 +125,16 @@ if (($model = Artikel::findOne($id)) !== null){
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
 	   }
+
+}
+public function actionReport()
+{	$searchModel = new ArtikelSearch();
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	$dataProvider->pagination->pageSize=10;
+	 return $this->render('report', [
+      	'searchModel'=> $searchModel,
+		'dataProvider'=> $dataProvider,
+        ]);
 
 }
 

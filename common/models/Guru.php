@@ -55,7 +55,7 @@ class Guru extends \yii\db\ActiveRecord
             'pend_akhir'=>'Pendidikan Terakhir',
             'program_keahlian'=>'Program Keahlian',
             'status'=>'Status',
-            'globalSearch'=>'Cari Data',
+            'globalSearch'=>'',
             'foto'=>'Foto',
             'file'=>'Foto',
         ];

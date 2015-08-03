@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use common\models\LoginForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -19,14 +18,17 @@ $fieldOptions2 = [
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
 ];
 ?>
-<background>
-<div class="login-box">
+
+<div class="login-box" >
+
     <div class="login-logo">
-        <a href="#"><b>Sistem Informasi</b>SMK</a>
+        <a href="#"><b>SMK</b>PGRI1Cimahi</a>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Masuk terlebih dahulu</p>
+    <div class="login-box-body"> 
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="login-box-msg">Sign in to start your session</h4>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
@@ -46,29 +48,9 @@ $fieldOptions2 = [
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-                <?= Html::submitButton('Masuk', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Sign in', ['class' => 'btn btn-success btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
-            <a href="http://127.0.0.1/smkadvanced/frontend/web/index.php?r=site/signup">Daftarkan</a>
         </div>
-        
-
-
         <?php ActiveForm::end(); ?>
-<?php /*
-        <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
-                using Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign
-                in using Google+</a>
-        </div>
-        <!-- /.social-auth-links -->
 
-        <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
-
-    </div>
-    <!-- /.login-box-body -->
-</div><!-- /.login-box -->
-*/ ?>

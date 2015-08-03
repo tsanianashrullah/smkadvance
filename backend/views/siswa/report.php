@@ -22,18 +22,8 @@ $this->params['breadcrumbs'][]= $this->title;
 				</div>
         <div class="panel-body">
         	<?php echo $this->render('search', ['model' => $searchModel]); ?>
-		  <div class="pull-right">
-			<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-				<?php
-				Modal::begin([
-						'header'=>'<center><h4>Siswa</h4></center>',
-						'id' => 'modal',
-						'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-					]);
-				echo "<div id='modalContent'></div>";
-				Modal::end();
-		?>
-</div><br><br>
+		  
+</div>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,

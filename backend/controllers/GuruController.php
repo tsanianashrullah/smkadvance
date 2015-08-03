@@ -109,7 +109,17 @@ public function actionDelete($id)
 	}
 	
 }
+public function actionReport()
+{
+	$searchModel = new GuruSearch();
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	$dataProvider->pagination->pageSize=10;
+	 return $this->render('report', [
+      	'searchModel'=> $searchModel,
+		'dataProvider'=> $dataProvider,
+        ]);
 
+}
 protected function findModel($id)
 {
 if (($model = Guru::findOne($id)) !== null){

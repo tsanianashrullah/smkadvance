@@ -15,18 +15,24 @@ $this->title = 'Daftar Guru';
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 <div class="guru-index">
-  <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">
+  <div class="panel panel-default">
+      <div class="panel-heading">  
+       <center> <h1 class="panel-title">
             <i class="glyphicon glyphicon-list-alt"></i> 
             <?= Html::encode($this->title) ?>
-        </h3>
+        </h1></center>
         </div>
 
             <div class="panel-body">    
-     <?php echo $this->render('search', ['model' => $searchModel]); ?>
-       <div class="pull-right">
-    <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+                    <div class="pull-left">
+            <?php echo $this->render('search', ['model' => $searchModel]); ?>
+        </div>
+                <div class="pull-right">
+    <br><br>
+    <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
+    </div>
+   
+       
         <?php
             Modal::begin([
                     'header'=>'<h4>Guru</h4>',
@@ -37,19 +43,6 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 </div>
-
-<?= ButtonTableExport::widget(
-    [
-        'label' => 'Export Table',
-        'selector' => '#tableId', // any jQuery selector
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7],
-            'useDataUri' => false,
-            'url' => \yii\helpers\Url::to('GuruController/download')
-        ]
-    ]
-);?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -78,8 +71,5 @@ $this->params['breadcrumbs'][]= $this->title;
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
         ],    
-    ]);
-
-    ?>
-
+    ]);?>
 </div>

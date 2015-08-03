@@ -145,7 +145,16 @@ if (($model = Siswa::findOne($id)) !== null){
 	   }
 
 }
-
+public function actionReport()
+{
+	$searchModel = new SiswaSearch();
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	$dataProvider->pagination->pageSize=10;
+	    return $this->render('report', [
+           'dataProvider' => $dataProvider,
+			'searchModel' => $searchModel, 
+		]);
+}
 
 }
  

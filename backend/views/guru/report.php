@@ -3,44 +3,37 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use dosamigos\tableexport\ButtonTableExport;
+use dosamigos\tableexport\ButtonTableExportAsset;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
+use yii\data\ActiveDataProvider;
 
 
-$this->title = 'Daftar Staff';
 
+$this->title = 'Daftar Guru';
+$this->params['breadcrumbs'][]= $this->title;
 ?>
 <div class="guru-index">
-  <div class="panel panel-primarydefault">
+  <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
             <i class="glyphicon glyphicon-list-alt"></i> 
-                <?= Html::encode($this->title) ?></h3>
-</div>
-        <div class="panel-body">
+            <?= Html::encode($this->title) ?>
+        </h3>
+        </div>
+
+            <div class="panel-body">    
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
-    <div class="pull-right">
-             <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-</div>     
-<div>
-        <?php
-            Modal::begin([
-                    'header'=>'<h4>Staff</h4>',
-                    'id' => 'modal',
-                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                ]);
-            echo "<div id='modalContent'></div>";
-            Modal::end();
-    ?>
-</div>
-   <?= GridView::widget([
+   
+ 
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'nama_staff',
+            'nip',
+            'nama_guru',
             'tempat_lahir',
             [
             'attribute'=>'tgl_lahir',
@@ -54,18 +47,16 @@ $this->title = 'Daftar Staff';
                 'format' => 'yyyy-mm-dd',]
                 ])
             ],
-
-            'alamat',
-            'bagian',
-            'jk',
+            'agama',
+            'pend_akhir',
+            'program_keahlian',
+            'alamat:ntext',
 
         
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}'],
         ],    
     ]);
-  
 
     ?>
-
 
 </div>
