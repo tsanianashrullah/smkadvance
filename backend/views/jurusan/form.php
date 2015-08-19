@@ -15,19 +15,17 @@ $this->title = 'Tambah Data jurusan';
 <div class="jurusan-form" >
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
-    <?= $form->field($model, 'jurusan')->textInput(['maxlength'=>15,]) ?>
+    <?= $form->field($model, 'jurusan')->textInput(['maxlength'=>15,]); ?>
 
     <?= $form->field($model, 'id_guru')->dropDownList(
         ArrayHelper::map(Guru::find()->all(),'nip','nama_guru'),['prompt'=>'Data']
-        )?>
+        );?>
 
-    <?= $form->field($model, 'keterangan')->textarea(['rows' => 7]) ?>
+    <?= $form->field($model, 'file')->fileInput() ?>
 
+    <?= $form->field($model, 'deskripsi')->textarea(['rows'=>7]);?>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
+            <?= Html::submitButton($model->isNewRecord ? 'Buat' : 'Perbarui', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
-
 </div>
-

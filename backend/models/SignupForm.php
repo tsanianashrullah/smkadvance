@@ -15,10 +15,14 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $permissions;
-
     /**
      * @inheritdoc
      */
+    public static function tablename()
+    {
+        'user';
+    }
+
     public function rules()
     {
         return [

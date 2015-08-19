@@ -2,20 +2,14 @@
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 
-$this->title='List Artikel';
+$this->title='Daftar Jurusan';
 ?>
+<style type="text/css"></style>
 <table border=0 class="tabel-utama" width=100%>
-<tr>
-	<td>
-	</td>
-</tr>
-<tr>
-	<td>
 <center>
-<table border=0 class="tabel-list-artikel">
+<table border=0 class="tabel-list-jurusan">
     <?php foreach ($models as $model): ?>
     	<tr bgcolor='black'><td rowspan=2 width=45%>
-
     	<?= 
     	Html::img("@web/$model->foto",['width'=>'100%']);
     	?>
@@ -23,7 +17,7 @@ $this->title='List Artikel';
     <td width=2%>&nbsp;</td>
     	<td valign='top' height=10%>
     	<h2>
-        <?= Html::a($model->judul, ['detail', 'id' => $model->id]) ?></h2></td>
+        <?= Html::a($model->jurusan, ['detailJurusan', 'id' => $model->id]) ?></h2></td>
         </tr>
     <tr bgcolor='white'>
     	<td width=2%>&nbsp;</td>

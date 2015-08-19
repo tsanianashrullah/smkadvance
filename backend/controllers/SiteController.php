@@ -8,6 +8,7 @@ use yii\web\Controller;
 use backend\models\PasswordResetRequestForm;
 use backend\models\ResetPasswordForm;
 use backend\models\SignupForm;
+use backend\models\SignupSearch;
 use backend\models\AuthItem;
 use yii\base\InvalidParamException;
 use yii\web\ForbiddenHttpException;
@@ -118,7 +119,7 @@ public function actionCreate()
         ->addRule('file', 'file', ['extensions' => 'jpg']);
  
     if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-        if ($model->saveUploadedFile() !== false) {
+        if ($moadel->saveUploadedFile() !== false) {
             Yii::$app->session->setFlash('success', 'Upload Sukses');
         }
     }
@@ -132,9 +133,7 @@ public function actionCreate()
             $authItems = AuthItem::find()->all();
             if ($model->load(Yii::$app->request->post())) {
                 if ($user = $model->signup()) {
-                    if (Yii::$app->getUser()->login($user)) {
-                        return $this->goHome();
-                    }
+                        return $this->redirect('index.php?r=site/listrole');
                 }
             }
 
@@ -148,5 +147,46 @@ public function actionCreate()
  }
  public function actionSejarah(){
     return $this->render('sejarah');
- }          
+ }
+ public function actionListrole()
+    {   
+        $searchModel = new SignupSearch();
+        $dataProvider = $searchModel->search(yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize=10;
+         return $this->render('listrole', [
+            'searchModel'=> $searchModel,
+            'dataProvider'=> $dataProvider,
+            ]);
+
+    }          
+ public function actionRole()
+ {
+    $authItems = AuthItem::find()->all();
+    return $this->render('role',[
+        'model' => $this->findUser($id),
+        'authItems' => $authItems,
+        ]);
+
+ }
+    protected function findModel($id)
+    {
+    if (($model = SignupForm::findOne($id)) !== null){
+        return $model;
+    } else {
+            throw new NotFoundHttpExeption('the requested page does not exsit');
+           }
+    }
+public function actionDelete($id)
+{
+    if(yii::$app->user->can('delete'))
+    {
+        $this->findModel($id)->delete();
+    return $this->goBack();
+    }else{
+    throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
+    
+    }
+    
+}
+
 }

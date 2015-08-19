@@ -56,7 +56,7 @@ public function actionCreate()
 	 if ($model->load(Yii::$app->request->post())) {
         try{
         	$model->tgl= date('Y-m-d');
-        	$model->user=Yii::$app->user->identity->username;
+        	$model->user=Yii::$app->user->identity->id;
         	$imageName= $model->judul;
             $model->file=UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'artikel/' . $imageName . '.' .   $model->file->extension );
@@ -159,7 +159,6 @@ if (($model = Artikel::findOne($id)) !== null){
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
 	   }
-
 }
 
 }

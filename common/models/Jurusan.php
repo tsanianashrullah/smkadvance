@@ -18,6 +18,7 @@ class Jurusan extends \yii\db\ActiveRecord
 {
     
    public $globalSearch;
+   public $file;
     /**
      * @inheritdoc
      */
@@ -35,7 +36,7 @@ class Jurusan extends \yii\db\ActiveRecord
         [['jurusan','id_guru','keterangan'],'required'],
         [['jurusan'],'string','max'=>30],
         [['id_guru'],'string','max'=>10],
-
+        [['file'],'file'],
         ];
     }
 
@@ -49,6 +50,7 @@ class Jurusan extends \yii\db\ActiveRecord
         'id_guru'=>'Kepala Jurusan',
         'keterangan'=>'Keterangan',
         'globalSearch'=>'Cari Data',
+        'foto'=>'Foto',
         ];
     }
     public function getGuru()

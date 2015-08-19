@@ -9,17 +9,20 @@ use app\assets\AppAsset;
 <aside class="main-sidebar">
 
     <section class="sidebar">
-
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
+        <?php
+            if (Yii::$app->user->isGuest) {
+        }else{ 
+        //<!-- Sidebar user panel -->
+        echo '<div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/logo.png" class="img-circle" alt="User Image"/>
+                <img src="images/avatar04.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>SMK PGRI 1 Cimahi</p>
+                <p>' . Yii::$app->user->identity->username . '</p>
             </div>
-        </div>
-
+        </div>';
+        } 
+        ?>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -31,45 +34,6 @@ use app\assets\AppAsset;
             </div>
         </form>
         <!-- /.search form -->
-
-
-        <?=
-        Nav::widget(
-            [
-                'encodeLabels' => false,
-                ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                    //['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
-                    //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
-            }else{
-                    $menuItems[] =[
-                        'label' =>  'Pengajar', //for basic
-                        'url' => ['/guru/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Siswa', //for basic
-                        'url' => ['/siswa/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Staff', //for basic
-                        'url' => ['/staff/index'],
-                    ];
-                    
-                    $menuItems[] =[
-                        'label' => 'Jurusan', //for basic
-                        'url' => ['/jurusan/index'],
-                    ];
-                }
-                echo Nav::widget([
-                'options' => ['class' => 'sidebar-menu'],
-                'items' => $menuItems,
-            ]);
-        ?>
-        
-
         <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
@@ -130,10 +94,41 @@ use app\assets\AppAsset;
             </li>
         </ul>
 
-            <ul class="sidebar-menu">
+
+        <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-folder-open"></i> <span>Artikel</span>
+                    <i class="fa fa-dashboard"></i> <span>Kompetensi Keahlian</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
+                   </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder-open"></i> <span>Berita Sekolah</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -141,7 +136,7 @@ use app\assets\AppAsset;
                     </li>
                     <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-graduation-cap"></span>Pendidikan</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Sekolah</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Event</a>
                     </li>
                     <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-file-code-o"></span>PPDB</a>
                     </li>
@@ -151,7 +146,6 @@ use app\assets\AppAsset;
                 </ul>
             </li>
         </ul>
-
             <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
