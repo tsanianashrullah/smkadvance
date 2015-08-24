@@ -15,6 +15,7 @@ use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use common\models\LoginForm;
+use common\models\User;
 use common\models\ContactForm;
 
 class SiteController extends Controller
@@ -149,7 +150,9 @@ public function actionCreate()
     return $this->render('sejarah');
  }
  public function actionListrole()
-    {   
+    {  
+    if(yii::$app->user->can('admin'))
+        {
         $searchModel = new SignupSearch();
         $dataProvider = $searchModel->search(yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize=10;
@@ -157,20 +160,23 @@ public function actionCreate()
             'searchModel'=> $searchModel,
             'dataProvider'=> $dataProvider,
             ]);
+        }else{
+        throw new ForbiddenHttpException('Halaman dibatasi Akses');
+        }
 
     }          
- public function actionRole()
+ public function actionRole($id)
  {
     $authItems = AuthItem::find()->all();
     return $this->render('role',[
-        'model' => $this->findUser($id),
+        'model' => $this->findModel($id),
         'authItems' => $authItems,
         ]);
 
  }
     protected function findModel($id)
     {
-    if (($model = SignupForm::findOne($id)) !== null){
+    if (($model = User::findOne($id)) !== null){
         return $model;
     } else {
             throw new NotFoundHttpExeption('the requested page does not exsit');
@@ -181,7 +187,7 @@ public function actionDelete($id)
     if(yii::$app->user->can('delete'))
     {
         $this->findModel($id)->delete();
-    return $this->goBack();
+    return $this->redirect('?r=site/listrole');
     }else{
     throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
     

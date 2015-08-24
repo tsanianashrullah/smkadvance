@@ -2,8 +2,6 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
-use dosamigos\tableexport\ButtonTableExport;
-use dosamigos\tableexport\ButtonTableExportAsset;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
@@ -12,6 +10,7 @@ use yii\data\ActiveDataProvider;
 
 
 $this->title = 'Daftar Guru';
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 <div class="guru-index">
@@ -25,8 +24,13 @@ $this->params['breadcrumbs'][]= $this->title;
 
             <div class="panel-body">    
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
+       <div class="row">
+        <div class="col-sm-12">
        <div class="pull-right">
     <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+    </div>
+    </div>
+    </div>
         <?php
             Modal::begin([
                     'header'=>'<h4>Guru</h4>',
@@ -38,18 +42,7 @@ $this->params['breadcrumbs'][]= $this->title;
     ?>
 </div>
 
-<?= ButtonTableExport::widget(
-    [
-        'label' => 'Export Table',
-        'selector' => '#tableId', // any jQuery selector
-        'exportClientOptions' => [
-            'ignoredColumns' => [0, 7],
-            'useDataUri' => false,
-            'url' => \yii\helpers\Url::to('GuruController/download')
-        ]
-    ]
-);?>
-
+    <div class="table-responsive"> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -73,7 +66,16 @@ $this->params['breadcrumbs'][]= $this->title;
             'agama',
             'pend_akhir',
             'program_keahlian',
-            'alamat:ntext',
+            'alamat',
+            [
+              'attribute' => 'foto',
+              'format' => 'raw',
+              'value' => function($model) {
+              return Html::img($model->imageurl,['width'=>100]);
+            },
+            'headerOptions' => ['width' => '150'],
+              'contentOptions' => ['style' => 'text-align :center;'],
+            ], 
 
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
@@ -82,4 +84,5 @@ $this->params['breadcrumbs'][]= $this->title;
 
     ?>
 
+</div>
 </div>

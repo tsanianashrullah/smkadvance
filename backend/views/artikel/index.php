@@ -9,7 +9,8 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\backend\artikel;
-$this->title = 'Daftar Pengajar';
+$this->title = 'Daftar Artikel';
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 
@@ -23,10 +24,14 @@ $this->params['breadcrumbs'][]= $this->title;
         </div>
     <div class="panel-body">
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
+       <div class="row">
+    <div class="col-sm-12">
        <div class="pull-right">
     <?= Html::a('Buat',['create'], ['class' => 'btn btn-success']) ?>
 </div>
-
+</div>
+</div>
+<div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -47,19 +52,19 @@ $this->params['breadcrumbs'][]= $this->title;
             'judul',
             'isi',
             'tgl',
-[
-                                               'attribute' => 'foto',
-                                               'format' => 'raw',
-                                               'value' => function($model) {
-                                                               return Html::img($model->imageurl,['width'=>100]);
-                                                          },
-                                          'headerOptions' => ['width' => '150'],
-                'contentOptions' => ['style' => 'text-align :center;'],
-                                           ], 
+            [
+              'attribute' => 'foto',
+              'format' => 'raw',
+              'value' => function($model) {
+              return Html::img($model->imageurl,['width'=>100]);
+            },
+              'headerOptions' => ['width' => '150'],
+              'contentOptions' => ['style' => 'text-align :center;'],
+            ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
         ],    
     ]);
 
     ?>
-
+</div>
 </div>

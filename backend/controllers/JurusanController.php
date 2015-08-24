@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use yii\web\ForbiddenHttpException;
 use dosamigos\tableexport\ButtonTableExport;
 
@@ -66,6 +67,7 @@ public function actionCreate()
 
 	 if ($model->load(Yii::$app->request->post())) {
         try{
+
         	$imageName= $model->jurusan;
             $model->file=UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'jurusan/' . $imageName . '.' .   $model->file->extension );
@@ -82,7 +84,7 @@ public function actionCreate()
             );
         }
 	} else {
-		return $this->render('create',[
+		return $this->renderPartial('create',[
 				'model' => $model,
 				]);
 	}
@@ -154,5 +156,11 @@ public function actionListjurusan()
          'models' => $models,
          'pages' => $pages,
     ]);
+}
+public function actionDetail($id)
+{
+	return $this->render('detail',[
+		'model' => $this->findModel($id),
+		]);
 }
 }

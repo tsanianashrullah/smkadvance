@@ -27,14 +27,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?php
+    $img=Html::img("@web/$model->foto",['width'=>100]);
+    ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'jurusan',
             'id_guru',
-            'keterangan',
+            'deskripsi',
+            [
+                'label'=>'Foto',
+                'format'=>'raw',
+                'value'=>$img,
+            ],
         ],
     ]) 
    

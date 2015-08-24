@@ -14,12 +14,11 @@ $this->title = 'Tambah Data jurusan';
 
 <div class="jurusan-form" >
 
-    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
-    <?= $form->field($model, 'jurusan')->textInput(['maxlength'=>15,]); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form','options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?= $form->field($model, 'jurusan')->textInput(['maxlength'=>300,]); ?>
 
     <?= $form->field($model, 'id_guru')->dropDownList(
-        ArrayHelper::map(Guru::find()->all(),'nip','nama_guru'),['prompt'=>'Data']
-        );?>
+        ArrayHelper::map(Guru::find()->all(),'nip','nama_guru'),['prompt'=>'Data']);?>
 
     <?= $form->field($model, 'file')->fileInput() ?>
 

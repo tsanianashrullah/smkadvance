@@ -9,6 +9,7 @@ use kartik\export\ExportMenu;
 
 
 $this->title = 'Daftar Jurusan';
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;       
 ?>
 <div class="jurusan-index">
@@ -16,13 +17,16 @@ $this->params['breadcrumbs'][]= $this->title;
       <div class="panel-heading">
         <h3 class="panel-title">
 
-    <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3></div>
-        <div class="panel-body">
-            
+    <i class="glyphicon glyphicon-list-alt"></i> <?= Html::encode($this->title) ?></h3>
+    </div>
+        <div class="panel-body">            
          <?php echo $this->render('search', ['model' => $searchModel]); ?>
-
+<div class="row">
+    <div class="col-sm-12">
 <div class="pull-right">
         <?= Html::button('Tambah Jurusan', ['value'=>Url::to('index.php?r=jurusan/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+</div>
+</div>
 </div>
 <div class="btn-group">
         <?php
@@ -35,7 +39,7 @@ $this->params['breadcrumbs'][]= $this->title;
             Modal::end();
     ?>
 </div>
-<div>
+<div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -44,10 +48,20 @@ $this->params['breadcrumbs'][]= $this->title;
 
             'jurusan',
             'guru.nama_guru',
-            'keterangan',
+            'deskripsi',
+            [
+              'attribute' => 'foto',
+              'format' => 'raw',
+              'value' => function($model) {
+              return Html::img($model->imageurl,['width'=>100]);
+            },
+              'headerOptions' => ['width' => '150'],
+              'contentOptions' => ['style' => 'text-align :center;'],
+            ], 
         
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}{delete}'],
         ],
     ]);
 ?> 
-    </div>
+</div>
+</div>

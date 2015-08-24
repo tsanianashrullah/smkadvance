@@ -3,15 +3,30 @@ use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 ?>
 <style type="text/css">
-.text-center p{
-    color:white;
-}
-.footer-above{
-    background-color: #222d32;
-}
-.footer-below{
-    background-color: #222d32;
-}
+    .text-center p{
+        color:white;
+    }
+    .footer-above{
+        background-color: #222d32;
+    }
+    .footer-below{
+        background-color: #222d32;
+    }
+    .content-header {
+        position: relative;
+        padding: 15px 15px 15px 15px;
+        border-bottom: 1px green solid;
+        background-color: #ffffff!important;
+    }
+    .content {
+        position: relative;
+        border-top: 1px green solid;
+        border-bottom: 1px green solid;
+        border-right: 1px green solid;
+        border-left: 1px green solid;
+        margin-top:10px;
+        background-color: #ffffff!important;
+    }
 </style>
 <div class="content-wrapper">
     <section class="content-header">
@@ -31,15 +46,15 @@ use dmstr\widgets\Alert;
             </h1>
         <?php } ?>
 
+    </section>
+
+    <section class="content">
         <?=
         Breadcrumbs::widget(
             [
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]
         ) ?>
-    </section>
-
-    <section class="content">
         <?= Alert::widget() ?>
         <?= $content ?>
     </section>

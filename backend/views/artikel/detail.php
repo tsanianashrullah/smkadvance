@@ -2,13 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\components\DateHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
 
 $this->title = $model->judul;
 $this->params['breadcrumbs'][] = ['label' => 'List artikel', 'url' => ['list']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $model->judul;
 ?>
 <div id="mdk-body-news"> 
     <span class="mdk-body-reporter">
@@ -27,5 +28,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ?></p>
     <div class="clear"></div>
     
-    Penulis : <a rel="nofollow" href="#"><a target="_blank" rel="nofollow" href="/reporter/dieqy-hasbi-widhana/"><?= $model->user ?></a></a> | Dibuat pada tanggal : <?= $model->tgl ?></div>
+    Penulis :<?= $model->user ?></a></a> | Dibuat pada tanggal : <?= DateHelper::getTanggalIndo($model->tgl); ?></div>
     <div class="clear"></div>

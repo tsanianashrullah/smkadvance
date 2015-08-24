@@ -96,55 +96,11 @@ use app\assets\AppAsset;
 
 
         <ul class="sidebar-menu">
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Kompetensi Keahlian</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
-                   </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-bar-chart"></span>Kompetensi Keahlian</a>
         </ul>
 
         <ul class="sidebar-menu">
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder-open"></i> <span>Berita Sekolah</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/artikel/list']) ?>"><span class="fa fa-database"></span>Semua</a>
-                    </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-graduation-cap"></span>Pendidikan</a>
-                    </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Event</a>
-                    </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-file-code-o"></span>PPDB</a>
-                    </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/#']) ?>"><span class="fa fa-dashboard"></span>Siswa</a>
-                    </li>
-                    
-                </ul>
-            </li>
+            <li><a href="<?= \yii\helpers\Url::to(['/artikel/list']) ?>"><span class="fa fa-folder-open"></span>Berita Sekolah</a>
         </ul>
             <ul class="sidebar-menu">
             <li class="treeview">

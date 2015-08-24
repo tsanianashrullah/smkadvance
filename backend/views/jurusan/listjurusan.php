@@ -2,27 +2,24 @@
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 
-$this->title='Daftar Jurusan';
+$this->title='List Jurusan';
 ?>
 <style type="text/css"></style>
-<table border=0 class="tabel-utama" width=100%>
 <center>
-<table border=0 class="tabel-list-jurusan">
+
     <?php foreach ($models as $model): ?>
-    	<tr bgcolor='black'><td rowspan=2 width=45%>
-    	<?= 
-    	Html::img("@web/$model->foto",['width'=>'100%']);
-    	?>
-    </td>
-    <td width=2%>&nbsp;</td>
-    	<td valign='top' height=10%>
-    	<h2>
-        <?= Html::a($model->jurusan, ['detailJurusan', 'id' => $model->id]) ?></h2></td>
-        </tr>
-    <tr bgcolor='white'>
-    	<td width=2%>&nbsp;</td>
-    	<td>&nbsp;</td></tr>
-    	<tr><td colspan=3 height=2%>&nbsp;</td></tr>
+<div class="row">
+            <div class="col-md-4">
+                
+                    <img class="img-responsive img-hover" src="<?= $model->foto ?>" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h3><?= Html::a($model->jurusan, ['detail', 'id' => $model->id]) ?></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
+                <a class="btn btn-primary" href="portfolio-item.html">View Project</a>
+            </div>
+        </div>
 <?php endforeach; ?>
 </table>
 </center>

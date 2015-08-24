@@ -6,6 +6,9 @@ use kartik\social\FacebookPlugin;
 
 
 $this->title = $model->nama_siswa;
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Siswa', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Siswa Dengan Nama :'.$this->title];
 ?>
 
 <div class="guru-view">
@@ -24,6 +27,7 @@ $this->title = $model->nama_siswa;
             ],
         ]) ?>
     </p>
+
   <div class="col-xs-12 .col-md-8">
 	<?= DetailView::widget([
 		'model'=> $model,
@@ -39,6 +43,7 @@ $this->title = $model->nama_siswa;
 			'pekerjaan_ayah',
 			'alamat',
 			'tahun_masuk',
+			'jurusan.jurusan',			
 			'no_tlp:ntext',
 		],
 	]) ?>

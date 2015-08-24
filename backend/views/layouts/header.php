@@ -33,28 +33,12 @@ use yii\bootstrap\NavBar;
                 $menuItems[]= ['label'=>'Sejarah','url'=>['/site/sejarah']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
-                $menuItems[] =[
-                        'label' =>  'Data Pengajar', //for basic
-                        'url' => ['/guru/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Data Siswa', //for basic
-                        'url' => ['/siswa/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Data Staff', //for basic
-                        'url' => ['/staff/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Data Jurusan', //for basic
-                        'url' => ['/jurusan/index'],
-                    ];
                 $menuItems[]=[
-                    'label' => 'Tambah Berita Sekolah',
-                    'url'=> ['/artikel/index'],
+                    'label' => 'Pusat Data',
+                    'url'=> ['center/data'],
                 ];
                 $menuItems[] = [
-                    'label'=> 'Lihat Admin',
+                    'label'=> 'List Admin',
                     'url' => ['/site/listrole'],
                     ];
                 $menuItems[] = [

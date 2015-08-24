@@ -54,6 +54,7 @@ public function actionCreate()
 		$model = new Artikel();
 
 	 if ($model->load(Yii::$app->request->post())) {
+	 	 if (!empty($model)) {
         try{
         	$model->tgl= date('Y-m-d');
         	$model->user=Yii::$app->user->identity->id;
@@ -65,13 +66,15 @@ public function actionCreate()
                 Yii::$app->getSession()->setFlash(
                     'success','Data saved!'
                 );
-			return $this->redirect(['view', 'id' => $model->id]);
-            }
-        }catch(Exception $e){
-            Yii::$app->getSession()->setFlash(
-                'error',"{$e->getMessage()}"
-            );
+				return $this->redirect(['view', 'id' => $model->id]);
+	            }
+	        }catch(Exception $e){
+	            Yii::$app->getSession()->setFlash(
+	                'error',"{$e->getMessage()}"
+	            );
+		 	}
         }
+	 		
 	} else {
 		return $this->render('create',[
 				'model' => $model,

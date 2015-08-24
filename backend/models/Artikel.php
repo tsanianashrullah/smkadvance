@@ -1,8 +1,8 @@
 <?php
 
 namespace backend\models;
-
 use Yii;
+use common\models\Kategori;
 use yii\helpers\Url;
 class Artikel extends \yii\db\ActiveRecord
 {
@@ -22,16 +22,16 @@ class Artikel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        [['judul','isi'],'required'],
+        [['judul','isi','id_kategori'],'required'],
         [['file'], 'file'],
         ];
     }
 
-	public function getImageurl()
-   {
+    public function getImageurl()
+    {
        return Url::to('@web/' . $this->foto, true);
        //return Url::to('@web/uploads/' . $this->foto, true);
-   } 
+    } 
     /**
      * @inheritdoc
      */
@@ -41,7 +41,12 @@ class Artikel extends \yii\db\ActiveRecord
         	'judul'=>'Judul',
         	'isi'=>'Isi',
         	'tgl'=>'Tanggal',
+            'id_kategori'=>'Kategori',
             'file'=>'Gambar',
         ];
+    }
+    public function getKategori()
+    {
+        return $this->hasOne(Kategori::className(),['id_kategori'=>'id_kategori']);
     }
 }

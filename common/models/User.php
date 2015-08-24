@@ -6,6 +6,9 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use backend\models\AuthAssignment;
+use yii\base\Model;
+
 
 /**
  * User model
@@ -25,7 +28,7 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
-
+    public $permissions;
     /**
      * @inheritdoc
      */
@@ -185,5 +188,17 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    public function getPermissions(){
+        $permissionList = $_POST['SignupForm']['permissions'];
+        print_r($permissionList);
+        die();
+                foreach ($permissionList as $value) 
+                {
+                    $newPermission = new AuthAssignment;
+                    $newPermission->user_id = $user->id;
+                    $newPermission->item_name = $value;
+                    $newPermission->save();
+                }
     }
 }

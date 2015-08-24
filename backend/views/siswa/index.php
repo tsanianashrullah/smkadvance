@@ -10,31 +10,38 @@ use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 
 $this->title = 'Daftar Siswa';
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;
 ?>
-
 <div class="siswa-index">
-	 <div class="panel panel-primary">
+  <div class="panel panel-default">
       <div class="panel-heading">
-      	<h3 class="panel-title">
-			 <i class="glyphicon glyphicon-list-alt"></i> 
-    			<?= Html::encode($this->title) ?></h3>
-				</div>
-        <div class="panel-body">
-        	<?php echo $this->render('search', ['model' => $searchModel]); ?>
-		  <div class="pull-right">
-			<?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-				<?php
-				Modal::begin([
-						'header'=>'<center><h4>Siswa</h4></center>',
-						'id' => 'modal',
-						'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-					]);
-				echo "<div id='modalContent'></div>";
-				Modal::end();
-		?>
+        <h3 class="panel-title">
+    <i class="glyphicon glyphicon-list-alt"></i> 
+    <?= Html::encode($this->title) ?></h3>
+    </div>
+        <div class="panel-body">          
+         <?php echo $this->render('search', ['model' => $searchModel]); ?>
+<div class="pull-right">
+        <?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
 </div>
-	<?= GridView::widget([
+<div class="row">
+    <div class="col-sm-12">
+</div>
+</div>
+<div>
+        <?php
+            Modal::begin([
+                    'header'=>'<h4>Siswa</h4>',
+                    'id' => 'modal',
+                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                ]);
+            echo "<div id='modalContent'></div>";
+            Modal::end();
+    ?>
+</div>
+<div class="table-responsive">
+    <?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
 		'columns' => [
@@ -42,7 +49,7 @@ $this->params['breadcrumbs'][]= $this->title;
 			'nisn',
 			'nama_siswa',
 			'tempat_lahir',
-			      [
+			[
                 'attribute'=> 'tgl_lahir',
                 'value'=>'tgl_lahir',
                 'format'=>'raw',
@@ -58,20 +65,33 @@ $this->params['breadcrumbs'][]= $this->title;
 
             ],          
             'agama',
-           
             'alamat',
-            'tahun_masuk:ntext',
             [
-	'class' => 'yii\grid\ActionColumn',
-	'template' => '{view} {update} {delete} {link}',
-	'buttons' => [
-		'update' => function ($url,$model) {
-			return Html::a(
-				'<span class="glyphicon glyphicon-pencil"></span>', 
-				$url);
-		},
-	],
-],
+                'attribute'=> 'tahun_masuk',
+                'value'=>'tahun_masuk',
+                'format'=>'raw',
+                'filter'=>DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'tgl_lahir',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                    
+                ])
+
+            ], 
+            'anak_ke',
+            'nama_ayah',
+            'nama_ibu',
+            'pekerjaan_ayah',
+            'jurusan.jurusan',          
+            'no_tlp:ntext',
+            [
+			'class' => 'yii\grid\ActionColumn',
+			'template' => '{view} {update} {delete} {link}'],
      ],
- ]);?> 
+ ]);
+ ?> 
+</div>
 </div>
