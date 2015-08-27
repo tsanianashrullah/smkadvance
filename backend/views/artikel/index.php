@@ -9,7 +9,8 @@ use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\backend\artikel;
-$this->title = 'Daftar Pengajar';
+$this->title = 'Daftar Artikel';
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 
@@ -23,9 +24,12 @@ $this->params['breadcrumbs'][]= $this->title;
         </div>
     <div class="panel-body">
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
+       <div class="row">
+    <div class="col-sm-12">
        <div class="pull-right">
 <?= Html::button('Tambah Artikel', ['value'=>Url::to('index.php?r=artikel/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
 </div>
+<<<<<<< HEAD
 <?php
             Modal::begin([
                     'header'=>'<h4>Guru</h4>',
@@ -35,6 +39,11 @@ $this->params['breadcrumbs'][]= $this->title;
             echo "<div id='modalContent'></div>";
             Modal::end();
     ?>
+=======
+</div>
+</div>
+<div class="table-responsive">
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -55,19 +64,24 @@ $this->params['breadcrumbs'][]= $this->title;
             'judul',
             'isi',
             'tgl',
-[
-                                               'attribute' => 'foto',
-                                               'format' => 'raw',
-                                               'value' => function($model) {
-                                                               return Html::img($model->imageurl,['width'=>100]);
-                                                          },
-                                          'headerOptions' => ['width' => '150'],
-                'contentOptions' => ['style' => 'text-align :center;'],
-                                           ], 
+            [
+              'attribute' => 'foto',
+              'format' => 'raw',
+              'value' => function($model) {
+              return Html::img($model->imageurl,['width'=>100]);
+            },
+              'headerOptions' => ['width' => '150'],
+              'contentOptions' => ['style' => 'text-align :center;'],
+            ],
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
         ],    
     ]);
 
     ?>
+<<<<<<< HEAD
 
 </div>
+=======
+</div>
+</div>
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8

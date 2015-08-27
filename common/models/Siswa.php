@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-
+use yii\common\models;
 /**
  * This is the model class for table "siswa".
  *
@@ -40,14 +40,15 @@ class Siswa extends \yii\db\ActiveRecord
         return [
             [['nisn', 'nama_siswa', 'tempat_lahir', 'tgl_lahir', 'agama', 'anak_ke', 'nama_ayah', 'nama_ibu', 'pekerjaan_ayah', 'alamat', 'tahun_masuk', 'no_tlp'], 'required'],
             [['tgl_lahir', 'tahun_masuk'], 'safe'],
-            [['nisn'], 'string', 'max' => 10],
+            [['nisn'], 'integer', 'max' => 10],
+            [['id_jurusan'],'required'],
             [['nama_siswa', 'nama_ayah', 'nama_ibu'], 'string', 'max' => 30],
             [['tempat_lahir', 'pekerjaan_ayah'], 'string', 'max' => 25],
             [['agama'], 'string', 'max' => 15],
             [['anak_ke'], 'string', 'max' => 4],
-            [['alamat', 'foto'], 'string', 'max' => 50],
-            [['no_tlp'], 'string', 'max' => 13],
-            [['nisn'], 'unique']
+            [['alamat'], 'string'],
+            [['no_tlp'], 'integer'],
+            [['nisn'], 'unique'],
         ];
     }
 
@@ -69,8 +70,15 @@ class Siswa extends \yii\db\ActiveRecord
             'alamat' => 'Alamat',
             'tahun_masuk' => 'Tahun Masuk',
             'no_tlp' => 'No Tlp',
-            'foto' => 'Foto',
+            // 'foto' => 'Foto',
+            'id_jurusan'=> 'Jurusan',
             'globalSearch'=>'Cari Data',
         ];
+    }
+
+
+    public function getJurusan()
+    {
+        return $this->hasOne(Jurusan::className(),['id'=>'id_jurusan']);
     }
 }

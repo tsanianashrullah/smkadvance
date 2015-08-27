@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use dosamigos\datepicker\DatePicker;
+use common\models\Jurusan;
 ?>
 <div class="siswa-form">
             
@@ -29,7 +31,7 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($model, 'nama_ayah')->textInput(['maxlength' => 25, 'size' => 10]) ?>
 <?= $form->field($model, 'nama_ibu')->textInput(['maxlength' => 25, 'size' => 10]) ?>
 <?= $form->field($model, 'pekerjaan_ayah')->textInput(['maxlength' => 25, 'size' => 10]) ?>
-<?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlenght' => 50]) ?>     
+<?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlength' => 255]) ?>     
 <?= $form->field($model, 'tahun_masuk')->widget(
        DatePicker::className(), [
          'inline' => false, 
@@ -38,6 +40,8 @@ use dosamigos\datepicker\DatePicker;
            'format' => 'yyyy-mm-dd',
            ]
         ]);?>
+<?= $form->field($model, 'id_jurusan')->dropDownList(
+        ArrayHelper::map(Jurusan::find()->all(),'id','jurusan'),['prompt'=>'.:: Pilih Jurusan ::.']);?>
 <?= $form->field($model, 'no_tlp')->textInput(['maxlength' => 13, 'size' => 10]) ?>   
 
     <div class="form-group">
@@ -46,6 +50,4 @@ use dosamigos\datepicker\DatePicker;
     </div>
 
     <?php ActiveForm::end(); ?>
-    
-
 </div>

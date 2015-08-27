@@ -31,7 +31,8 @@ class ArtikelController extends Controller
 		];
 	}
 public function actionIndex()
-{	$searchModel = new ArtikelSearch();
+{	
+	$searchModel = new ArtikelSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 	$dataProvider->pagination->pageSize=10;
 	 return $this->render('index', [
@@ -53,8 +54,10 @@ public function actionCreate()
 		$model = new Artikel();
 
 	 if ($model->load(Yii::$app->request->post())) {
+	 	 if (!empty($model)) {
         try{
         	$model->tgl= date('Y-m-d');
+        	$model->user=Yii::$app->user->identity->id;
         	$imageName= $model->judul;
             $model->file=UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'artikel/' . $imageName . '.' .   $model->file->extension );
@@ -63,13 +66,15 @@ public function actionCreate()
                 Yii::$app->getSession()->setFlash(
                     'success','Data saved!'
                 );
-			return $this->redirect(['view', 'id' => $model->id]);
-            }
-        }catch(Exception $e){
-            Yii::$app->getSession()->setFlash(
-                'error',"{$e->getMessage()}"
-            );
+				return $this->redirect(['view', 'id' => $model->id]);
+	            }
+	        }catch(Exception $e){
+	            Yii::$app->getSession()->setFlash(
+	                'error',"{$e->getMessage()}"
+	            );
+		 	}
         }
+	 		
 	} else {
 		return $this->renderAjax('create',[
 				'model' => $model,
@@ -118,6 +123,38 @@ public function actionDelete($id)
 	
 }
 
+public function actionList()
+{	
+	$searchModel= new ArtikelSearch;
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);	
+    $query = Artikel::find();
+
+    $pages = new Pagination([
+    	        'defaultPageSize' => 5,
+        	    'totalCount' => $query->count(),
+	        ]);
+
+    $models = $query->orderBy('id')
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+    return $this->render('list', [
+    	 'searchModel'=>$searchModel,
+    	 'dataProvider'=>$dataProvider,
+         'models' => $models,
+         'pages' => $pages,
+    ]);
+}
+
+public function actionDetail($id)
+{
+	return $this->render('detail',[
+		'model' => $this->findModel($id),
+		]);
+}
+
+
 protected function findModel($id)
 {
 if (($model = Artikel::findOne($id)) !== null){
@@ -125,7 +162,6 @@ if (($model = Artikel::findOne($id)) !== null){
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
 	   }
-
 }
 public function actionReport()
 {	$searchModel = new ArtikelSearch();

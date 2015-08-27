@@ -51,7 +51,8 @@ public function actionView($id)
 {
    if(yii::$app->user->can('create'))
    {
-           $model = new Staff();        if($model->load(Yii::$app->request->post()) && $model->save()){
+           $model = new Staff();        
+           if($model->load(Yii::$app->request->post()) && $model->save()){
                return $this->redirect(['view', 'id' => $model->id]);
        } else {
            return $this->renderAjax('create',[

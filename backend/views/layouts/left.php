@@ -9,17 +9,20 @@ use app\assets\AppAsset;
 <aside class="main-sidebar">
 
     <section class="sidebar">
-
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
+        <?php
+            if (Yii::$app->user->isGuest) {
+        }else{ 
+        //<!-- Sidebar user panel -->
+        echo '<div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/logo.png" class="img-circle" alt="User Image"/>
+                <img src="images/avatar04.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>SMK PGRI 1 Cimahi</p>
+                <p>' . Yii::$app->user->identity->username . '</p>
             </div>
-        </div>
-
+        </div>';
+        } 
+        ?>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -31,45 +34,6 @@ use app\assets\AppAsset;
             </div>
         </form>
         <!-- /.search form -->
-
-
-        <?=
-        Nav::widget(
-            [
-                'encodeLabels' => false,
-                ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                    //['label' => '<i class="fa fa-file-code-o"></i><span>Gii</span>', 'url' => ['/gii']],
-                    //['label' => '<i class="fa fa-dashboard"></i><span>Debug</span>', 'url' => ['/debug']],
-            }else{
-                    $menuItems[] =[
-                        'label' =>  'Pengajar', //for basic
-                        'url' => ['/guru/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Siswa', //for basic
-                        'url' => ['/siswa/index'],
-                    ];
-                    $menuItems[] =[
-                        'label' => 'Staff', //for basic
-                        'url' => ['/staff/index'],
-                    ];
-                    
-                    $menuItems[] =[
-                        'label' => 'Jurusan', //for basic
-                        'url' => ['/jurusan/index'],
-                    ];
-                }
-                echo Nav::widget([
-                'options' => ['class' => 'sidebar-menu'],
-                'items' => $menuItems,
-            ]);
-        ?>
-        
-
         <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
@@ -130,6 +94,7 @@ use app\assets\AppAsset;
             </li>
         </ul>
 
+<<<<<<< HEAD
             <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
@@ -150,8 +115,16 @@ use app\assets\AppAsset;
                     
                 </ul>
             </li>
+=======
+
+        <ul class="sidebar-menu">
+            <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-bar-chart"></span>Kompetensi Keahlian</a>
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
         </ul>
 
+        <ul class="sidebar-menu">
+            <li><a href="<?= \yii\helpers\Url::to(['/artikel/list']) ?>"><span class="fa fa-folder-open"></span>Berita Sekolah</a>
+        </ul>
             <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">

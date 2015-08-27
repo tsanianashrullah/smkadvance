@@ -6,10 +6,12 @@ use yii\bootstrap\NavBar;
 /* @var $this \yii\web\View */
 /* @var $content string */
 ?>
-
+<style type="text/css">
+    
+</style>
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">PGRI 1</span><span class="logo-lg">Sistem Informasi</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">'. Html::img('images/logo.png', ['width' => '100%', 'height' => '100%', 'style' => 'padding:4px;']) . '</span><span class="">' . Html::img('images/logo.png', ['height' => '100%', 'style' => 'padding:4px;margin-right: 10px;']) . 'SMK PGRI 1 CIMAHI</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -19,8 +21,7 @@ use yii\bootstrap\NavBar;
 
         <div class="navbar-custom-menu">
 
-            <ul class="nav navbar-nav">
-
+            <ul class="nav navbar-nav"> 
                 <!-- User Account: style can be found in dropdown.less -->
         <?php
             Nav::begin([
@@ -33,12 +34,12 @@ use yii\bootstrap\NavBar;
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
             } else {
                 $menuItems[]=[
-                    'label' => 'Pusat Artikel',
-                    'url'=> ['/artikel/index'],
+                    'label' => 'Pusat Data',
+                    'url'=> ['center/data'],
                 ];
                 $menuItems[] = [
-                    'label'=> 'Tambah Admin',
-                    'url' => ['/site/signup'],
+                    'label'=> 'List Admin',
+                    'url' => ['/site/listrole'],
                     ];
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -51,7 +52,6 @@ use yii\bootstrap\NavBar;
                 'items' => $menuItems,
             ]);
         ?>
-
                 <!-- User Account: style can be found in dropdown.less -->
                 
             </ul>

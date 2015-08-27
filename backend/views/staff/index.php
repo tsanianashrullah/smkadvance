@@ -2,17 +2,22 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
-use dosamigos\tableexport\ButtonTableExport;
 use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 
 
 $this->title = 'Daftar Staff';
-
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<<<<<<< HEAD
 <div class="guru-index">
   <div class="panel panel-primarydefault">
+=======
+<div class="staff-index">
+  <div class="panel panel-default">
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
       <div class="panel-heading">
         <h3 class="panel-title">
             <i class="glyphicon glyphicon-list-alt"></i> 
@@ -22,7 +27,11 @@ $this->title = 'Daftar Staff';
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
     <div class="pull-right">
              <?= Html::button('Tambah Staff', ['value'=>Url::to('index.php?r=staff/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-</div>     
+</div>
+    <div class="row">
+    <div class="col-sm-12">
+</div>
+</div>
 <div>
         <?php
             Modal::begin([
@@ -34,6 +43,7 @@ $this->title = 'Daftar Staff';
             Modal::end();
     ?>
 </div>
+<div class="table-responsive">
    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -67,5 +77,5 @@ $this->title = 'Daftar Staff';
 
     ?>
 
-
+</div>
 </div>

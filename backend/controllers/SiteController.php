@@ -8,12 +8,14 @@ use yii\web\Controller;
 use backend\models\PasswordResetRequestForm;
 use backend\models\ResetPasswordForm;
 use backend\models\SignupForm;
+use backend\models\SignupSearch;
 use backend\models\AuthItem;
 use yii\base\InvalidParamException;
 use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use common\models\LoginForm;
+use common\models\User;
 use common\models\ContactForm;
 
 class SiteController extends Controller
@@ -118,7 +120,7 @@ public function actionCreate()
         ->addRule('file', 'file', ['extensions' => 'jpg']);
  
     if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-        if ($model->saveUploadedFile() !== false) {
+        if ($moadel->saveUploadedFile() !== false) {
             Yii::$app->session->setFlash('success', 'Upload Sukses');
         }
     }
@@ -132,9 +134,7 @@ public function actionCreate()
             $authItems = AuthItem::find()->all();
             if ($model->load(Yii::$app->request->post())) {
                 if ($user = $model->signup()) {
-                    if (Yii::$app->getUser()->login($user)) {
-                        return $this->goHome();
-                    }
+                        return $this->redirect('index.php?r=site/listrole');
                 }
             }
 
@@ -148,5 +148,51 @@ public function actionCreate()
  }
  public function actionSejarah(){
     return $this->render('sejarah');
- }          
+ }
+ public function actionListrole()
+    {  
+    if(yii::$app->user->can('admin'))
+        {
+        $searchModel = new SignupSearch();
+        $dataProvider = $searchModel->search(yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize=10;
+         return $this->render('listrole', [
+            'searchModel'=> $searchModel,
+            'dataProvider'=> $dataProvider,
+            ]);
+        }else{
+        throw new ForbiddenHttpException('Halaman dibatasi Akses');
+        }
+
+    }          
+ public function actionRole($id)
+ {
+    $authItems = AuthItem::find()->all();
+    return $this->render('role',[
+        'model' => $this->findModel($id),
+        'authItems' => $authItems,
+        ]);
+
+ }
+    protected function findModel($id)
+    {
+    if (($model = User::findOne($id)) !== null){
+        return $model;
+    } else {
+            throw new NotFoundHttpExeption('the requested page does not exsit');
+           }
+    }
+public function actionDelete($id)
+{
+    if(yii::$app->user->can('delete'))
+    {
+        $this->findModel($id)->delete();
+    return $this->redirect('?r=site/listrole');
+    }else{
+    throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
+    
+    }
+    
+}
+
 }

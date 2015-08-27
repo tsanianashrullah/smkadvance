@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use yii\web\ForbiddenHttpException;
 use dosamigos\tableexport\ButtonTableExport;
 
@@ -61,12 +62,16 @@ public function actionView($id)
 
 public function actionCreate()
 {
-	if( Yii::$app->user->can('create'))
-	{
-	$model = new Jurusan();
+	if(Yii::$app->user->can('create')){
+		$model = new Jurusan();
 
 	 if ($model->load(Yii::$app->request->post())) {
         try{
+
+        	$imageName= $model->jurusan;
+            $model->file=UploadedFile::getInstance($model, 'file');
+            $model->file->saveAs( 'jurusan/' . $imageName . '.' .   $model->file->extension );
+            $model->foto = 'jurusan/' . $imageName . '.' .   $model->file->extension;
             if($model->save()){
                 Yii::$app->getSession()->setFlash(
                     'success','Data saved!'
@@ -78,15 +83,15 @@ public function actionCreate()
                 'error',"{$e->getMessage()}"
             );
         }
-    } else {
-		return $this->renderAjax('create',[
+	} else {
+		return $this->renderPartial('create',[
 				'model' => $model,
 				]);
-    }
-	} else {
-		throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');		
 	}
+}else{
+		throw  new ForbidenHttpException;
 
+	}		
 }
 public function actionUpdate($id)
 {
@@ -129,4 +134,33 @@ if (($model = Jurusan::findOne($id)) !== null){
 
 }
 
+public function actionListjurusan()
+{	
+	$searchModel= new JurusanSearch;
+	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);	
+    $query = Jurusan::find();
+
+    $pages = new Pagination([
+    	        'defaultPageSize' => 5,
+        	    'totalCount' => $query->count(),
+	        ]);
+
+    $models = $query->orderBy('id')
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+    return $this->render('listjurusan', [
+    	 'searchModel'=>$searchModel,
+    	 'dataProvider'=>$dataProvider,
+         'models' => $models,
+         'pages' => $pages,
+    ]);
+}
+public function actionDetail($id)
+{
+	return $this->render('detail',[
+		'model' => $this->findModel($id),
+		]);
+}
 }

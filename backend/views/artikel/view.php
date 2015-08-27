@@ -2,8 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+<<<<<<< HEAD
 use dosamigos\tableexport\ButtonTableExportAsset;
 use kartik\social\FacebookPlugin;
+=======
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
@@ -33,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw',
                 'value'=>$img,
             ],
+            'kategori.kategori',
         ],
     ]) 
    
