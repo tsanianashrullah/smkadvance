@@ -16,13 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="panel-heading">Update Data Guru</div>
         <div class="panel-body">
     <h1><?= Html::encode($this->title) ?></h1>
-
-  
     <?php
 //      'model'=$model;
     $img = Html::img("@web/$model->foto",['width'=>'200', 'height'=>'150']); 
-    ?>
-    <?= DetailView::widget([
+    ?>    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'nip',

@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
 class GuruController extends Controller
 {
 	public function behavior()
