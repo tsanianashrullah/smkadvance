@@ -27,23 +27,20 @@ $this->params['breadcrumbs'][]= $this->title;
        <div class="row">
     <div class="col-sm-12">
        <div class="pull-right">
-<?= Html::button('Tambah Artikel', ['value'=>Url::to('index.php?r=artikel/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?> 
-</div>
-<<<<<<< HEAD
-<?php
-            Modal::begin([
-                    'header'=>'<h4>Guru</h4>',
-                    'id' => 'modal',
-                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                ]);
-            echo "<div id='modalContent'></div>";
-            Modal::end();
-    ?>
-=======
+          <?= Html::button('Tambah Artikel', ['value'=>Url::to('index.php?r=artikel/create'), 'class' => 'btn btn btn-success', 'id'=>'modalButton']) ?> 
+       </div>
+              <?php
+                      Modal::begin([
+                              'header'=>'<h4>Guru</h4>',
+                              'id' => 'modal',
+                              'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                            ]);
+                      echo "<div id='modalContent'></div>";
+                      Modal::end();
+              ?>
 </div>
 </div>
 <div class="table-responsive">
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -78,10 +75,6 @@ $this->params['breadcrumbs'][]= $this->title;
     ]);
 
     ?>
-<<<<<<< HEAD
-
-</div>
-=======
 </div>
 </div>
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
+</div>

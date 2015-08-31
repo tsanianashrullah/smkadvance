@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/da
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 <div class="siswa-index">
-<<<<<<< HEAD
 	 <div class="panel panel-default">
       <div class="panel-heading">
       	<h3 class="panel-title">
@@ -35,37 +34,9 @@ $this->params['breadcrumbs'][]= $this->title;
 				Modal::end();
 		?>
 </div><br><br>
-	<?= GridView::widget([
-=======
-  <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-    <i class="glyphicon glyphicon-list-alt"></i> 
-    <?= Html::encode($this->title) ?></h3>
-    </div>
-        <div class="panel-body">          
-         <?php echo $this->render('search', ['model' => $searchModel]); ?>
-<div class="pull-right">
-        <?= Html::button('Tambah Siswa', ['value'=>Url::to('index.php?r=siswa/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-</div>
-</div>
-<div>
-        <?php
-            Modal::begin([
-                    'header'=>'<h4>Siswa</h4>',
-                    'id' => 'modal',
-                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                ]);
-            echo "<div id='modalContent'></div>";
-            Modal::end();
-    ?>
 </div>
 <div class="table-responsive">
     <?= GridView::widget([
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
 		'columns' => [

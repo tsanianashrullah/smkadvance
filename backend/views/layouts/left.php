@@ -93,8 +93,6 @@ use app\assets\AppAsset;
                 </ul>
             </li>
         </ul>
-
-<<<<<<< HEAD
             <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
@@ -115,11 +113,8 @@ use app\assets\AppAsset;
                     
                 </ul>
             </li>
-=======
-
         <ul class="sidebar-menu">
             <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-bar-chart"></span>Kompetensi Keahlian</a>
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
         </ul>
 
         <ul class="sidebar-menu">

@@ -110,29 +110,6 @@ class GuruController extends Controller
 		
 	}
 
-	protected function findModel($id)
-	{
-	if (($model = Guru::findOne($id)) !== null){
-		return $model;
-	} else {
-			throw new NotFoundHttpExeption('the requested page does not exsit');
-		   }
-
-	}
-<<<<<<< HEAD
-	
-}
-public function actionReport()
-{
-	$searchModel = new GuruSearch();
-	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	$dataProvider->pagination->pageSize=10;
-	 return $this->render('report', [
-      	'searchModel'=> $searchModel,
-		'dataProvider'=> $dataProvider,
-        ]);
-
-}
 protected function findModel($id)
 {
 if (($model = Guru::findOne($id)) !== null){
@@ -140,8 +117,7 @@ if (($model = Guru::findOne($id)) !== null){
 } else {
 		throw new NotFoundHttpExeption('the requested page does not exsit');
 	   }
-=======
-
+}
 	public function actionReport()
 	{	
 		$searchModel= new GuruSearch;
@@ -152,7 +128,6 @@ if (($model = Guru::findOne($id)) !== null){
 	    	        'defaultPageSize' => 5,
 	        	    'totalCount' => $query->count(),
 		        ]);
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
 
 	    $models = $query->orderBy('nip')
 	            ->offset($pages->offset)
