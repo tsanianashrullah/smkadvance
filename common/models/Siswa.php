@@ -40,7 +40,7 @@ class Siswa extends \yii\db\ActiveRecord
         return [
             [['nisn', 'nama_siswa', 'tempat_lahir', 'tgl_lahir', 'agama', 'anak_ke', 'nama_ayah', 'nama_ibu', 'pekerjaan_ayah', 'alamat', 'tahun_masuk', 'no_tlp'], 'required'],
             [['tgl_lahir', 'tahun_masuk'], 'safe'],
-            [['nisn'], 'integer', 'max' => 10],
+            [['nisn'], 'integer'],
             [['id_jurusan'],'required'],
             [['nama_siswa', 'nama_ayah', 'nama_ibu'], 'string', 'max' => 30],
             [['tempat_lahir', 'pekerjaan_ayah'], 'string', 'max' => 25],

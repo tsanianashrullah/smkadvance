@@ -75,7 +75,7 @@ class GuruController extends Controller
 	}else{
 			throw  new ForbidenHttpException;
 
-		}
+	}
 		
 	}
 	public function actionUpdate($id)

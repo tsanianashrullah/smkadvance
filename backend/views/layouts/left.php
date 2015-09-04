@@ -35,6 +35,7 @@ use app\assets\AppAsset;
         </form>
         <!-- /.search form -->
         <ul class="sidebar-menu">
+            <li class="header">Menu</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>Guru</span>
@@ -95,13 +96,20 @@ use app\assets\AppAsset;
         </ul>
 
 
-        <ul class="sidebar-menu">
-            <li><a href="<?= \yii\helpers\Url::to(['/jurusan/listjurusan']) ?>"><span class="fa fa-bar-chart"></span>Kompetensi Keahlian</a>
-        </ul>
-
-        <ul class="sidebar-menu">
-            <li><a href="<?= \yii\helpers\Url::to(['/artikel/list']) ?>"><span class="fa fa-folder-open"></span>Berita Sekolah</a>
-        </ul>
+        <?=
+        Nav::widget(
+            [
+                'encodeLabels' => false,
+                'options' => ['class' => 'sidebar-menu'],
+                'items' => [
+                    ['label' => '<i class="fa fa-bar-chart"></i><span>Kompetensi Keahlian</span>', 'url' => ['/jurusan/listjurusan']],
+                    ['label' => '<i class="fa fa-folder-open"></i><span>Berita Sekolah</span>', 'url' => ['/artikel/list']],
+                    ['label' => '<i class="fa fa-bookmark"></i><span>PPDB</span>', 'url' => ['/site/ppdb']],
+                ],
+            ]
+        );
+        ?>
+        <!-- 
             <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
@@ -130,7 +138,7 @@ use app\assets\AppAsset;
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
 
     </section>
 

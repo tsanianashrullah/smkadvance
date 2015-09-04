@@ -13,10 +13,13 @@ use backend\models\AuthItem;
 use yii\base\InvalidParamException;
 use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\LoginForm;
 use common\models\User;
 use common\models\ContactForm;
+use mPDF;
+use backend\models\AuthAssignment;
 
 class SiteController extends Controller
 {
@@ -146,6 +149,11 @@ public function actionCreate()
         throw new ForbiddenHttpException('Halaman dibatasi Akses');
     }
  }
+
+ public function actionPpdb(){
+    return $this->render('ppdb');
+ }
+
  public function actionSejarah(){
     return $this->render('sejarah');
  }
@@ -165,34 +173,95 @@ public function actionCreate()
         }
 
     }          
- public function actionRole($id)
- {
-    $authItems = AuthItem::find()->all();
-    return $this->render('role',[
-        'model' => $this->findModel($id),
-        'authItems' => $authItems,
-        ]);
+     public function actionRole($id)
+     {  
+        if(Yii::$app->user->can('admin')){
+            $model = new AuthAssignment();
+            $findId = $this->findId($id);
 
- }
+             if ($model->load(Yii::$app->request->post())) {
+                try{
+                $model->user_id= $findId->id;
+                $model->save();
+                return $this->redirect(['listrole']);
+                    if($model->save()){
+                        Yii::$app->getSession()->setFlash(
+                            'success','Data saved!'
+                        );
+                    return $this->redirect(['view', 'id' => $model->nip]);
+                    }
+                }catch(Exception $e){
+                    Yii::$app->getSession()->setFlash(
+                        'error',"{$e->getMessage()}"
+                    );
+                }
+            } else {
+                return $this->render('role', [
+                    'model' => $model,
+                    'id' => $this->findId($id),
+                ]);
+
+            }
+        }else{
+                throw  new ForbidenHttpException;
+
+        }
+
+     }
+    
     protected function findModel($id)
     {
     if (($model = User::findOne($id)) !== null){
-        return $model;
+        return $model; 
     } else {
-            throw new NotFoundHttpExeption('the requested page does not exsit');
+            throw new NotFoundHttpException('the requested page does not exsit');
            }
     }
-public function actionDelete($id)
-{
-    if(yii::$app->user->can('delete'))
+    public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-    return $this->redirect('?r=site/listrole');
-    }else{
-    throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
-    
+        if(yii::$app->user->can('delete'))
+        {
+            $this->findModel($id)->delete();
+        return $this->redirect('?r=site/listrole');
+        }else{
+        throw new ForbiddenHttpException( 'Delete hanya bisa dilakukan oleh administrator' );
+        
+        }
+        
     }
-    
-}
+
+    public function actionView($id)
+    {
+        return $this->render('view',[
+            'model' => $this->findModel($id),
+            'IdRole' => $this->findIdRole($id),
+            ]);
+    }
+
+    protected function findId($id)
+    {
+    if (($id = User::findOne($id)) !== null){
+        return $id;
+    } else {
+            throw new NotFoundHttpException('the requested page does not exsit');
+           }
+    }
+
+    protected function findIdRole($id)
+    {
+    if (($id = AuthAssignment::findOne($id)) !== null){
+        return $id;
+    } else {
+            throw new NotFoundHttpException('the requested page does not exsit');
+           }
+    }
+    public function actionPdfPpdb()
+    {
+        $mpdf = new mPDF;
+        $mpdf->WriteHtml($this->renderPartial('pdfPpdb'));
+        $mpdf->output('Form Pengisian PPDB.pdf', 'D');
+        exit;
+    }
+
 
 }

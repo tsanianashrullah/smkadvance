@@ -56,15 +56,6 @@ class SignupForm extends Model
             $user->generateAuthKey();
             $user->save();
                 
-                $permissionList = $_POST['SignupForm']['permissions'];
-                
-                foreach ($permissionList as $value) 
-                {
-                    $newPermission = new AuthAssignment;
-                    $newPermission->user_id = $user->id;
-                    $newPermission->item_name = $value;
-                    $newPermission->save();
-                }
                 return $user;
             }
         

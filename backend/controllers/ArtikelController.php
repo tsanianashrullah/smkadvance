@@ -9,9 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
-use dosamigos\tableexport\ButtonTableExport;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
 
 class ArtikelController extends Controller
 {
@@ -81,8 +81,7 @@ public function actionCreate()
 				]);
 	}
 }else{
-		throw  new ForbidenHttpException;
-
+		throw  new ForbiddenHttpException('Halaman Dibatasi hak akses');
 	}
 	
 }

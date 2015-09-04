@@ -28,7 +28,7 @@ class CenterController extends Controller
 
 	public function actionData()
 	{
-		if(Yii::$app->user->can('author')){
+		if(Yii::$app->user->can('viewer')){
 			return $this->render('data');
 		}else{
 			throw new ForbiddenHttpException("Halaman Diabatasi hak akses");

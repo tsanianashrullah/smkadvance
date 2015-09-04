@@ -4,37 +4,25 @@ use yii\helpers\Html;
 
 $this->title='List Artikel';
 ?>
-<table border=0 class="tabel-utama" width=100%>
-<tr>
-	<td>
-	</td>
-</tr>
-<tr>
-	<td>
-<center>
-<table border=0 class="tabel-list-artikel">
-    <?php foreach ($models as $model): ?>
-    	<tr bgcolor='black'><td rowspan=2 width=45%>
 
-    	<?= 
-    	Html::img("@web/$model->foto",['width'=>'100%']);
-    	?>
-    </td>
-    <td width=2%>&nbsp;</td>
-    	<td valign='top' height=10%>
-    	<h2>
-        <?= Html::a($model->judul, ['detail', 'id' => $model->id]) ?></h2></td>
-        </tr>
-    <tr bgcolor='white'>
-    	<td width=2%>&nbsp;</td>
-    	<td>&nbsp;</td></tr>
-    	<tr><td colspan=3 height=2%>&nbsp;</td></tr>
-<?php endforeach; ?>
-</table>
-</center>
+<ul class="nav nav-tabs">
+<li role="presentation" class="active"><a href="#">Home</a></li>
+<?php foreach ($models as $model): ?>
+ <li role="presentation"><?= Html::a($model->kategori->kategori, ['listkategori', 'id' => $model->id]) ?></li>
+<?php endforeach; ?>    
+</ul>
+<br>
+<?php foreach ($models as $model): ?>
+<div class="featurette" id="about">
+            <img class="img-circle img-responsive" src="<?= $model->foto ?>" width=500px height=500px>
+            <h2 class="featurette-heading"><?= Html::a($model->judul, ['detail', 'id' => $model->id]) ?>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+<hr>
+<?php endforeach; ?>  	
+  
 <?= LinkPager::widget([
     'pagination' => $pages,
     ]);
-?></td>
-</tr>
-</table>
+?>

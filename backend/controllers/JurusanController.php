@@ -7,6 +7,7 @@ use common\models\Jurusan;
 use common\models\JurusanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
+use yii\web\ForbidenHttpException;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;

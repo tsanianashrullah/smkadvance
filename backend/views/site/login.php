@@ -21,8 +21,11 @@ $fieldOptions2 = [
 ?>
 <background>
 <div class="login-box">
+    <center>
+        <?= Html::img('images/LOGO.png', ['width' => '150px', 'height' => '100px', 'style' => '']); ?>
+    </center>
     <div class="login-logo">
-        <a href="#"><b>Sistem Informasi</b>SMK</a>
+        <a href="#"><b>Sistem Informasi</b><br>SMK PGRI 1 CIMAHI</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

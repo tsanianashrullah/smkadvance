@@ -48,7 +48,7 @@ $this->title = 'Tambah Data Guru';
 
     <?= $form->field($model, 'file')->fileInput() ?>
 
-     <div class="panel-footer" style="text-align: right;">
+    <div class="panel-footer" style="text-align: right;">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
     </div>

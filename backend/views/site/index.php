@@ -58,7 +58,7 @@
                   3. Akuntansi
                   4. Rekayasa Perangkat Lunak</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Lihat Selengkapnya... &raquo;</a></p>
+                <p><a class="btn btn-default" href="?r=site/sejarah">Lihat Selengkapnya... &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Visi</h2>

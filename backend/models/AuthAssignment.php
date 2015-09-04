@@ -27,9 +27,7 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['item_name', 'user_id'], 'required'],
-            [['created_at','user_id'], 'integer'],
-            [['item_name'], 'string', 'max' => 64]
+            [['item_name'], 'required'],
         ];
     }
 
@@ -39,7 +37,7 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'item_name' => 'Item Name',
+            'item_name' => 'Role',
             'user_id' => 'User ID',
             'created_at' => 'Created At',
         ];
