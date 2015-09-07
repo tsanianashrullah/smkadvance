@@ -10,37 +10,22 @@ use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\backend\artikel;
 $this->title = 'Daftar Artikel';
-$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][]= $this->title;
 ?>
 
 <div class="guru-index">
   <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">
+        <h3 class="panel-title"><center>
             <i class="glyphicon glyphicon-list-alt"></i> 
             <?= Html::encode($this->title) ?>
         </h3>
         </div>
     <div class="panel-body">
      <?php echo $this->render('search', ['model' => $searchModel]); ?>
-       <div class="row">
-    <div class="col-sm-12">
-       <div class="pull-right">
-          <?= Html::button('Tambah Artikel', ['value'=>Url::to('index.php?r=artikel/create'), 'class' => 'btn btn btn-success', 'id'=>'modalButton']) ?> 
-       </div>
-              <?php
-                      Modal::begin([
-                              'header'=>'<h4>Guru</h4>',
-                              'id' => 'modal',
-                              'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                            ]);
-                      echo "<div id='modalContent'></div>";
-                      Modal::end();
-              ?>
+       
 </div>
-</div>
-<div class="table-responsive">
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -61,20 +46,31 @@ $this->params['breadcrumbs'][]= $this->title;
             'judul',
             'isi',
             'tgl',
-            [
-              'attribute' => 'foto',
-              'format' => 'raw',
-              'value' => function($model) {
-              return Html::img($model->imageurl,['width'=>100]);
-            },
-              'headerOptions' => ['width' => '150'],
-              'contentOptions' => ['style' => 'text-align :center;'],
-            ],
+[
+                                               'attribute' => 'foto',
+                                               'format' => 'raw',
+                                               'value' => function($model) {
+                                                               return Html::img($model->imageurl,['width'=>100]);
+                                                          },
+                                          'headerOptions' => ['width' => '150'],
+                'contentOptions' => ['style' => 'text-align :center;'],
+                                           ], 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}'],
         ],    
     ]);
 
     ?>
+
 </div>
-</div>
-</div>
+<script type="text/javascript">
+   //<![CDATA[
+   $(window).bind("load resize", function(){
+     var url = location.protocol+'//'+location.host+location.pathname;
+     var containercm_width = $('#container-commentfb').width();  
+       $('#container-commentfb').html('<div class="fb-comments" ' +
+       'data-href="'+url+'"' +
+       ' width="' + containercm_width + '" data-num-posts="14"></div>');
+       FB.XFBML.parse( );  
+   });
+   //]]>
+   </script> 

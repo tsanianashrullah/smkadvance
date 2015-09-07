@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Guru */
 
 $this->title = 'Role : ' . $model->username;
-$this->params['breadcrumbs'][] = ['label' => 'List Admin', 'url' => ['listrole']];
+$this->params['breadcrumbs'][] = ['label'        => 'List Admin', 'url' => ['listrole']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="role-view">

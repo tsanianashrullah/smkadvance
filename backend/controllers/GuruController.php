@@ -11,6 +11,7 @@ use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
 class GuruController extends Controller
 {
 	public function behavior()
@@ -109,16 +110,14 @@ class GuruController extends Controller
 		
 	}
 
-	protected function findModel($id)
-	{
-	if (($model = Guru::findOne($id)) !== null){
-		return $model;
-	} else {
-			throw new NotFoundHttpExeption('the requested page does not exsit');
-		   }
-
-	}
-
+protected function findModel($id)
+{
+if (($model = Guru::findOne($id)) !== null){
+	return $model;
+} else {
+		throw new NotFoundHttpExeption('the requested page does not exsit');
+	   }
+}
 	public function actionReport()
 	{	
 		$searchModel= new GuruSearch;

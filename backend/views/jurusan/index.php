@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/da
 $this->params['breadcrumbs'][]= $this->title;       
 ?>
 <div class="jurusan-index">
-  <div class="panel panel-primary">
+  <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
 

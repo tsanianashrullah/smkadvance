@@ -11,8 +11,13 @@ $this->title = 'Daftar Staff';
 $this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<<<<<<< HEAD
+<div class="guru-index">
+  <div class="panel panel-primarydefault">
+=======
 <div class="staff-index">
   <div class="panel panel-default">
+>>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
       <div class="panel-heading">
         <h3 class="panel-title">
             <i class="glyphicon glyphicon-list-alt"></i> 

@@ -135,17 +135,6 @@ class SiswaController extends Controller
 			
 		}
 	}
-
-	protected function findModel($id)
-	{
-	if (($model = Siswa::findOne($id)) !== null){
-		return $model;
-	} else {
-			throw new NotFoundHttpExeption('the requested page does not exsit');
-		   }
-
-	}
-	
 	public function actionReport()
 	{	
 		$searchModel= new SiswaSearch;

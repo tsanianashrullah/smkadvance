@@ -14,15 +14,9 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
-
-    <?= $form->field($model, 'globalSearch')->textInput(['style' => 'width:250px;']) ?>
-
-
-    <?php // echo $form->field($model, 'alamat') ?>
-
+    <?= $form->field($model, 'globalSearch')->textInput(['style' => 'width:130px;','placeholder'=>'Cari data...']) ?>
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        
     </div>
 
     <?php ActiveForm::end(); ?>

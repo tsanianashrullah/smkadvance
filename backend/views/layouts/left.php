@@ -42,7 +42,7 @@ use app\assets\AppAsset;
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/guru/report']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/guru/index']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
                     </li>
                     <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
                     </li>
@@ -94,8 +94,6 @@ use app\assets\AppAsset;
                 </ul>
             </li>
         </ul>
-
-
         <?=
         Nav::widget(
             [
