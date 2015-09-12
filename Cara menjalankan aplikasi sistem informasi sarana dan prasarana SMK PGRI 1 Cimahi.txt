@@ -1,0 +1,50 @@
+
+KEBUTUHAN
+------------
+
+1. PHP 5.4.0
+2. SQL Server/ MySql Server
+
+
+KONFIGURASI
+-------------
+
+### Setting  Mode Applikasi
+
+Apabila ingin menjalankan applikasi dengna mode PRODUCTION maka coment dua line di file `web/index.php`  dibagian :
+
+```php 
+
+	defined('YII_DEBUG') or define('YII_DEBUG', true);
+	defined('YII_ENV') or define('YII_ENV', 'dev');
+	
+```
+
+
+### Database
+
+Ubah File `config/db.php` dengan setingan database yang sesunguhnya, contoh : 
+
+```php
+return [
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=siswa',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@common/mail',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure a transport
+            // for the mailer to send real emails.
+            'useFileTransport' => true,
+        ],
+    ],
+];
+
+```
+

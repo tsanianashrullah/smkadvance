@@ -49,7 +49,7 @@
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <h2>Selayang Pandang</h2>
 
                 <p>SMK PGRI 1 Cimahi merupakan salah satu sekolah yang ada dicimahi yang mempunyai 4 Program keahlian yaitu diantaranya:
@@ -58,21 +58,14 @@
                   3. Akuntansi
                   4. Rekayasa Perangkat Lunak</p>
 
-                <p><a class="btn btn-default" href="?r=site/sejarah">Lihat Selengkapnya... &raquo;</a></p>
+                <p><a class="btn btn-default" href="?r=site/selayangpandang">Lihat Selengkapnya... &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Visi</h2>
+            <div class="col-lg-6">
+                <h2>Visi & Misi</h2>
 
                 <p>Yaa intinya mah membuat dunia pendidikan indonesia lebih baik dan meghasilkan generasi muda yang bisa membawa nama Indonesia ke tingkat internasional</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Lihat Selengkapnya... &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Misi</h2>
-
-                <p>Menjaga Perdamaian dunia dengan menjadikan generasi yang dapat yaa dapat aja deh.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Lihat Selengkapnya... &raquo;</a></p>
+                <p><a class="btn btn-default" href="?r=site/visi">Lihat Selengkapnya... &raquo;</a></p>
             </div>
         </div>
 

@@ -21,19 +21,22 @@ $this->params['breadcrumbs'][]= $this->title;
             <?= Html::encode($this->title) ?>
             </h1></center>
                 </div>           
-       <div class="panel-body">    
+    <div class="panel-body">    
             <div class="pull-left">
                 <?php echo $this->render('search', ['model' => $searchModel]); ?>
-            </div>        
-    <?php
-            Modal::begin([
-                    'header'=>'<h4>Guru</h4>',
-                    'id' => 'modal',
-                    'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
-                ]);
-            echo "<div id='modalContent'></div>";
-            Modal::end();
-    ?>
+            </div>
+            <div class="pull-right">
+            <?= Html::button('Tambah Guru', ['value'=>Url::to('index.php?r=guru/create'), 'class' => 'btn btn btn-success','id'=>'modalButton']) ?>
+            <?php
+                    Modal::begin([
+                            'header'=>'<h4>Guru</h4>',
+                            'id' => 'modal',
+                            'size' => 'modal-col-xs-12 .col-sm-6 .col-md-8',
+                        ]);
+                    echo "<div id='modalContent'></div>";
+                    Modal::end();
+            ?>
+            </div>
     </div>
     <div class="table-responsive">
         <?= GridView::widget([

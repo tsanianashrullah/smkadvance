@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Siswa;
 use common\models\SiswaSearch;
+use common\models\SiswaSearchs;
 use yii\web\Controller;
 use yii\web\NotFoundHttpExeption;
 use yii\filters\VerbFilter;
@@ -137,7 +138,7 @@ class SiswaController extends Controller
 	}
 	public function actionReport()
 	{	
-		$searchModel= new SiswaSearch;
+		$searchModel= new SiswaSearchs;
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);	
 	    $query = Siswa::find();
 
@@ -158,5 +159,14 @@ class SiswaController extends Controller
 	         'pages' => $pages,
 	    ]);
 	}
+
+	protected function findModel($id)
+    {
+    if (($model = Siswa::findOne($id)) !== null){
+       return $model;
+    } else {
+           throw new NotFoundHttpExeption('the requested page does not exsit');
+          }
+    }
 }
  

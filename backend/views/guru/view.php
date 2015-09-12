@@ -16,13 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="panel-heading">Update Data Guru</div>
         <div class="panel-body">
     <h1><?= Html::encode($this->title) ?></h1>
-<<<<<<< HEAD
-    <?php
-//      'model'=$model;
-    $img = Html::img("@web/$model->foto",['width'=>'200', 'height'=>'150']); 
-    ?>    <?= DetailView::widget([
-        'model' => $model,
-=======
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->nip], ['class' => 'btn btn-primary']) ?>
@@ -40,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
     <?= DetailView::widget([
         'model' => $model,  
->>>>>>> 9f820c296c3e047d54dc87f23c5c5168f3c7a3d8
         'attributes' => [
             'nip',
             'nama_guru',

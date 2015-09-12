@@ -8,6 +8,7 @@ use yii\widgets\LinkPager;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
+use backend\components\DateHelper;
 
 $this->title = 'Daftar Siswa';
 $this->params['breadcrumbs'][]= $this->title;
@@ -22,8 +23,7 @@ $this->params['breadcrumbs'][]= $this->title;
 				</div>
         <div class="panel-body">
         	<?php echo $this->render('search', ['model' => $searchModel]); ?>
-		  
-</div>
+		</div>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
@@ -31,62 +31,12 @@ $this->params['breadcrumbs'][]= $this->title;
 			['class' => 'yii\grid\SerialColumn'],
 			'nisn',
 			'nama_siswa',
-			'tempat_lahir',
-			      [
-                'attribute'=> 'tgl_lahir',
-                'value'=>'tgl_lahir',
-                'format'=>'raw',
-                'filter'=>DatePicker::widget([
-                'model' => $searchModel,
-                'attribute' => 'tgl_lahir',
-                    'clientOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd',
-                    ]
-                    
-                ])
-
-            ],          
             'agama',
-           
-            'alamat',
-            'tahun_masuk:ntext',
+            'tahun_masuk',
             [
 	'class' => 'yii\grid\ActionColumn',
-	'template' => '{view} {update} {delete} {link}',
-	'buttons' => [
-		'update' => function ($url,$model) {
-			return Html::a(
-				'<span class="glyphicon glyphicon-pencil"></span>', 
-				$url);
-		},
-	],
+	'template' => '',
 ],
      ],
  ]);?> 
 </div>
-<table border=2 class="tabel-utama" width=100%>
-<tr>
-    <th>NISN</th>
-    <th>NAMA</th>
-    <th>JURUSAN</th>
-    <th>AGAMA</th>
-</tr>
-    <?php foreach ($models as $model): ?>
-        <tr>
-            <td><?=$model->nisn;?></td>
-            <td><?=$model->nama_siswa;?></td>
-            <td><?=$model->jurusan->jurusan;?></td>
-            <td><?=$model->agama;?></td>
-        </tr>
-    <?php endforeach; ?>
-<tr>
-    <td>
-    
-        <?= LinkPager::widget([
-            'pagination' => $pages,
-            ]);
-        ?>
-    </td>
-</tr>
-</table>

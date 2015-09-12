@@ -157,6 +157,15 @@ public function actionCreate()
  public function actionSejarah(){
     return $this->render('sejarah');
  }
+
+ public function actionSelayangpandang(){
+    return $this->render('selayangpandang');
+ }
+
+ public function actionVisi(){
+    return $this->render('visi');
+ }
+
  public function actionListrole()
     {  
     if(yii::$app->user->can('admin'))

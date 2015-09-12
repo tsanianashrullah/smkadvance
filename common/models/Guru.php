@@ -23,7 +23,7 @@ class Guru extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'required', 'message' => 'Data {element}harus diisi'],
+            [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'required', 'message' => 'Data harus diisi'],
   //          [['nip'],'integer'],
             [['nip'],'integer'],
             [['tgl_lahir'], 'safe'],

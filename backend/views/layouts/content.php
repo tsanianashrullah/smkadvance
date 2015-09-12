@@ -87,10 +87,12 @@ use dmstr\widgets\Alert;
                                 <a href="#"><i class="fa fa-fw fa-dribbble"></i></a>
                             </li>
                         </ul>
+                        <p>Telp. </p>
+                        <p>(022) 92819829918</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3><p>SMK PGRI 1 Cimahi</p></h3>
-                        <p>Adalah salah satu SMK dicimahi yang begitu terkenal hingga akherat.</p>
+                        <p>Merupakan salah satu sekolah dicimahi yang mempunyai 4 Kompetensi Keahlian yaitu: Adm. Perkantoran, Akuntansi, Pemasaran dan Rekayasa Perangkat Lunak.</p>
                     </div>
                 </div>
             </div>
