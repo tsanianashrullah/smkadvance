@@ -44,7 +44,9 @@ class JurusanController extends Controller
 		];
 	}
 public function actionIndex()
-{	$searchModel = new JurusanSearch();
+{	
+	if(Yii::$app->user->can('view')){
+	$searchModel = new JurusanSearch();
 	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 	$dataProvider->pagination->pageSize=5;
 
@@ -53,12 +55,25 @@ public function actionIndex()
         'searchModel'=> $searchModel,
 		'dataProvider'=> $dataProvider,
     ]);
+		}else{
+			throw  new ForbiddenHttpException;
+
+		}
+	
+	
 }
 public function actionView($id)
 {
+	if(Yii::$app->user->can('view')){
 	return $this->render('view',[
 		'model' => $this->findModel($id),
 		]);
+		}else{
+			throw  new ForbiddenHttpException;
+
+		}
+	
+	
 }
 
 public function actionCreate()
@@ -69,8 +84,12 @@ public function actionCreate()
 	 if ($model->load(Yii::$app->request->post())) {
         try{
 
+            if (empty($model->file)) {
+                continue;
+            }
         	$imageName= $model->jurusan;
             $model->file=UploadedFile::getInstance($model, 'file');
+
             $model->file->saveAs( 'jurusan/' . $imageName . '.' .   $model->file->extension );
             $model->foto = 'jurusan/' . $imageName . '.' .   $model->file->extension;
             if($model->save()){
@@ -85,7 +104,7 @@ public function actionCreate()
             );
         }
 	} else {
-		return $this->renderPartial('create',[
+		return $this->renderAjax('create',[
 				'model' => $model,
 				]);
 	}

@@ -5,8 +5,9 @@ namespace backend\controllers;
 use Yii;
 use common\models\Guru;
 use common\models\GuruSearch;
+use common\models\GuruSearchs;
 use yii\web\Controller;
-use yii\web\NotFoundHttpExeption;
+use yii\web\NotFoundHttpException;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use yii\db\ActiveRecord;
@@ -30,20 +31,30 @@ class GuruController extends Controller
 		];
 	}
 	public function actionIndex()
-	{	$searchModel = new GuruSearch();
+	{	
+	if(Yii::$app->user->can('view')){
+		$searchModel = new GuruSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		$dataProvider->pagination->pageSize=10;
+		$dataProvider->pagination->pageSize=5;
 		 return $this->render('index', [
 	      	'searchModel'=> $searchModel,
 			'dataProvider'=> $dataProvider,
 	        ]);
+		}else{
+			throw  new ForbiddenHttpException;
 
+		}
+	
 	}
 	public function actionView($id)
 	{
-		return $this->render('view',[
+		if(Yii::$app->user->can('view')){
+			return $this->render('view',[
 			'model' => $this->findModel($id),
 			]);
+		}else{
+			throw  new ForbiddenHttpException;
+		}
 	}
 
 	public function actionCreate()
@@ -74,7 +85,7 @@ class GuruController extends Controller
 					]);
 		}
 	}else{
-			throw  new ForbidenHttpException;
+			throw  new ForbiddenHttpException;
 
 	}
 		
@@ -84,7 +95,6 @@ class GuruController extends Controller
 		if(yii::$app->user->can('update'))
 		{
 			$model = $this->findModel($id);
-
 		if($model->load(Yii::$app->request->post()) && $model->save()){
 				return $this->redirect(['view', 'id' => $model->nip]);
 		} else {
@@ -115,13 +125,14 @@ protected function findModel($id)
 if (($model = Guru::findOne($id)) !== null){
 	return $model;
 } else {
-		throw new NotFoundHttpExeption('the requested page does not exsit');
+		throw new NotFoundHttpException('the requested page does not exsit');
 	   }
 }
 	public function actionReport()
 	{	
-		$searchModel= new GuruSearch;
+		$searchModel= new GuruSearchs;
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);	
+		$dataProvider->pagination->pageSize=5;
 	    $query = Guru::find();
 
 	    $pages = new Pagination([

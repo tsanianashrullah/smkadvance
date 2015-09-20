@@ -21,8 +21,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
 <?= $form->field($model, 'alamat')->textarea(['rows' => 2], ['maxlenght' => 50]) ?>        <?= $form->field($model, 'bagian')->textInput(['maxlength' => 30]) ?><?= $form->field($model, 'jk')->dropdownlist(['Laki-Laki' => 'Laki-Laki', 'Perempuan'=> 'Perempuan'], ['prompt'=>'.:: Pilih Jenis Kelamin Anda ::.']) ?> 
    
         <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Buat' : 'Perbarui', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-            <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class'=>'btn btn-default']) ?>
         </div>
 
     <?php ActiveForm::end(); ?>

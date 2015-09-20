@@ -13,7 +13,7 @@ $this->title = $name;
 <section class="content">
 
     <div class="error-page">
-        <h2 class="headline text-info"><i class="fa fa-exclamation text-red"></i></h2>
+        <h2 class="headline text-info"><i class="fa fa-hand-stop-o text-red"></i></h2>
 
         <div class="error-content">
             <h3><?= $name ?></h3>

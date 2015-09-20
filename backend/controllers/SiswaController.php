@@ -45,6 +45,7 @@ class SiswaController extends Controller
 
 	public function actionIndex()
 	{
+	if(Yii::$app->user->can('view')){
 		$searchModel = new SiswaSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 		$dataProvider->pagination->pageSize=10;
@@ -52,14 +53,23 @@ class SiswaController extends Controller
 	           'dataProvider' => $dataProvider,
 				'searchModel' => $searchModel, 
 			]);
+			}else{
+				throw  new ForbiddenHttpException;
+
+			}
+		
+		
 	}
 	public function actionView($id)
 	{
+	if(Yii::$app->user->can('view')){
 		return $this->render('view',[
 			'model' => $this->findModel($id),
 			]);
+		}else{
+			throw  new ForbiddenHttpException;
 
-
+		}
 	}
 
 	public function actionCreate()

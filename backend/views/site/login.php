@@ -27,7 +27,7 @@ $fieldOptions2 = [
     <div class="login-box-body"> 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="login-box-msg">Sign in to start your session</h4>
+            <p class="login-box-msg">Masuk untuk memulai</h4>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
@@ -47,7 +47,7 @@ $fieldOptions2 = [
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-                <?= Html::submitButton('Sign in', ['class' => 'btn btn-success btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Masuk', ['class' => 'btn btn-success btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
         </div>

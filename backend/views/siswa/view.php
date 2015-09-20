@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Siswa Dengan Nama :'.$this->title]
 
 <div class="guru-view">
 <div class="panel panel-default">
-      <div class="panel-heading">Update Data Guru</div>
+      <div class="panel-heading">View Detail Data Siswa <?= $model->nama_siswa ?></div>
         <div class="panel-body">
     <h1><?= Html::encode($this->title) ?></h1>
 

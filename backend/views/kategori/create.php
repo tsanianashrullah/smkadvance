@@ -5,10 +5,6 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Kategori */
-
-$this->title = 'Create Kategori';
-$this->params['breadcrumbs'][] = ['label' => 'Kategoris', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kategori-create">
 

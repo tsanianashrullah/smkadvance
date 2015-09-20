@@ -38,59 +38,31 @@ use app\assets\AppAsset;
             <li class="header">Menu</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-user"></i> <span>Guru</span>
+                    <i class="fa fa-graduation-cap"></i> <span>Sekolah</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/guru/report']) ?>"><span class="fa fa-tasks"></span>Pusat Data</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/sekolah/ekskul']) ?>"><span class="fa fa-soccer-ball-o"></span>Ekstrakulikuler</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/sekolah/sarana']) ?>"><span class="fa fa-building"></span>Sarana dan Prasarana</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <li><a href="<?= \yii\helpers\Url::to(['/sekolah/hubungan']) ?>"><span class="fa fa-industry"></span>Hubungan Industri</a>
                     </li>
                 </ul>
             </li>
         </ul>
-
         <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-child"></i> <span>Siswa</span>
+                    <i class="fa fa-server"></i> <span>Direktori Data</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/siswa/report']) ?>"><span class="fa fa-server"></span>Daftar Siswa</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/guru/report']) ?>"><span class="fa fa-user"></span>Guru</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/siswa/prestasi']) ?>"><span class="fa fa-dashboard"></span>Prestasi</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/siswa/report']) ?>"><span class="fa fa-child"></span>Siswa</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             </li>
         </ul>

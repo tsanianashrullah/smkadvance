@@ -32,20 +32,32 @@ class ArtikelController extends Controller
 	}
 public function actionIndex()
 {	
-	$searchModel = new ArtikelSearch();
-	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-	$dataProvider->pagination->pageSize=10;
-	 return $this->render('index', [
-      	'searchModel'=> $searchModel,
-		'dataProvider'=> $dataProvider,
-        ]);
+	if(Yii::$app->user->can('view')){
+		$searchModel = new ArtikelSearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$dataProvider->pagination->pageSize=10;
+		 return $this->render('index', [
+	      	'searchModel'=> $searchModel,
+			'dataProvider'=> $dataProvider,
+	        ]);
+			}else{
+			throw  new ForbiddenHttpException;
+
+		}
+	
+	
 
 }
 public function actionView($id)
 {
+	if(Yii::$app->user->can('view')){
 	return $this->render('view',[
 		'model' => $this->findModel($id),
 		]);
+		}else{
+			throw  new ForbiddenHttpException;
+
+		}
 }
 
 public function actionCreate()
@@ -93,10 +105,6 @@ public function actionUpdate($id)
 
 	if($model->load(Yii::$app->request->post())){
 
-        	$imageName= $model->judul;
-            $model->file=UploadedFile::getInstance($model, 'file');
-            $model->file->saveAs( 'artikel/' . $imageName . '.' .   $model->file->extension );
-            $model->foto = 'artikel/' . $imageName . '.' .   $model->file->extension;
             $model->save();
 			return $this->redirect(['view', 'id' => $model->id]);
 	} else {

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Kategori */
 
-$this->title = 'Update Kategori: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Kategoris', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update Kategori: ' . ' ' . $model->kategori;
+$this->params['breadcrumbs'][] = ['label' => 'Kategori', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Kategori ' . $model->kategori, 'url' => ['view', 'id' => $model->id_kategori]];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kategori-update">
 

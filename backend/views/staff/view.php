@@ -8,7 +8,8 @@ use yii\widgets\DetailView;
 $this->title = $model->nama_staff;
 $this->params['breadcrumbs'][] = ['label' => 'Pusat Data Staff', 'url'=>['index']];
 $this->params['breadcrumbs'][] = $this->title;
-?><div class="staff-view">
+?>
+<div class="staff-view">
 	<h1><?= Html::encode($this->title) ?></h1>
 	
 
@@ -22,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
 			'bagian',
 		],
 	]) ?>
-	<div class="pull-right">
 		<?= Html::a('Perbarui',['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 		<?= Html::a('Hapus',['delete', 'id' => $model->id], [
 					'class' => 'btn btn-danger',
@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						],
 
 		]) ?>
-	</div>
 </div>
 
 

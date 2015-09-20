@@ -2,7 +2,7 @@
 
 namespace common\models;
 use yii\helpers\Url;
-
+use common\models\Jurusan;
 use Yii;
 
 class Guru extends \yii\db\ActiveRecord
@@ -25,17 +25,17 @@ class Guru extends \yii\db\ActiveRecord
         return [
             [['nip', 'nama_guru', 'tempat_lahir', 'tgl_lahir', 'jk', 'alamat','agama','pend_akhir','program_keahlian','status'], 'required', 'message' => 'Data harus diisi'],
   //          [['nip'],'integer'],
-            [['nip'],'integer'],
+            ['nip', 'unique', 'targetClass' => '\common\models\Guru', 'message' => 'NIP sudah ada.'],
+            [['nip'],'integer', 'min' => 16],
             [['tgl_lahir'], 'safe'],
             [['nama_guru'], 'string', 'max' => 30],
-
             [['file'], 'file'],
             [['tempat_lahir'], 'string', 'max' => 25],
             [['jk'], 'string', 'max' => 15],
-            [['alamat'], 'string', 'max' => 50 ],
+            [['alamat'], 'string', 'max' => 255 ],
             [['agama'],'string','max'=>20],
             [['pend_akhir'],'string','max'=>5],
-            [['program_keahlian'],'string','max'=>15],
+            [['program_keahlian'],'string','max'=>40],
             [['status'],'string','max'=>10]
 
         ];
@@ -66,4 +66,10 @@ class Guru extends \yii\db\ActiveRecord
             'file'=>'Foto',
         ];
     }
+
+    public function getJurusan()
+    {
+        return $this->hasOne(Jurusan::className(),['id_guru'=>'nip']);
+    }
+
 }

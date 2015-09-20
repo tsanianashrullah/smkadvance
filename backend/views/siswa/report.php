@@ -22,11 +22,10 @@ $this->params['breadcrumbs'][]= $this->title;
     			<?= Html::encode($this->title) ?></h3>
 				</div>
         <div class="panel-body">
-        	<?php echo $this->render('search', ['model' => $searchModel]); ?>
+        	<?php echo $this->render('searchs', ['model' => $searchModel]); ?>
 		</div>
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
-		'filterModel' => $searchModel,
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 			'nisn',

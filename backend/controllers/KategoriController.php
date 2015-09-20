@@ -9,7 +9,7 @@ use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\ForbiddenHttpException;
 /**
  * KategoriController implements the CRUD actions for Kategori model.
  */
@@ -33,6 +33,7 @@ class KategoriController extends Controller
      */
     public function actionIndex()
     {
+    if(Yii::$app->user->can('view')){
         $searchModel = new KategoriSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize=10;
@@ -40,6 +41,12 @@ class KategoriController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+            }else{
+                throw  new ForbiddenHttpException;
+
+            }
+        
+        
     }
 
     /**
@@ -49,9 +56,16 @@ class KategoriController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(Yii::$app->user->can('view')){
+                return $this->render('view', [
+                    'model' => $this->findModel($id),
+                ]);
+                }else{
+                    throw  new ForbiddenHttpException;
+
+                }
+            
+            
     }
 
     /**
@@ -64,7 +78,7 @@ class KategoriController extends Controller
         $model = new Kategori();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_kategori]);
         } else {
             return $this->renderPartial('create', [
                 'model' => $model,
@@ -83,7 +97,7 @@ class KategoriController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_kategori]);
         } else {
             return $this->render('update', [
                 'model' => $model,

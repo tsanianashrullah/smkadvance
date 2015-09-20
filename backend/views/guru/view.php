@@ -7,13 +7,14 @@ use dosamigos\tableexport\ButtonTableExportAsset;
 /* @var $this yii\web\View */
 /* @var $model app\models\Guru */
 
-$this->title = $model->nama_guru;
-$this->params['breadcrumbs'][] = ['label' => 'Guru', 'url' => ['index']];
+$this->title = 'Detail Data : ' . $model->nama_guru;
+$this->params['breadcrumbs'][] = ['label' => 'Pusat Data', 'url' => ['/center/data']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Guru', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guru-view">
 <div class="panel panel-default">
-      <div class="panel-heading">Update Data Guru</div>
+      <div class="panel-heading">View Detail Data Guru <?= $model->nama_guru ?> </div>
         <div class="panel-body">
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -39,6 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'tempat_lahir',
             'tgl_lahir',
             'jk',
+            'agama',
+            'pend_akhir',
+            'program_keahlian',
             'alamat',
             [
                  'label'=>'Foto',

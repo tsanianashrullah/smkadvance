@@ -17,8 +17,7 @@ $this->title='List Jurusan';
             </div>
             <div class="col-md-8">
                 <h3><?= Html::a($model->jurusan, ['detail', 'id' => $model->id]) ?></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-                <a class="btn btn-primary" href="portfolio-item.html">View Project</a>
+                
             </div>
         </div>
 <hr>

@@ -52,18 +52,14 @@
             <div class="col-lg-6">
                 <h2>Selayang Pandang</h2>
 
-                <p>SMK PGRI 1 Cimahi merupakan salah satu sekolah yang ada dicimahi yang mempunyai 4 Program keahlian yaitu diantaranya:
-                  1. Adm. Perkantoran
-                  2. Pemasaran
-                  3. Akuntansi
-                  4. Rekayasa Perangkat Lunak</p>
+                <p>SMK PGRI 1 CIMAHI dulu adalah SMEA PGRI 1 Cimahi berdiri tahun 1975 atas prakarsa sebagian guru SMK Negeri XI bandung, Sehingga pada waktu itu tempat kegiatan belajar dilaksanakan...</p>
 
                 <p><a class="btn btn-default" href="?r=site/selayangpandang">Lihat Selengkapnya... &raquo;</a></p>
             </div>
             <div class="col-lg-6">
                 <h2>Visi & Misi</h2>
 
-                <p>Yaa intinya mah membuat dunia pendidikan indonesia lebih baik dan meghasilkan generasi muda yang bisa membawa nama Indonesia ke tingkat internasional</p>
+                <p>Menjadikan salah satu SMK yanv mampu menyiapkan generasi bangsa yang bertaqwa kepada Tuhan YME. serta SMK unggulan...</p>
 
                 <p><a class="btn btn-default" href="?r=site/visi">Lihat Selengkapnya... &raquo;</a></p>
             </div>

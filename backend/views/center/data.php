@@ -31,11 +31,11 @@ $this->title = 'Pusat Data';
 		</td>
 		<td width="3%">&nbsp;</td>
 		<td width="20%">
-			<a href="index.php?r=staff/index"><img src="images/staff.png" width="100%"></a><p>Staff</p>
+			<a href="index.php?r=kategori/index"><img src="images/kategori.png" width="100%"></a><p>Kategori</p>
 		</td>
 		<td width="3%">&nbsp;</td>
 		<td width="20%">
-			<a href="index.php?r=jurusan/index"><img src="images/jurusan.png" width="100%"></a><p>Kompetensi Keahlian</p>
+			<a href="index.php?r=staff/index"><img src="images/staff.png" width="100%"></a><p>Staff</p>
 		</td>
 	</tr>
 

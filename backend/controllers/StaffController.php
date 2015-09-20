@@ -4,10 +4,10 @@ use Yii;
 use common\models\Staff;
 use common\models\StaffSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpExeption;
+use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
-
+use yii\web\ForbiddenHttpException;
 class StaffController extends Controller
 {
    public function behavior()
@@ -26,6 +26,7 @@ class StaffController extends Controller
    }
 public function actionIndex()
 {
+  if(Yii::$app->user->can('view')){
    $searchModel = new StaffSearch();
    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);    
    $dataProvider->pagination->pageSize=2;
@@ -41,13 +42,28 @@ public function actionIndex()
        [
               'searchModel'=> $searchModel,
                'dataProvider'=> $dataProvider,        ]);
-}
-public function actionView($id)
-{
-   return $this->render('view',[
-       'model' => $this->findModel($id),
-       ]);
-}public function actionCreate()
+    }else{
+      throw  new ForbiddenHttpException;
+
+    }
+  
+  }
+
+    public function actionView($id)
+    {
+      if(Yii::$app->user->can('view')){
+       return $this->render('view',[
+           'model' => $this->findModel($id),
+           ]);
+        }else{
+          throw  new ForbiddenHttpException;
+
+        }
+      
+    }
+
+
+public function actionCreate()
 {
    if(yii::$app->user->can('create'))
    {
@@ -63,16 +79,25 @@ public function actionView($id)
        throw new ForbiddenHttpException;
    }
 }
+
 public function actionUpdate($id)
-{
-   $model = $this->findModel($id);    if($model->load(Yii::$app->request->post()) && $model->save()){
-           return $this->redirect(['view', 'id' => $model->id]);
-   } else {
-       return $this->render('update',[
-               'model' => $model,
-               ]);
-   }
-}
+  {
+    if(yii::$app->user->can('update'))
+    {
+      $model = $this->findModel($id);
+    if($model->load(Yii::$app->request->post()) && $model->save()){
+        return $this->redirect(['view', 'id' => $model->id]);
+    } else {
+      return $this->render('update',[
+          'model' => $model,
+          ]);
+      }
+    }else{
+      throw new ForbiddenHttpException('Halaman yang Anda akses hanya bisa dibuka oleh user tertentu');
+      
+    }
+  }
+
 public function actionDelete($id)
 {
    $this->findModel($id)->delete();
@@ -83,7 +108,7 @@ protected function findModel($id)
     if (($model = Staff::findOne($id)) !== null){
        return $model;
     } else {
-           throw new NotFoundHttpExeption('the requested page does not exsit');
+           throw new NotFoundHttpException('the requested page does not exsit');
           }
     }
 }

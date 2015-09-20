@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\Guru;
 use common\models\Siswa;
 use Yii;
 use yii\helpers\Url;

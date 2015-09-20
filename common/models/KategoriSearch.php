@@ -18,7 +18,7 @@ class KategoriSearch extends Kategori
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id_kategori'], 'integer'],
             [['kategori'], 'safe'],
         ];
     }
@@ -56,7 +56,7 @@ class KategoriSearch extends Kategori
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+            'id_kategori' => $this->id_kategori,
         ]);
 
         $query->andFilterWhere(['like', 'kategori', $this->kategori]);
